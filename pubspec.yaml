@@ -13,6 +13,8 @@ dependencies:
   flutter_svg: ^1.1.6
   flutter_rating_bar: ^4.0.0
   intl: ^0.17.0
+  percent_indicator: ^4.2.3
+  animated_bottom_navigation_bar: ^1.2.0
 dev_dependencies: 
   flutter_test: 
     sdk: flutter

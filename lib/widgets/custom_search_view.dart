@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 
+// ignore: must_be_immutable
 class CustomSearchView extends StatelessWidget {
   CustomSearchView(
       {this.padding,

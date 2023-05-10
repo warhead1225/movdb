@@ -2,7 +2,6 @@ import 'controller/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 
-// ignore_for_file: must_be_immutable
 class SplashScreen extends GetWidget<SplashController> {
   @override
   Widget build(BuildContext context) {

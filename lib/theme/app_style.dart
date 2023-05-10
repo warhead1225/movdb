@@ -5,10 +5,17 @@ class AppStyle {
   static TextStyle txtRobotoRegular12 = TextStyle(
     color: ColorConstant.whiteA70090,
     fontSize: getFontSize(
-      12,
+      14,
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
+    shadows: <Shadow>[
+      Shadow(
+        offset: Offset(1.0, 1.0),
+        blurRadius: 5.0,
+        color: Color.fromARGB(255, 0, 0, 0),
+      ),
+    ],
   );
 
   static TextStyle txtRobotoRegular12WhiteA700a9 = TextStyle(
@@ -54,6 +61,29 @@ class AppStyle {
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w700,
+    shadows: <Shadow>[
+      Shadow(
+        offset: Offset(2.0, 2.0),
+        blurRadius: 3.0,
+        color: Color.fromARGB(255, 0, 0, 0),
+      ),
+    ],
+  );
+
+  static TextStyle txtRobotoBold15 = TextStyle(
+    color: ColorConstant.whiteA700A9,
+    fontSize: getFontSize(
+      15,
+    ),
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w700,
+    shadows: <Shadow>[
+      Shadow(
+        offset: Offset(2.0, 2.0),
+        blurRadius: 3.0,
+        color: Color.fromARGB(255, 0, 0, 0),
+      ),
+    ],
   );
 
   static TextStyle txtRobotoBold34 = TextStyle(
@@ -77,7 +107,7 @@ class AppStyle {
   static TextStyle txtRobotoRegular10 = TextStyle(
     color: ColorConstant.whiteA700A9,
     fontSize: getFontSize(
-      10,
+      14,
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,

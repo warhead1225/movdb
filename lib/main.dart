@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
       ),
       translations: AppLocalization(),
       locale: Get.deviceLocale, //for setting localization strings
-      fallbackLocale: Locale('en', 'US'),
       title: 'movdb',
       initialBinding: InitialBindings(),
       initialRoute: AppRoutes.initialRoute,

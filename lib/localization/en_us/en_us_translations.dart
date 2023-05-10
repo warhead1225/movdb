@@ -180,7 +180,7 @@ final Map<String, String> enUs = {
   "lbl_the_heirs": "The Heirs",
   "msg_david_20_gmail": "david_20@gmail.com",
   "lbl_categories_1": "Categories (1)",
-  "lbl_nons": "Nons",
+  "lbl_nons": "Hello",
   "lbl_explore": "Explore",
   "lbl_upcoming_movies": "Upcoming Movies",
   "lbl_hotel_de_luna": "Hotel de Luna",

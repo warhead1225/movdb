@@ -1,18 +1,23 @@
 import 'package:movdb/core/app_export.dart';
-import 'package:movdb/presentation/dashboard_page/models/dashboard_model.dart';
+import 'package:movdb/data/apiClient/api_client.dart';
 
 class DashboardController extends GetxController {
-  DashboardController(this.dashboardModelObj);
-
-  Rx<DashboardModel> dashboardModelObj;
-
   @override
   void onReady() {
     super.onReady();
+    _getTrending();
   }
 
   @override
   void onClose() {
     super.onClose();
+  }
+
+  //Get trending shows
+  void _getTrending() async {
+    var apiClient = ApiClient();
+
+    var trending = await apiClient.getTrending();
+    print(trending);
   }
 }

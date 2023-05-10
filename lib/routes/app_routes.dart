@@ -1,7 +1,8 @@
+import 'package:movdb/presentation/dashboard_page/binding/dashboard_binding.dart';
+import 'package:movdb/presentation/dashboard_page/dashboard_page.dart';
 import 'package:movdb/presentation/splash_screen/splash_screen.dart';
 import 'package:movdb/presentation/splash_screen/binding/splash_binding.dart';
-import 'package:movdb/presentation/app_navigation_screen/app_navigation_screen.dart';
-import 'package:movdb/presentation/app_navigation_screen/binding/app_navigation_binding.dart';
+
 import 'package:get/get.dart';
 
 class AppRoutes {
@@ -10,7 +11,6 @@ class AppRoutes {
   static const String dashboardPage = '/dashboard_page';
 
   static const String appNavigationScreen = '/app_navigation_screen';
-
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
@@ -22,10 +22,10 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: appNavigationScreen,
-      page: () => AppNavigationScreen(),
+      name: dashboardPage,
+      page: () => DashboardPage(),
       bindings: [
-        AppNavigationBinding(),
+        DashBoardBinding(),
       ],
     ),
     GetPage(
