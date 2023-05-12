@@ -1,3 +1,4 @@
+import 'package:movdb/presentation/dashboard_page/controller/dashboard_controller.dart';
 import 'package:movdb/presentation/dashboard_page/widgets/trending_item_widget.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -6,6 +7,8 @@ import 'package:movdb/core/app_export.dart';
 
 // ignore_for_file: must_be_immutable
 class DashboardPage extends StatelessWidget {
+  var dashBoardController = Get.put(DashboardController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -133,21 +136,27 @@ class DashboardPage extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        height: getVerticalSize(180),
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 20,
-                          itemBuilder: (context, index) {
-                            return TrendingItemWidget();
-                          },
-                        ),
-                      )
+                          height: getVerticalSize(180),
+                          child: Obx(
+                            () => dashBoardController
+                                    .dashBoardModel.trendingList.isNotEmpty
+                                ? ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: 20,
+                                    itemBuilder: (context, index) =>
+                                        TrendingItemWidget(
+                                            trendingModel: dashBoardController
+                                                .dashBoardModel
+                                                .trendingList[index]),
+                                  )
+                                : SizedBox(),
+                          ))
                     ],
                   ),
                 ),
 
-                /* Upcoming Today */
-                Container(
+                /*  Top Rated Movies */
+                /*  Container(
                   margin: getMargin(left: 10, right: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,7 +165,7 @@ class DashboardPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Top Rated",
+                            "Top Rated Movies",
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
                             style: AppStyle.txtRobotoRegular14.copyWith(
@@ -180,16 +189,59 @@ class DashboardPage extends StatelessWidget {
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: 20,
-                          itemBuilder: (context, index) {
-                            return TrendingItemWidget();
-                          },
+                          itemBuilder: (context, index) => TrendingItemWidget(
+                              trendingModel: dashBoardController
+                                  .dashBoardModel.trendingList[index]),
                         ),
                       )
                     ],
                   ),
                 ),
 
-                /* Top Rated */
+                /* Top Rated Tv series */
+                Container(
+                  margin: getMargin(left: 10, right: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Top Rated Tv Series",
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.left,
+                            style: AppStyle.txtRobotoRegular14.copyWith(
+                              letterSpacing: getHorizontalSize(0.25),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "View More",
+                              style: AppStyle.txtRobotoRegular14.copyWith(
+                                letterSpacing: getHorizontalSize(0.25),
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Container(
+                        height: getVerticalSize(180),
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 20,
+                          itemBuilder: (context, index) => TrendingItemWidget(
+                              trendingModel: dashBoardController
+                                  .dashBoardModel.trendingList[index]),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+
+                /* Upcoming */
                 Container(
                   margin: getMargin(left: 10, right: 10),
                   child: Column(
@@ -223,20 +275,18 @@ class DashboardPage extends StatelessWidget {
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: 20,
-                          itemBuilder: (context, index) {
-                            return TrendingItemWidget();
-                          },
+                          itemBuilder: (context, index) => TrendingItemWidget(
+                              trendingModel: dashBoardController
+                                  .dashBoardModel.trendingList[index]),
                         ),
                       )
                     ],
                   ),
-                )
+                ) */
               ],
             ),
           ),
         ),
-
-        //other params
       ),
     );
   }

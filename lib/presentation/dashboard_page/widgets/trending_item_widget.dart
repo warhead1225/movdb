@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
+import 'package:movdb/presentation/dashboard_page/models/trending_model.dart';
 
 class TrendingItemWidget extends StatelessWidget {
+  final TrendingModel trendingModel;
+
+  const TrendingItemWidget({Key? key, required this.trendingModel})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return IntrinsicWidth(
@@ -10,7 +16,7 @@ class TrendingItemWidget extends StatelessWidget {
           30,
         ),
         width: getHorizontalSize(
-          90,
+          100,
         ),
         margin: getMargin(
           right: 16,
@@ -19,7 +25,9 @@ class TrendingItemWidget extends StatelessWidget {
           alignment: Alignment.centerRight,
           children: [
             CustomImageView(
-              imagePath: ImageConstant.imgCategorythumbnail30x90,
+              fit: BoxFit.cover,
+              url: 'https://image.tmdb.org/t/p/original' +
+                  trendingModel.posterPath,
               height: getVerticalSize(
                 150,
               ),
@@ -33,24 +41,6 @@ class TrendingItemWidget extends StatelessWidget {
               ),
               alignment: Alignment.center,
               onTap: () {},
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: getPadding(
-                  right: 20,
-                ),
-                child: Text(
-                  "ssdsd",
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.left,
-                  style: AppStyle.txtRobotoRegular14.copyWith(
-                    letterSpacing: getHorizontalSize(
-                      0.1,
-                    ),
-                  ),
-                ),
-              ),
             ),
           ],
         ),

@@ -1,28 +1,88 @@
+import 'dart:developer';
+
 import 'package:movdb/core/app_export.dart';
+import 'package:movdb/data/apiClient/api_headers.dart';
 
 class ApiClient extends GetConnect {
   // Get trendng movies and tv series
-  Future<Map<String, dynamic>> getTrending() async {
+  Future<List<dynamic>> getTrending() async {
     //images:https://image.tmdb.org/t/p/original/
     //https://image.tmdb.org/t/p/w500/
-    final response = await get(
+    var result = <dynamic>[];
+    try {
+      var response = await get(
         'https://api.themoviedb.org/3/trending/all/day?language=en-US',
-        headers: {
-          'Authorization':
-              'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YTBkYjEyYTY3OWEwMTgwYmM5NGE3MTNhN2YwZjI5YiIsInN1YiI6IjY0NWIxNDMxMTU2Y2M3MDE1ZTc4MzAyNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-b9TdDeJ94tMBg8MGF31HSEn_vc_RWcth4rY-040ItU',
-          'Accept': 'application/json'
-        });
+        headers: ApiHeaders.authHeader(),
+      );
 
-    if (response.status.hasError) {
-      return Future.error(response.statusText!);
-    } else {
-      return response.body;
+      if (!response.status.hasError) {
+        result = response.body['results'];
+      }
+    } catch (e) {
+      //log error
+      log(e.toString());
     }
+
+    return result;
   }
 
-  //Get Movie list popular
-  Future<Map<String, dynamic>> getMovies() async {
-    var s = <String, dynamic>{};
-    return s;
+  //Get Top Rated Movies
+  Future<List<dynamic>> getTopRatedMovies() async {
+    var result = <dynamic>[];
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      if (!response.status.hasError) {
+        result = response.body['results'];
+      }
+    } catch (e) {
+      //log error
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //Get Top Rated Movies
+  Future<List<dynamic>> getTopRatedSeries() async {
+    var result = <dynamic>[];
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      if (!response.status.hasError) {
+        result = response.body;
+      }
+    } catch (e) {
+      //log error
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //Get upcoming
+  Future<List<dynamic>> getUpcoming() async {
+    var result = <dynamic>[];
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      if (!response.status.hasError) {
+        result = response.body;
+      }
+    } catch (e) {
+      //log error
+      log(e.toString());
+    }
+
+    return result;
   }
 }

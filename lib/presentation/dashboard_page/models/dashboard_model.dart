@@ -1,27 +1,19 @@
 import 'package:get/get.dart';
-import 'specials_item_model.dart';
-import 'upcoming_item_model.dart';
-import 'featured_item_model.dart';
-import 'upcoming1_item_model.dart';
-import 'categories_item_model.dart';
-import 'special_item_model.dart';
+import 'package:movdb/presentation/dashboard_page/models/trending_model.dart';
 
 class DashboardModel {
-  Rx<List<SpecialsItemModel>> specialsItemList =
-      Rx(List.generate(4, (index) => SpecialsItemModel()));
+  var trendingList = <TrendingModel>[].obs;
 
-  Rx<List<UpcomingItemModel>> upcomingItemList =
-      Rx(List.generate(4, (index) => UpcomingItemModel()));
-
-  Rx<List<FeaturedItemModel>> featuredItemList =
-      Rx(List.generate(4, (index) => FeaturedItemModel()));
-
-  Rx<List<Upcoming1ItemModel>> upcoming1ItemList =
-      Rx(List.generate(4, (index) => Upcoming1ItemModel()));
-
-  Rx<List<CategoriesItemModel>> categoriesItemList =
-      Rx(List.generate(4, (index) => CategoriesItemModel()));
-
-  Rx<List<SpecialItemModel>> specialItemList =
-      Rx(List.generate(4, (index) => SpecialItemModel()));
+  TrendingModel trendingDataObj(Map<String, dynamic> obj) {
+    return TrendingModel(
+      id: obj['id'],
+      backdropPath: obj['backdrop_path'],
+      title: obj['title'] ?? obj['name'],
+      overview: obj['overview'],
+      posterPath: obj['poster_path'],
+      mediaType: obj['media_type'],
+      genreId: obj["genre_ids"],
+      voteAverage: obj["vote_average"],
+    );
+  }
 }
