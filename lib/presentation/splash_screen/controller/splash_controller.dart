@@ -13,7 +13,7 @@ class SplashController extends GetxController {
 
   void _splashTransition() async {
     await Future.delayed(const Duration(milliseconds: 500));
-    Get.offNamed(AppRoutes.dashboardPage);
+    Get.offNamed(AppRoutes.mainPage);
   }
 
   @override

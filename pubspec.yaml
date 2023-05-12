@@ -1,36 +1,37 @@
 name: movdb
 description: A new Flutter project.
 version: 1.0.0+1
-environment: 
-  sdk: '>=2.12.0 <3.0.0'
-dependencies: 
-  flutter: 
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+dependencies:
+  flutter:
     sdk: flutter
   get: ^4.6.5
   connectivity_plus: ^2.3.6
   shared_preferences: ^2.0.15
   cached_network_image: ^3.2.1
   flutter_svg: ^1.1.6
-  flutter_rating_bar: ^4.0.0
+  flutter_rating_bar: ^4.0.1
   intl: ^0.17.0
   percent_indicator: ^4.2.3
   animated_bottom_navigation_bar: ^1.2.0
-dev_dependencies: 
-  flutter_test: 
+  card_swiper: ^2.0.4
+dev_dependencies:
+  flutter_test:
     sdk: flutter
-flutter: 
+flutter:
   uses-material-design: true
-  assets: 
+  assets:
     - assets/
     - assets/images/
-  fonts: 
+  fonts:
     - family: Roboto
-      fonts: 
+      fonts:
         - asset: assets/fonts/RobotoBold.ttf
           weight: 700
         - asset: assets/fonts/RobotoRegular.ttf
           weight: 400
     - family: Poppins
-      fonts: 
+      fonts:
         - asset: assets/fonts/PoppinsRegular.ttf
           weight: 400

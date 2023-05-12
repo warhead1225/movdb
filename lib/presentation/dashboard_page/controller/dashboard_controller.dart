@@ -16,8 +16,8 @@ class DashboardController extends GetxController {
   //Get trending shows
   void _getTrending() async {
     var apiClient = ApiClient();
-
     var trending = await apiClient.getTrending();
+
     print(trending);
   }
 }

@@ -1,5 +1,3 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:movdb/presentation/dashboard_page/controller/dashboard_controller.dart';
 import 'package:movdb/presentation/dashboard_page/widgets/trending_item_widget.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -8,23 +6,32 @@ import 'package:movdb/core/app_export.dart';
 
 // ignore_for_file: must_be_immutable
 class DashboardPage extends StatelessWidget {
-  var dashBoardController = Get.find<DashboardController>();
-
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorConstant.gray900,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
+          elevation: 0,
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search, size: 30, shadows: [
+                Shadow(
+                  offset: Offset(2.0, 2.0),
+                  blurRadius: 3.0,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
+              ]),
+            ),
+          ],
         ),
         body: SizedBox(
           width: size.width,
           child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,7 +156,7 @@ class DashboardPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Upcoming",
+                            "Top Rated",
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
                             style: AppStyle.txtRobotoRegular14.copyWith(
@@ -192,7 +199,7 @@ class DashboardPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Top Rated",
+                            "Upcoming",
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
                             style: AppStyle.txtRobotoRegular14.copyWith(
@@ -229,23 +236,6 @@ class DashboardPage extends StatelessWidget {
           ),
         ),
 
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: AnimatedBottomNavigationBar(
-          icons: <IconData>[
-            Icons.home,
-            Icons.movie,
-            Icons.tv,
-            Icons.trending_up,
-            Icons.upcoming,
-          ],
-          activeIndex: 0,
-          activeColor: Colors.deepPurpleAccent,
-          gapLocation: GapLocation.none,
-          notchSmoothness: NotchSmoothness.verySmoothEdge,
-          leftCornerRadius: 32,
-          rightCornerRadius: 32,
-          onTap: (index) {},
-        ),
         //other params
       ),
     );

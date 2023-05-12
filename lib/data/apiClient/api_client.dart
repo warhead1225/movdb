@@ -1,9 +1,10 @@
 import 'package:movdb/core/app_export.dart';
 
 class ApiClient extends GetConnect {
+  // Get trendng movies and tv series
   Future<Map<String, dynamic>> getTrending() async {
-    //images : https://image.tmdb.org/t/p/original/
-    // https://image.tmdb.org/t/p/w500/
+    //images:https://image.tmdb.org/t/p/original/
+    //https://image.tmdb.org/t/p/w500/
     final response = await get(
         'https://api.themoviedb.org/3/trending/all/day?language=en-US',
         headers: {
@@ -17,5 +18,11 @@ class ApiClient extends GetConnect {
     } else {
       return response.body;
     }
+  }
+
+  //Get Movie list popular
+  Future<Map<String, dynamic>> getMovies() async {
+    var s = <String, dynamic>{};
+    return s;
   }
 }
