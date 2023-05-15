@@ -56,7 +56,7 @@ class ApiClient extends GetConnect {
       );
 
       if (!response.status.hasError) {
-        result = response.body;
+        result = response.body['results'];
       }
     } catch (e) {
       //log error
@@ -76,7 +76,7 @@ class ApiClient extends GetConnect {
       );
 
       if (!response.status.hasError) {
-        result = response.body;
+        result = response.body['results'];
       }
     } catch (e) {
       //log error

@@ -10,39 +10,42 @@ class TrendingItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(
-      child: Container(
-        height: getVerticalSize(
-          30,
-        ),
-        width: getHorizontalSize(
-          100,
-        ),
-        margin: getMargin(
-          right: 16,
-        ),
-        child: Stack(
-          alignment: Alignment.centerRight,
-          children: [
-            CustomImageView(
-              fit: BoxFit.cover,
-              url: 'https://image.tmdb.org/t/p/original' +
-                  trendingModel.posterPath,
-              height: getVerticalSize(
-                150,
-              ),
-              width: getHorizontalSize(
-                180,
-              ),
-              radius: BorderRadius.circular(
-                getHorizontalSize(
-                  2,
+    return GestureDetector(
+      onTap: () {},
+      child: IntrinsicWidth(
+        child: Container(
+          height: getVerticalSize(
+            30,
+          ),
+          width: getHorizontalSize(
+            100,
+          ),
+          margin: getMargin(
+            right: 16,
+          ),
+          child: Stack(
+            alignment: Alignment.centerRight,
+            children: [
+              CustomImageView(
+                fit: BoxFit.cover,
+                url: 'https://image.tmdb.org/t/p/original' +
+                    trendingModel.posterPath,
+                height: getVerticalSize(
+                  150,
                 ),
+                width: getHorizontalSize(
+                  180,
+                ),
+                radius: BorderRadius.circular(
+                  getHorizontalSize(
+                    2,
+                  ),
+                ),
+                alignment: Alignment.center,
+                onTap: () {},
               ),
-              alignment: Alignment.center,
-              onTap: () {},
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

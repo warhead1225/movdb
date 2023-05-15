@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movdb/presentation/dashboard_page/models/upcoming_model.dart';
+import 'package:movdb/core/app_export.dart';
+import 'package:movdb/presentation/dashboard_page/models/top_rated_movies_model.dart';
 
-import '../../../core/app_export.dart';
+class TopRatedMovieItemWidget extends StatelessWidget {
+  final TopRatedMoviesModel topRatedMovieModel;
 
-class UpcomingItemWidget extends StatelessWidget {
-  final UpcomingModel upcomingModel;
-
-  const UpcomingItemWidget({Key? key, required this.upcomingModel})
+  const TopRatedMovieItemWidget({Key? key, required this.topRatedMovieModel})
       : super(key: key);
 
   @override
@@ -28,7 +27,7 @@ class UpcomingItemWidget extends StatelessWidget {
             CustomImageView(
               fit: BoxFit.cover,
               url: 'https://image.tmdb.org/t/p/original' +
-                  upcomingModel.posterPath,
+                  topRatedMovieModel.posterPath,
               height: getVerticalSize(
                 150,
               ),
