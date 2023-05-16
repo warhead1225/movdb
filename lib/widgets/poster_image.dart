@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
-import 'package:movdb/presentation/dashboard_page/models/trending_model.dart';
 
-class TrendingItemWidget extends StatelessWidget {
-  final TrendingModel trendingModel;
-
-  const TrendingItemWidget({Key? key, required this.trendingModel})
-      : super(key: key);
+class PosterWidget extends StatelessWidget {
+  final String posterImage;
+  const PosterWidget({Key? key, required this.posterImage}) : super(key: key);
 
   //Get.toNamed(AppRoutes.movieDetails)
   @override
@@ -25,7 +22,7 @@ class TrendingItemWidget extends StatelessWidget {
         ),
         child: CustomImageView(
           fit: BoxFit.cover,
-          url: ApiHeaders.imageBase() + trendingModel.posterPath,
+          url: ApiHeaders.imageBase() + posterImage,
           height: getVerticalSize(
             150,
           ),
@@ -38,8 +35,6 @@ class TrendingItemWidget extends StatelessWidget {
             ),
           ),
           alignment: Alignment.center,
-          onTap: () =>
-              Get.toNamed(AppRoutes.movieDetails, arguments: trendingModel.id),
         ),
       ),
     );

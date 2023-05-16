@@ -85,4 +85,24 @@ class ApiClient extends GetConnect {
 
     return result;
   }
+
+  //
+  Future<Map<String, dynamic>> getMovieDetail(int movieId) async {
+    var result = <String, dynamic>{};
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/movie/$movieId',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      if (!response.status.hasError) {
+        result = response.body;
+      }
+    } catch (e) {
+      //log error
+      log(e.toString());
+    }
+    log(result.toString());
+    return result;
+  }
 }

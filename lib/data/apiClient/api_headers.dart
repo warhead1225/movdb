@@ -1,4 +1,6 @@
 class ApiHeaders {
+  static String imageBase() => 'https://image.tmdb.org/t/p/original';
+
   static Map<String, String> authHeader() {
     return {
       'Authorization':

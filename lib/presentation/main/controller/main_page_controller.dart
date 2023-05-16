@@ -29,20 +29,4 @@ class MainPageController extends GetxController {
   void onClose() {
     super.onClose();
   }
-  /*  
-    Movie List Now playing
-    $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', [
-      'headers' => [
-        'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YTBkYjEyYTY3OWEwMTgwYmM5NGE3MTNhN2YwZjI5YiIsInN1YiI6IjY0NWIxNDMxMTU2Y2M3MDE1ZTc4MzAyNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-b9TdDeJ94tMBg8MGF31HSEn_vc_RWcth4rY-040ItU',
-        'accept' => 'application/json',
-      ],
-    ]);
-    Genre
-    $response = $client->request('GET', 'https://api.themoviedb.org/3/genre/movie/list?language=en', [
-    'headers' => [
-      'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YTBkYjEyYTY3OWEwMTgwYmM5NGE3MTNhN2YwZjI5YiIsInN1YiI6IjY0NWIxNDMxMTU2Y2M3MDE1ZTc4MzAyNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-b9TdDeJ94tMBg8MGF31HSEn_vc_RWcth4rY-040ItU',
-      'accept' => 'application/json',
-    ],
-  ]);
-  */
 }
