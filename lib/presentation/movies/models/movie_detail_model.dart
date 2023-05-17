@@ -7,6 +7,7 @@ class MovieDetailModel {
   final String posterPath;
   final String status;
   final double voteAverage;
+  final String releaseDate;
 
   MovieDetailModel({
     required this.backDropPath,
@@ -17,6 +18,7 @@ class MovieDetailModel {
     required this.posterPath,
     required this.status,
     required this.voteAverage,
+    required this.releaseDate,
   });
 
   static MovieDetailModel movieDetailObj(Map<String, dynamic> obj) {
@@ -27,8 +29,9 @@ class MovieDetailModel {
       title: obj['title'] ?? obj['original_title'],
       overView: obj['overview'],
       posterPath: obj['poster_path'],
-      status: obj['status'],
+      status: obj['status'] ?? '',
       voteAverage: obj['vote_average'],
+      releaseDate: obj['release_date'],
     );
   }
 

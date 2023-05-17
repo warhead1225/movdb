@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
-import 'package:movdb/presentation/movies/controller/movie_details_controller.dart';
+import 'package:movdb/presentation/tv_shows/controller/tv_shows_details_controller.dart';
 
-class MovieDetails extends StatelessWidget {
-  final movieDetailController = Get.find<MovieDetailsController>();
-  final movieDetails = Get.arguments;
+class TvShowsDetails extends StatelessWidget {
+  final tvDetailsController = Get.find<TvShowsDetailsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class MovieDetails extends StatelessWidget {
         height: size.height,
         child: SingleChildScrollView(
           child: Obx(
-            () => movieDetailController.detailsLoaded.value
+            () => tvDetailsController.detailsLoaded.value
                 ? Stack(
                     alignment: AlignmentDirectional.topStart,
                     children: [
@@ -30,7 +29,7 @@ class MovieDetails extends StatelessWidget {
                         child: CustomImageView(
                           fit: BoxFit.cover,
                           url: ApiHeaders.imageBase() +
-                              movieDetailController.movieDetail.backDropPath,
+                              tvDetailsController.tvDetail.backDropPath,
                           height: getVerticalSize(250),
                           width: size.width,
                           alignment: Alignment.center,
@@ -48,20 +47,19 @@ class MovieDetails extends StatelessWidget {
                                   margin: getMargin(right: 10),
                                   child: CustomImageView(
                                     url: ApiHeaders.imageBase() +
-                                        movieDetailController
-                                            .movieDetail.posterPath,
+                                        tvDetailsController.tvDetail.posterPath,
                                     height: getVerticalSize(180),
                                     width: getHorizontalSize(130),
                                   ),
                                 ),
                                 Expanded(
                                   child: Text(
-                                    movieDetailController.movieDetail.title,
+                                    tvDetailsController.tvDetail.title,
                                     style: AppStyle.txtRobotoBold24,
                                     maxLines: 3,
                                     overflow: TextOverflow.fade,
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ],

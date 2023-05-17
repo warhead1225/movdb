@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_client.dart';
 import 'package:movdb/presentation/dashboard_page/models/dashboard_model.dart';
+import 'package:movdb/presentation/dashboard_page/models/trending_model.dart';
 
 class DashboardController extends GetxController {
   var dashBoardModel = DashboardModel();
@@ -8,6 +11,8 @@ class DashboardController extends GetxController {
   var loadingTopRatedMov = true.obs;
   var loadingTopRatedSeries = true.obs;
   var loadingUpcoming = true.obs;
+
+  late TrendingModel dashBoardFeatured;
 
   @override
   void onReady() {
@@ -23,7 +28,8 @@ class DashboardController extends GetxController {
   //Get trending shows
   void _getData() async {
     var apiClient = ApiClient();
-    var trending = await apiClient.getTrending();
+    var trending =
+        await apiClient.getTrending(); // trending movie and tv series
     var topRatedMov = await apiClient.getTopRatedMovies();
     var topRatedSeries = await apiClient.getTopRatedSeries();
     var upcoming = await apiClient.getUpcoming();
@@ -32,6 +38,7 @@ class DashboardController extends GetxController {
     var trendingList = RxList.generate(
         trending.length, (i) => dashBoardModel.trendingDataObj(trending[i]));
     dashBoardModel.trendingList.addAll(trendingList);
+    dashBoardFeatured = trendingList[Random().nextInt(trendingList.length)];
 
     //Top Rated Movie List
     var topRatedMovList = RxList.generate(topRatedMov.length,

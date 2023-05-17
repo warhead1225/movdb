@@ -16,6 +16,7 @@ dependencies:
   percent_indicator: ^4.2.3
   animated_bottom_navigation_bar: ^1.2.0
   card_swiper: ^2.0.4
+  youtube_player_flutter: ^8.1.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

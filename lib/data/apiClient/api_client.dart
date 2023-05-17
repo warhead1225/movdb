@@ -102,7 +102,46 @@ class ApiClient extends GetConnect {
       //log error
       log(e.toString());
     }
-    log(result.toString());
+
+    return result;
+  }
+
+  //
+  Future<List<dynamic>> getMovieVideos(int movieId) async {
+    var result = <dynamic>[];
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/movie/$movieId/videos',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      if (!response.status.hasError) {
+        result = response.body['results'];
+      }
+    } catch (e) {
+      //log error
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //
+  Future<Map<String, dynamic>> getTvDetail(int tvId) async {
+    var result = <String, dynamic>{};
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/tv/$tvId?language=en-US',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      if (!response.status.hasError) {
+        result = response.body;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+
     return result;
   }
 }

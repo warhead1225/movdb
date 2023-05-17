@@ -1,3 +1,4 @@
+import 'package:movdb/data/apiClient/api_headers.dart';
 import 'package:movdb/presentation/dashboard_page/controller/dashboard_controller.dart';
 import 'package:movdb/presentation/dashboard_page/widgets/top_rated_tv_item_widget.dart';
 import 'package:movdb/presentation/dashboard_page/widgets/top_rated_movie_item_widget.dart';
@@ -45,66 +46,69 @@ class DashboardPage extends StatelessWidget {
                 /* Featured */
                 Container(
                   width: double.maxFinite,
-                  height: getVerticalSize(300),
-                  child: Stack(
-                    children: [
-                      CustomImageView(
-                        imagePath: ImageConstant.imgHerocardimage,
-                        height: getVerticalSize(300),
-                        width: getHorizontalSize(360),
-                        alignment: Alignment.center,
-                      ),
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Container(
-                          margin: getMargin(left: 15, bottom: 24),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  height: getVerticalSize(280),
+                  child: Obx(
+                    () => dashBoardController
+                            .dashBoardModel.trendingList.isNotEmpty
+                        ? Stack(
                             children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("lbl_moonlight".tr,
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.left,
-                                      style: AppStyle.txtRobotoBold24),
-                                  Padding(
-                                    padding: getPadding(top: 9),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "April 12, 2023",
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.left,
-                                          style: AppStyle.txtRobotoRegular12,
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
+                              CustomImageView(
+                                url: ApiHeaders.imageBase() +
+                                    dashBoardController
+                                        .dashBoardFeatured.backdropPath,
+                                height: getVerticalSize(300),
+                                width: size.width,
+                                alignment: Alignment.center,
+                                fit: BoxFit.cover,
                               ),
-                              Container(
-                                margin: getMargin(right: 15),
-                                child: CircularPercentIndicator(
-                                  radius: 40.0,
-                                  lineWidth: 6.0,
-                                  percent: 0.7,
-                                  center: Text(
-                                    "70.0%",
-                                    style: AppStyle.txtRobotoBold15,
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Container(
+                                  margin: getMargin(left: 15, bottom: 24),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              dashBoardController
+                                                  .dashBoardFeatured.title,
+                                              overflow: TextOverflow.ellipsis,
+                                              textAlign: TextAlign.left,
+                                              style: AppStyle.txtRobotoBold24,
+                                              maxLines: 3,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: getMargin(right: 15),
+                                        child: CircularPercentIndicator(
+                                          radius: 40.0,
+                                          lineWidth: 6.0,
+                                          percent: 0.7652,
+                                          center: Text(
+                                            "7.0",
+                                            style: AppStyle.txtRobotoBold15,
+                                          ),
+                                          backgroundColor: Colors.grey,
+                                          progressColor: Colors.greenAccent,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  backgroundColor: Colors.grey,
-                                  progressColor: Colors.greenAccent,
                                 ),
                               ),
                             ],
-                          ),
-                        ),
-                      ),
-                    ],
+                          )
+                        : SizedBox(),
                   ),
                 ),
                 /* End Featured */
@@ -148,9 +152,9 @@ class DashboardPage extends StatelessWidget {
                                     itemCount: 20,
                                     itemBuilder: (context, index) =>
                                         TrendingItemWidget(
-                                            trendingModel: dashBoardController
-                                                .dashBoardModel
-                                                .trendingList[index]),
+                                      trendingModel: dashBoardController
+                                          .dashBoardModel.trendingList[index],
+                                    ),
                                   )
                                 : SizedBox(),
                           ))

@@ -38,8 +38,11 @@ class TrendingItemWidget extends StatelessWidget {
             ),
           ),
           alignment: Alignment.center,
-          onTap: () =>
-              Get.toNamed(AppRoutes.movieDetails, arguments: trendingModel.id),
+          onTap: () => Get.toNamed(
+              (trendingModel.mediaType.toLowerCase() == 'movie')
+                  ? AppRoutes.movieDetails
+                  : AppRoutes.tvDetails,
+              arguments: trendingModel.id),
         ),
       ),
     );

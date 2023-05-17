@@ -15,8 +15,11 @@ class DashboardModel {
     return TrendingModel(
       id: obj['id'],
       title: obj['title'] ?? obj['name'],
+      overview: obj['overview'],
       posterPath: obj['poster_path'],
+      backdropPath: obj['backdrop_path'],
       voteAverage: obj["vote_average"],
+      mediaType: obj['media_type'],
     );
   }
 
