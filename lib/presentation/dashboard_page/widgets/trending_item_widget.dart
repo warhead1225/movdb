@@ -9,40 +9,26 @@ class TrendingItemWidget extends StatelessWidget {
   const TrendingItemWidget({Key? key, required this.trendingModel})
       : super(key: key);
 
-  //Get.toNamed(AppRoutes.movieDetails)
   @override
   Widget build(BuildContext context) {
     return IntrinsicWidth(
       child: Container(
-        height: getVerticalSize(
-          30,
-        ),
-        width: getHorizontalSize(
-          100,
-        ),
-        margin: getMargin(
-          right: 16,
-        ),
+        height: getVerticalSize(30),
+        width: getHorizontalSize(100),
+        margin: getMargin(right: 16),
         child: CustomImageView(
           fit: BoxFit.cover,
           url: ApiHeaders.imageBase() + trendingModel.posterPath,
-          height: getVerticalSize(
-            150,
-          ),
-          width: getHorizontalSize(
-            180,
-          ),
-          radius: BorderRadius.circular(
-            getHorizontalSize(
-              2,
-            ),
-          ),
+          height: getVerticalSize(150),
+          width: getHorizontalSize(180),
+          radius: BorderRadius.circular(getHorizontalSize(2)),
           alignment: Alignment.center,
           onTap: () => Get.toNamed(
-              (trendingModel.mediaType.toLowerCase() == 'movie')
-                  ? AppRoutes.movieDetails
-                  : AppRoutes.tvDetails,
-              arguments: trendingModel.id),
+            (trendingModel.mediaType.toLowerCase() == 'movie')
+                ? AppRoutes.movieDetails
+                : AppRoutes.tvDetails,
+            arguments: trendingModel.id,
+          ),
         ),
       ),
     );

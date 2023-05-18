@@ -5,13 +5,13 @@ import 'package:movdb/data/apiClient/api_headers.dart';
 
 class ApiClient extends GetConnect {
   // Get trendng movies and tv series
-  Future<List<dynamic>> getTrending() async {
-    //images:https://image.tmdb.org/t/p/original/
-    //https://image.tmdb.org/t/p/w500/
+  Future<List<dynamic>> getTrending({required int page}) async {
+    // images:https://image.tmdb.org/t/p/original/
+    // https://image.tmdb.org/t/p/w500/
     var result = <dynamic>[];
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/trending/all/day?language=en-US',
+        'https://api.themoviedb.org/3/trending/all/week?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -127,6 +127,25 @@ class ApiClient extends GetConnect {
   }
 
   //
+  Future<List<dynamic>> getMovieCast(int movieId) async {
+    var result = <dynamic>[];
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/movie/$movieId/credits',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      result =
+          (!response.status.hasError) ? response.body['cast'] : <dynamic>[];
+    } catch (e) {
+      //log error
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //
   Future<Map<String, dynamic>> getTvDetail(int tvId) async {
     var result = <String, dynamic>{};
     try {
@@ -136,7 +155,7 @@ class ApiClient extends GetConnect {
       );
 
       if (!response.status.hasError) {
-        result = response.body;
+        result = response.body['cast'];
       }
     } catch (e) {
       log(e.toString());

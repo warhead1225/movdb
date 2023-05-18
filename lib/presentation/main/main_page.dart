@@ -34,12 +34,7 @@ class MainPage extends StatelessWidget {
           notchSmoothness: NotchSmoothness.verySmoothEdge,
           leftCornerRadius: 32,
           rightCornerRadius: 32,
-          onTap: (index) {
-            mainPageController.bottomNavBarActive.value = index;
-            mainPageController.swiperController.move(
-              index,
-            );
-          },
+          onTap: (index) => mainPageController.navPageChange(index),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
 import 'package:movdb/presentation/movies/controller/movie_details_controller.dart';
+import 'package:movdb/presentation/movies/widgets/cast_image.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -175,7 +176,33 @@ class MovieDetailsPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                      )
+                      ),
+                      Container(
+                        padding: getPadding(all: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Cast',
+                              style: AppStyle.txtRobotoBold15,
+                            ),
+                            Container(
+                              width: size.width,
+                              height: getVerticalSize(220),
+                              child: ListView.builder(
+                                physics: BouncingScrollPhysics(),
+                                scrollDirection: Axis.horizontal,
+                                itemCount: movieDetailController
+                                    .movieCastObjList.length,
+                                itemBuilder: (c, i) => CastImage(
+                                  cast:
+                                      movieDetailController.movieCastObjList[i],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   )
                 : SizedBox(),

@@ -6,7 +6,6 @@ class PosterWidget extends StatelessWidget {
   final String posterImage;
   const PosterWidget({Key? key, required this.posterImage}) : super(key: key);
 
-  //Get.toNamed(AppRoutes.movieDetails)
   @override
   Widget build(BuildContext context) {
     return IntrinsicWidth(

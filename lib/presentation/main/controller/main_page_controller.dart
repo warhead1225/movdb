@@ -29,4 +29,9 @@ class MainPageController extends GetxController {
   void onClose() {
     super.onClose();
   }
+
+  void navPageChange(int index) {
+    bottomNavBarActive.value = index;
+    swiperController.move(index);
+  }
 }

@@ -17,13 +17,10 @@ class MovieDetailsController extends GetxController {
   var genre = '';
   var videoObjList = <MovieVideosModel>[];
   var movieCastObjList = <MovieCastModel>[];
-
   var ytPlayer = YoutubePlayerController(initialVideoId: '');
 
   late MovieDetailModel movieDetail;
   late MovieVideosModel movieVideos;
-
-  /* double.parse((7.491).toStringAsFixed(1)); */
 
   @override
   void onReady() {
@@ -41,6 +38,7 @@ class MovieDetailsController extends GetxController {
     var genreDef = <String>[];
     var detail = await ApiClient().getMovieDetail(this.movieId);
     var videos = await ApiClient().getMovieVideos(this.movieId);
+    var cast = await ApiClient().getMovieCast(this.movieId);
 
     movieDetail = MovieDetailModel.movieDetailObj(detail);
 
@@ -63,12 +61,18 @@ class MovieDetailsController extends GetxController {
           : MovieVideosModel.movieVideosObj({});
     });
 
+    //load YT player
     ytPlayer = YoutubePlayerController(
-        initialVideoId: videoObjList.first.key,
-        flags: YoutubePlayerFlags(
-          autoPlay: false,
-          loop: false,
-        ));
+      initialVideoId: videoObjList.first.key,
+      flags: YoutubePlayerFlags(
+        autoPlay: false,
+        loop: false,
+        useHybridComposition: false,
+      ),
+    );
+
+    movieCastObjList =
+        List.generate(cast.length, (i) => MovieCastModel.movieCastObj(cast[i]));
 
     detailsLoaded.value = true;
   }

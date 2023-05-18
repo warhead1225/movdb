@@ -4,6 +4,7 @@ import 'package:movdb/presentation/dashboard_page/widgets/top_rated_tv_item_widg
 import 'package:movdb/presentation/dashboard_page/widgets/top_rated_movie_item_widget.dart';
 import 'package:movdb/presentation/dashboard_page/widgets/trending_item_widget.dart';
 import 'package:movdb/presentation/dashboard_page/widgets/upcoming_item_widget.dart';
+import 'package:movdb/presentation/main/controller/main_page_controller.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'package:flutter/material.dart';
@@ -131,7 +132,7 @@ class DashboardPage extends StatelessWidget {
                             ),
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () => dashBoardController.viewTrending(),
                             child: Text(
                               "View More",
                               style: AppStyle.txtRobotoRegular14.copyWith(
@@ -143,21 +144,22 @@ class DashboardPage extends StatelessWidget {
                         ],
                       ),
                       Container(
-                          height: getVerticalSize(180),
-                          child: Obx(
-                            () => dashBoardController
-                                    .dashBoardModel.trendingList.isNotEmpty
-                                ? ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: 20,
-                                    itemBuilder: (context, index) =>
-                                        TrendingItemWidget(
-                                      trendingModel: dashBoardController
-                                          .dashBoardModel.trendingList[index],
-                                    ),
-                                  )
-                                : SizedBox(),
-                          ))
+                        height: getVerticalSize(180),
+                        child: Obx(
+                          () => dashBoardController
+                                  .dashBoardModel.trendingList.isNotEmpty
+                              ? ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: 20,
+                                  itemBuilder: (context, index) =>
+                                      TrendingItemWidget(
+                                    trendingModel: dashBoardController
+                                        .dashBoardModel.trendingList[index],
+                                  ),
+                                )
+                              : SizedBox(),
+                        ),
+                      )
                     ],
                   ),
                 ),

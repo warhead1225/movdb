@@ -1,6 +1,5 @@
 export 'package:get/get.dart';
 export 'package:movdb/localization/app_localization.dart';
-export 'package:movdb/core/constants/constants.dart';
 export 'package:movdb/core/utils/image_constant.dart';
 export 'package:movdb/core/utils/color_constant.dart';
 export 'package:movdb/core/utils/size_utils.dart';

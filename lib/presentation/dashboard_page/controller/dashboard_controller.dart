@@ -4,6 +4,8 @@ import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_client.dart';
 import 'package:movdb/presentation/dashboard_page/models/dashboard_model.dart';
 import 'package:movdb/presentation/dashboard_page/models/trending_model.dart';
+import 'package:movdb/presentation/main/controller/main_page_controller.dart';
+import 'package:movdb/presentation/trending/controller/TrendingController.dart';
 
 class DashboardController extends GetxController {
   var dashBoardModel = DashboardModel();
@@ -29,7 +31,7 @@ class DashboardController extends GetxController {
   void _getData() async {
     var apiClient = ApiClient();
     var trending =
-        await apiClient.getTrending(); // trending movie and tv series
+        await apiClient.getTrending(page: 1); // trending movie and tv series
     var topRatedMov = await apiClient.getTopRatedMovies();
     var topRatedSeries = await apiClient.getTopRatedSeries();
     var upcoming = await apiClient.getUpcoming();
@@ -54,5 +56,12 @@ class DashboardController extends GetxController {
     var upcomingListObj = RxList.generate(
         upcoming.length, (i) => dashBoardModel.upcomingObj(upcoming[i]));
     dashBoardModel.upcomingList.addAll(upcomingListObj);
+  }
+
+  //
+  void viewTrending() {
+    var trendingController = Get.find<TrendingController>();
+    trendingController.loadTrending(dashBoardModel.trendingList);
+    Get.find<MainPageController>().navPageChange(3);
   }
 }

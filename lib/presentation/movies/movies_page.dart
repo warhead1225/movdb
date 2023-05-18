@@ -29,9 +29,9 @@ class MoviesPage extends StatelessWidget {
           child: Wrap(
             alignment: WrapAlignment.spaceEvenly,
             children: [
+              /*   ShowThumbnail(),
               ShowThumbnail(),
-              ShowThumbnail(),
-              ShowThumbnail(),
+              ShowThumbnail(), */
             ],
           ),
         ),
