@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:movdb/presentation/top_rated_movies/binding/top_rated_movies_binding.dart';
 import 'package:movdb/presentation/top_rated_movies/top_rated_movies_page.dart';
 import 'package:movdb/presentation/trending/bindings/trending_binding.dart';
-import 'package:movdb/presentation/trending/controller/trending_controller.dart';
 import 'package:movdb/presentation/trending/trending_page.dart';
 import 'package:movdb/presentation/tv_shows/binding/tv_shows_details_binding.dart';
 import 'package:movdb/presentation/tv_shows/tv_shows_details.dart';

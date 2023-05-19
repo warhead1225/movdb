@@ -4,7 +4,6 @@ import 'package:movdb/presentation/dashboard_page/widgets/top_rated_tv_item_widg
 import 'package:movdb/presentation/dashboard_page/widgets/top_rated_movie_item_widget.dart';
 import 'package:movdb/presentation/dashboard_page/widgets/trending_item_widget.dart';
 import 'package:movdb/presentation/dashboard_page/widgets/upcoming_item_widget.dart';
-import 'package:movdb/presentation/main/controller/main_page_controller.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'package:flutter/material.dart';

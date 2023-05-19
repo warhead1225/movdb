@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movdb/presentation/dashboard_page/dashboard_page.dart';
 import 'package:movdb/presentation/movies/movies_page.dart';
-import 'package:movdb/presentation/trending/trending_page.dart';
 import 'package:movdb/presentation/tv_shows/tv_shows_page.dart';
-import 'package:movdb/presentation/upcoming/upcoming_page.dart';
 
 class MainPageController extends GetxController {
   final swiperController = SwiperController();
