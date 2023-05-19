@@ -11,24 +11,22 @@ class TrendingItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(
-      child: Container(
-        height: getVerticalSize(30),
-        width: getHorizontalSize(100),
-        margin: getMargin(right: 16),
-        child: CustomImageView(
-          fit: BoxFit.cover,
-          url: ApiHeaders.imageBase() + trendingModel.posterPath,
-          height: getVerticalSize(150),
-          width: getHorizontalSize(180),
-          radius: BorderRadius.circular(getHorizontalSize(2)),
-          alignment: Alignment.center,
-          onTap: () => Get.toNamed(
-            (trendingModel.mediaType.toLowerCase() == 'movie')
-                ? AppRoutes.movieDetails
-                : AppRoutes.tvDetails,
-            arguments: trendingModel.id,
-          ),
+    return Container(
+      height: getVerticalSize(30),
+      width: getHorizontalSize(100),
+      margin: getMargin(right: 16),
+      child: CustomImageView(
+        fit: BoxFit.cover,
+        url: ApiHeaders.imageBase() + trendingModel.posterPath,
+        height: getVerticalSize(150),
+        width: getHorizontalSize(180),
+        radius: BorderRadius.circular(getHorizontalSize(2)),
+        alignment: Alignment.center,
+        onTap: () => Get.toNamed(
+          (trendingModel.mediaType.toLowerCase() == 'movie')
+              ? AppRoutes.movieDetails
+              : AppRoutes.tvDetails,
+          arguments: trendingModel.id,
         ),
       ),
     );

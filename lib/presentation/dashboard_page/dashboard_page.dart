@@ -90,7 +90,7 @@ class DashboardPage extends StatelessWidget {
                                         ),
                                       ),
                                       Container(
-                                        margin: getMargin(right: 15),
+                                        margin: getMargin(right: 15, left: 10),
                                         child: CircularPercentIndicator(
                                           radius: 40.0,
                                           lineWidth: 6.0,
@@ -132,7 +132,8 @@ class DashboardPage extends StatelessWidget {
                             ),
                           ),
                           TextButton(
-                            onPressed: () => dashBoardController.viewTrending(),
+                            onPressed: () =>
+                                Get.find<MainPageController>().navPageChange(3),
                             child: Text(
                               "View More",
                               style: AppStyle.txtRobotoRegular14.copyWith(

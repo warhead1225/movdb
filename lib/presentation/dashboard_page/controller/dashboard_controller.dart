@@ -31,7 +31,7 @@ class DashboardController extends GetxController {
   void _getData() async {
     var apiClient = ApiClient();
     var trending =
-        await apiClient.getTrending(page: 1); // trending movie and tv series
+        await apiClient.getTrending(page: 0); // trending movie and tv series
     var topRatedMov = await apiClient.getTopRatedMovies();
     var topRatedSeries = await apiClient.getTopRatedSeries();
     var upcoming = await apiClient.getUpcoming();
@@ -56,12 +56,5 @@ class DashboardController extends GetxController {
     var upcomingListObj = RxList.generate(
         upcoming.length, (i) => dashBoardModel.upcomingObj(upcoming[i]));
     dashBoardModel.upcomingList.addAll(upcomingListObj);
-  }
-
-  //
-  void viewTrending() {
-    var trendingController = Get.find<TrendingController>();
-    trendingController.loadTrending(dashBoardModel.trendingList);
-    Get.find<MainPageController>().navPageChange(3);
   }
 }

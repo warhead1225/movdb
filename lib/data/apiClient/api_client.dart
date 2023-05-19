@@ -9,9 +9,10 @@ class ApiClient extends GetConnect {
     // images:https://image.tmdb.org/t/p/original/
     // https://image.tmdb.org/t/p/w500/
     var result = <dynamic>[];
+    page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/trending/all/week?page=$page&language=en-US',
+        'https://api.themoviedb.org/3/trending/all/day?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 

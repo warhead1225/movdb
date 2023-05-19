@@ -1,44 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
+import 'package:movdb/presentation/dashboard_page/models/trending_model.dart';
 
 class ShowThumbnail extends StatelessWidget {
-  final String imageUrl;
-  const ShowThumbnail({Key? key, required this.imageUrl}) : super(key: key);
+  final TrendingModel trending;
+  const ShowThumbnail({
+    Key? key,
+    required this.trending,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(
-      child: GestureDetector(
-        onTap: () {},
-        child: Container(
-          height: getVerticalSize(200),
-          width: getHorizontalSize(150),
-          margin: getMargin(right: 5, bottom: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CustomImageView(
-                imagePath: ImageConstant.imgCategorythumbnail30x90,
-                //url: ApiHeaders.imageBase() + this.imageUrl,
-                height: getVerticalSize(175),
-                width: getHorizontalSize(180),
-                radius: BorderRadius.circular(getHorizontalSize(2)),
-                alignment: Alignment.center,
-                onTap: () {},
+    return GestureDetector(
+      onTap: () => Get.toNamed(
+        (trending.mediaType.toLowerCase() == 'movie')
+            ? AppRoutes.movieDetails
+            : AppRoutes.tvDetails,
+        arguments: trending.id,
+      ),
+      child: Container(
+        width: getHorizontalSize(150),
+        margin: getMargin(right: 5, bottom: 10, left: 5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CustomImageView(
+              url: ApiHeaders.imageBase() + trending.posterPath,
+              margin: getMargin(bottom: 5),
+              height: getVerticalSize(175),
+              width: getHorizontalSize(180),
+              radius: BorderRadius.circular(10),
+              alignment: Alignment.center,
+              fit: BoxFit.cover,
+            ),
+            Tooltip(
+              message: trending.title,
+              child: Text(
+                trending.title,
+                style: AppStyle.txtRobotoRegular14,
+                maxLines: 2,
+                overflow: TextOverflow.fade,
+                textAlign: TextAlign.center,
               ),
-              Tooltip(
-                message: 'I know what you did last summer',
-                child: Text(
-                  'I know what you did last summer',
-                  style: AppStyle.txtRobotoRegular14,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
