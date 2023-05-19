@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
-import 'package:movdb/widgets/show_thumbnail.dart';
 
 class TvShowsPage extends StatelessWidget {
   @override

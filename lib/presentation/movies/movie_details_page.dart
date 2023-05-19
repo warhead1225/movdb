@@ -187,6 +187,7 @@ class MovieDetailsPage extends StatelessWidget {
                               style: AppStyle.txtRobotoBold15,
                             ),
                             Container(
+                              margin: getMargin(top: 10),
                               width: size.width,
                               height: getVerticalSize(220),
                               child: ListView.builder(

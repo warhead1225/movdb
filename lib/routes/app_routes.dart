@@ -6,6 +6,11 @@ import 'package:movdb/presentation/splash_screen/splash_screen.dart';
 import 'package:movdb/presentation/splash_screen/binding/splash_binding.dart';
 
 import 'package:get/get.dart';
+import 'package:movdb/presentation/top_rated_movies/binding/top_rated_movies_binding.dart';
+import 'package:movdb/presentation/top_rated_movies/top_rated_movies_page.dart';
+import 'package:movdb/presentation/trending/bindings/trending_binding.dart';
+import 'package:movdb/presentation/trending/controller/trending_controller.dart';
+import 'package:movdb/presentation/trending/trending_page.dart';
 import 'package:movdb/presentation/tv_shows/binding/tv_shows_details_binding.dart';
 import 'package:movdb/presentation/tv_shows/tv_shows_details.dart';
 
@@ -17,6 +22,8 @@ class AppRoutes {
   static const String appNavigationScreen = '/app_navigation_screen';
   static const String movieDetails = '/movie_details';
   static const String tvDetails = '/tv_details';
+  static const String trending = '/trending';
+  static const String topRatedMovies = '/top_rated_movies';
 
   static List<GetPage> pages = [
     GetPage(
@@ -52,6 +59,20 @@ class AppRoutes {
       page: () => TvShowsDetails(),
       bindings: [
         TvShowsDetailsBinding(),
+      ],
+    ),
+    GetPage(
+      name: trending,
+      page: () => TrendingPage(),
+      bindings: [
+        TrendingBinding(),
+      ],
+    ),
+    GetPage(
+      name: topRatedMovies,
+      page: () => TopRatedMoviesPage(),
+      bindings: [
+        TopRatedMoviesBinding(),
       ],
     ),
   ];

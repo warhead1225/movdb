@@ -51,63 +51,84 @@ class DashboardPage extends StatelessWidget {
                   child: Obx(
                     () => dashBoardController
                             .dashBoardModel.trendingList.isNotEmpty
-                        ? Stack(
-                            children: [
-                              CustomImageView(
-                                url: ApiHeaders.imageBase() +
-                                    dashBoardController
-                                        .dashBoardFeatured.backdropPath,
-                                height: getVerticalSize(300),
-                                width: size.width,
-                                alignment: Alignment.center,
-                                fit: BoxFit.cover,
-                              ),
-                              Align(
-                                alignment: Alignment.bottomLeft,
-                                child: Container(
-                                  margin: getMargin(left: 15, bottom: 24),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              dashBoardController
-                                                  .dashBoardFeatured.title,
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.left,
-                                              style: AppStyle.txtRobotoBold24,
-                                              maxLines: 3,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: getMargin(right: 15, left: 10),
-                                        child: CircularPercentIndicator(
-                                          radius: 40.0,
-                                          lineWidth: 6.0,
-                                          percent: 0.7652,
-                                          center: Text(
-                                            "7.0",
-                                            style: AppStyle.txtRobotoBold15,
+                        ? GestureDetector(
+                            onTap: () => Get.toNamed(
+                                (dashBoardController.dashBoardFeatured.mediaType
+                                            .toLowerCase() ==
+                                        'movie')
+                                    ? AppRoutes.movieDetails
+                                    : AppRoutes.tvDetails,
+                                arguments:
+                                    dashBoardController.dashBoardFeatured.id),
+                            child: Stack(
+                              children: [
+                                CustomImageView(
+                                  url: ApiHeaders.imageBase() +
+                                      dashBoardController
+                                          .dashBoardFeatured.backdropPath,
+                                  height: getVerticalSize(300),
+                                  width: size.width,
+                                  alignment: Alignment.center,
+                                  fit: BoxFit.cover,
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomLeft,
+                                  child: Container(
+                                    margin: getMargin(left: 15, bottom: 24),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                dashBoardController
+                                                    .dashBoardFeatured.title,
+                                                overflow: TextOverflow.ellipsis,
+                                                textAlign: TextAlign.left,
+                                                style: AppStyle.txtRobotoBold24,
+                                                maxLines: 3,
+                                              ),
+                                              Text(
+                                                dashBoardController
+                                                    .dashBoardFeatured.overview,
+                                                maxLines: 4,
+                                                style:
+                                                    AppStyle.txtRobotoRegular14,
+                                                overflow: TextOverflow.fade,
+                                              )
+                                            ],
                                           ),
-                                          backgroundColor: Colors.grey,
-                                          progressColor: Colors.greenAccent,
                                         ),
-                                      ),
-                                    ],
+                                        Container(
+                                          margin:
+                                              getMargin(right: 15, left: 10),
+                                          child: CircularPercentIndicator(
+                                            radius: 40.0,
+                                            lineWidth: 6.0,
+                                            percent: dashBoardController
+                                                .featuredRatingRatingPercent,
+                                            center: Text(
+                                              dashBoardController.featuredRating
+                                                  .toString(),
+                                              style: AppStyle.txtRobotoBold15,
+                                            ),
+                                            backgroundColor: Colors.grey,
+                                            progressColor: Colors.greenAccent,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           )
                         : SizedBox(),
                   ),
@@ -116,7 +137,7 @@ class DashboardPage extends StatelessWidget {
 
                 /* Trending Today */
                 Container(
-                  margin: getMargin(top: 15, left: 10, right: 10),
+                  margin: getMargin(top: 10, left: 10, right: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -127,13 +148,12 @@ class DashboardPage extends StatelessWidget {
                             "Trending",
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
-                            style: AppStyle.txtRobotoRegular14.copyWith(
+                            style: AppStyle.txtRobotoRegular16.copyWith(
                               letterSpacing: getHorizontalSize(0.25),
                             ),
                           ),
                           TextButton(
-                            onPressed: () =>
-                                Get.find<MainPageController>().navPageChange(3),
+                            onPressed: () => Get.toNamed(AppRoutes.trending),
                             child: Text(
                               "View More",
                               style: AppStyle.txtRobotoRegular14.copyWith(
@@ -160,7 +180,7 @@ class DashboardPage extends StatelessWidget {
                                 )
                               : SizedBox(),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -178,12 +198,13 @@ class DashboardPage extends StatelessWidget {
                             "Top Rated Movies",
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
-                            style: AppStyle.txtRobotoRegular14.copyWith(
+                            style: AppStyle.txtRobotoRegular16.copyWith(
                               letterSpacing: getHorizontalSize(0.25),
                             ),
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                Get.toNamed(AppRoutes.topRatedMovies),
                             child: Text(
                               "View More",
                               style: AppStyle.txtRobotoRegular14.copyWith(
@@ -195,22 +216,22 @@ class DashboardPage extends StatelessWidget {
                         ],
                       ),
                       Container(
-                          height: getVerticalSize(180),
-                          child: Obx(
-                            () => dashBoardController
-                                    .dashBoardModel.topRatedMovList.isNotEmpty
-                                ? ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: 20,
-                                    itemBuilder: (context, index) =>
-                                        TopRatedMovieItemWidget(
-                                      topRatedMovieModel: dashBoardController
-                                          .dashBoardModel
-                                          .topRatedMovList[index],
-                                    ),
-                                  )
-                                : SizedBox(),
-                          ))
+                        height: getVerticalSize(180),
+                        child: Obx(
+                          () => dashBoardController
+                                  .dashBoardModel.topRatedMovList.isNotEmpty
+                              ? ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: 20,
+                                  itemBuilder: (context, index) =>
+                                      TopRatedMovieItemWidget(
+                                    topRatedMovieModel: dashBoardController
+                                        .dashBoardModel.topRatedMovList[index],
+                                  ),
+                                )
+                              : SizedBox(),
+                        ),
+                      )
                     ],
                   ),
                 ),

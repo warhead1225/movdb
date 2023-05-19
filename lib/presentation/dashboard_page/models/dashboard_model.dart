@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:movdb/presentation/dashboard_page/models/top_rated_movies_model.dart';
 import 'package:movdb/presentation/dashboard_page/models/top_rated_tv_model.dart';
-import 'package:movdb/presentation/dashboard_page/models/trending_model.dart';
+import 'package:movdb/presentation/trending/models/trending_model.dart';
 import 'package:movdb/presentation/dashboard_page/models/upcoming_model.dart';
 
 class DashboardModel {
@@ -28,7 +28,9 @@ class DashboardModel {
     return TopRatedMoviesModel(
       id: obj['id'],
       title: obj['title'] ?? obj['name'],
+      overview: obj['overview'],
       posterPath: obj['poster_path'],
+      backdropPath: obj['backdrop_path'],
       voteAverage: obj["vote_average"],
     );
   }

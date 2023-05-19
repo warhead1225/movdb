@@ -14,8 +14,6 @@ class MainPageController extends GetxController {
     DashboardPage(),
     MoviesPage(),
     TvShowsPage(),
-    TrendingPage(),
-    UpcomingPage(),
   ];
 
   var bottomNavBarActive = 0.obs;

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
-import 'package:movdb/presentation/dashboard_page/models/trending_model.dart';
-import 'package:movdb/presentation/trending/controller/TrendingController.dart';
+import 'package:movdb/presentation/trending/models/trending_model.dart';
+import 'package:movdb/presentation/trending/controller/trending_controller.dart';
 import 'package:movdb/widgets/no_items_found.dart';
-import 'package:movdb/widgets/show_thumbnail.dart';
+import 'package:movdb/presentation/trending/widgets/trending_thumbnail.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class TrendingPage extends StatelessWidget {
   final TrendingModel? trending;
+  final trendingController = Get.find<TrendingController>();
   TrendingPage({Key? key, this.trending}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final trendingController = Get.put(TrendingController());
     return Scaffold(
       backgroundColor: ColorConstant.gray900,
       appBar: AppBar(
@@ -31,7 +31,7 @@ class TrendingPage extends StatelessWidget {
             pagingController: trendingController.pagingController,
             builderDelegate: PagedChildBuilderDelegate<TrendingModel>(
               itemBuilder: (context, item, index) =>
-                  ShowThumbnail(trending: item),
+                  TrendingThumbnail(trending: item),
               noItemsFoundIndicatorBuilder: (_) => NoItemsFound(
                 onPressed: () => trendingController.pagingController.refresh(),
               ),

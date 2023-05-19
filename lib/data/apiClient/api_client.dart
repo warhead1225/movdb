@@ -28,11 +28,12 @@ class ApiClient extends GetConnect {
   }
 
   //Get Top Rated Movies
-  Future<List<dynamic>> getTopRatedMovies() async {
+  Future<List<dynamic>> getTopRatedMovies({required int page}) async {
     var result = <dynamic>[];
+    page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
+        'https://api.themoviedb.org/3/movie/top_rated??page=$page&language=en-US&page=1',
         headers: ApiHeaders.authHeader(),
       );
 

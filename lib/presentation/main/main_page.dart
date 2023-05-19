@@ -25,8 +25,6 @@ class MainPage extends StatelessWidget {
             Icons.home,
             Icons.movie,
             Icons.tv,
-            Icons.trending_up,
-            Icons.upcoming,
           ],
           activeIndex: mainPageController.bottomNavBarActive.value,
           activeColor: Colors.cyan,

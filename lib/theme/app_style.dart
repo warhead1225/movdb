@@ -47,7 +47,7 @@ class AppStyle {
   );
 
   static TextStyle txtRobotoRegular16 = TextStyle(
-    color: ColorConstant.blueGray400,
+    color: ColorConstant.whiteA700,
     fontSize: getFontSize(16),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,

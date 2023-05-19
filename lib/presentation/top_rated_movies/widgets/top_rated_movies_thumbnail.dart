@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
-import 'package:movdb/presentation/dashboard_page/models/trending_model.dart';
+import 'package:movdb/presentation/dashboard_page/models/top_rated_movies_model.dart';
 
-class ShowThumbnail extends StatelessWidget {
-  final TrendingModel trending;
-  const ShowThumbnail({
+class TopRatedMoviesThumbnail extends StatelessWidget {
+  final TopRatedMoviesModel topRatedMovie;
+  const TopRatedMoviesThumbnail({
     Key? key,
-    required this.trending,
+    required this.topRatedMovie,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Get.toNamed(
-        (trending.mediaType.toLowerCase() == 'movie')
-            ? AppRoutes.movieDetails
-            : AppRoutes.tvDetails,
-        arguments: trending.id,
+        AppRoutes.movieDetails,
+        arguments: topRatedMovie.id,
       ),
       child: Container(
         width: getHorizontalSize(150),
@@ -26,7 +24,7 @@ class ShowThumbnail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomImageView(
-              url: ApiHeaders.imageBase() + trending.posterPath,
+              url: ApiHeaders.imageBase() + topRatedMovie.posterPath,
               margin: getMargin(bottom: 5),
               height: getVerticalSize(175),
               width: getHorizontalSize(180),
@@ -35,9 +33,9 @@ class ShowThumbnail extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             Tooltip(
-              message: trending.title,
+              message: topRatedMovie.title,
               child: Text(
-                trending.title,
+                topRatedMovie.title,
                 style: AppStyle.txtRobotoRegular14,
                 maxLines: 2,
                 overflow: TextOverflow.fade,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
-import 'package:movdb/widgets/show_thumbnail.dart';
+import 'package:movdb/presentation/trending/widgets/trending_thumbnail.dart';
 
 class UpcomingPage extends StatelessWidget {
   @override
