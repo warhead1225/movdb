@@ -157,9 +157,28 @@ class ApiClient extends GetConnect {
       );
 
       if (!response.status.hasError) {
-        result = response.body['cast'];
+        result = response.body;
       }
     } catch (e) {
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //
+  Future<List<dynamic>> getTvCast(int seriesId, int seasonNumber) async {
+    var result = <dynamic>[];
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/tv/$seriesId/season/$seasonNumber/credits',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      result =
+          (!response.status.hasError) ? response.body['cast'] : <dynamic>[];
+    } catch (e) {
+      //log error
       log(e.toString());
     }
 

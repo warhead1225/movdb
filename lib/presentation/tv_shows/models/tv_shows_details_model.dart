@@ -26,7 +26,7 @@ class TvShowsDetailsModel {
       backDropPath: obj['backdrop_path'] ?? '',
       genres: obj['genres'] ?? [],
       originalLanguage: obj['original_language'] ?? '',
-      title: obj['title'] ?? obj['name'],
+      title: obj['name'] ?? obj['original_name'],
       overView: obj['overview'],
       posterPath: obj['poster_path'],
       status: obj['status'] ?? '',
