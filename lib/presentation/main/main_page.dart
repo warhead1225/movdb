@@ -21,10 +21,17 @@ class MainPage extends StatelessWidget {
       ),
       bottomNavigationBar: Obx(
         () => AnimatedBottomNavigationBar(
-          icons: <IconData>[Icons.home, Icons.movie, Icons.tv],
+          blurEffect: true,
+          iconSize: 25,
+          icons: <IconData>[
+            Icons.dashboard_sharp,
+            Icons.movie,
+            Icons.tv,
+          ],
           activeIndex: mainPageController.bottomNavBarActive.value,
-          activeColor: Colors.cyan,
+          activeColor: Colors.redAccent,
           gapLocation: GapLocation.none,
+          backgroundColor: Colors.white70,
           notchSmoothness: NotchSmoothness.verySmoothEdge,
           leftCornerRadius: 32,
           rightCornerRadius: 32,
