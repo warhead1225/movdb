@@ -8,6 +8,8 @@ import 'package:movdb/presentation/splash_screen/binding/splash_binding.dart';
 import 'package:get/get.dart';
 import 'package:movdb/presentation/top_rated_movies/binding/top_rated_movies_binding.dart';
 import 'package:movdb/presentation/top_rated_movies/top_rated_movies_page.dart';
+import 'package:movdb/presentation/top_rated_tv/binding/top_rated_tv_binding.dart';
+import 'package:movdb/presentation/top_rated_tv/top_rated_tv_page.dart';
 import 'package:movdb/presentation/trending/bindings/trending_binding.dart';
 import 'package:movdb/presentation/trending/trending_page.dart';
 import 'package:movdb/presentation/tv_shows/binding/tv_shows_details_binding.dart';
@@ -23,56 +25,48 @@ class AppRoutes {
   static const String tvDetails = '/tv_details';
   static const String trending = '/trending';
   static const String topRatedMovies = '/top_rated_movies';
+  static const String topRatedTvseries = '/top_rated_tv_series';
 
   static List<GetPage> pages = [
     GetPage(
       name: initialRoute,
       page: () => SplashScreen(),
-      bindings: [
-        SplashBinding(),
-      ],
+      bindings: [SplashBinding()],
     ),
     GetPage(
       name: splashScreen,
       page: () => SplashScreen(),
-      bindings: [
-        SplashBinding(),
-      ],
+      bindings: [SplashBinding()],
     ),
     GetPage(
       name: mainPage,
       page: () => MainPage(),
-      bindings: [
-        MainPageBinding(),
-      ],
+      bindings: [MainPageBinding()],
     ),
     GetPage(
       name: movieDetails,
       page: () => MovieDetailsPage(),
-      bindings: [
-        MovieDetailsBinding(),
-      ],
+      bindings: [MovieDetailsBinding()],
     ),
     GetPage(
       name: tvDetails,
       page: () => TvShowsDetails(),
-      bindings: [
-        TvShowsDetailsBinding(),
-      ],
+      bindings: [TvShowsDetailsBinding()],
     ),
     GetPage(
       name: trending,
       page: () => TrendingPage(),
-      bindings: [
-        TrendingBinding(),
-      ],
+      bindings: [TrendingBinding()],
     ),
     GetPage(
       name: topRatedMovies,
       page: () => TopRatedMoviesPage(),
-      bindings: [
-        TopRatedMoviesBinding(),
-      ],
+      bindings: [TopRatedMoviesBinding()],
+    ),
+    GetPage(
+      name: topRatedTvseries,
+      page: () => TopRatedTvPage(),
+      bindings: [TopRatedTvBinding()],
     ),
   ];
 }

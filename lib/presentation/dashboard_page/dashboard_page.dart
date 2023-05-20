@@ -248,12 +248,13 @@ class DashboardPage extends StatelessWidget {
                             "Top Rated Tv Series",
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
-                            style: AppStyle.txtRobotoRegular14.copyWith(
+                            style: AppStyle.txtRobotoRegular16.copyWith(
                               letterSpacing: getHorizontalSize(0.25),
                             ),
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                Get.toNamed(AppRoutes.topRatedTvseries),
                             child: Text(
                               "View More",
                               style: AppStyle.txtRobotoRegular14.copyWith(
@@ -296,10 +297,10 @@ class DashboardPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Upcoming",
+                            "Upcoming Movies",
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
-                            style: AppStyle.txtRobotoRegular14.copyWith(
+                            style: AppStyle.txtRobotoRegular16.copyWith(
                               letterSpacing: getHorizontalSize(0.25),
                             ),
                           ),

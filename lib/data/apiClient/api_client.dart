@@ -8,6 +8,7 @@ class ApiClient extends GetConnect {
   Future<List<dynamic>> getTrending({required int page}) async {
     // images:https://image.tmdb.org/t/p/original/
     // https://image.tmdb.org/t/p/w500/
+
     var result = <dynamic>[];
     page = page + 1;
     try {
@@ -33,7 +34,7 @@ class ApiClient extends GetConnect {
     page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/movie/top_rated??page=$page&language=en-US&page=1',
+        'https://api.themoviedb.org/3/movie/top_rated?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -49,11 +50,12 @@ class ApiClient extends GetConnect {
   }
 
   //Get Top Rated Movies
-  Future<List<dynamic>> getTopRatedSeries() async {
+  Future<List<dynamic>> getTopRatedSeries({required int page}) async {
     var result = <dynamic>[];
+    page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1',
+        'https://api.themoviedb.org/3/tv/top_rated?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -69,11 +71,12 @@ class ApiClient extends GetConnect {
   }
 
   //Get upcoming
-  Future<List<dynamic>> getUpcoming() async {
+  Future<List<dynamic>> getUpcoming({required int page}) async {
     var result = <dynamic>[];
+    page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',
+        'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=$page',
         headers: ApiHeaders.authHeader(),
       );
 

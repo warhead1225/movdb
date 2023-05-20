@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movdb/data/apiClient/api_headers.dart';
 import 'package:movdb/presentation/dashboard_page/models/upcoming_model.dart';
 
 import '../../../core/app_export.dart';
@@ -11,39 +12,19 @@ class UpcomingItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(
-      child: Container(
-        height: getVerticalSize(
-          30,
-        ),
-        width: getHorizontalSize(
-          100,
-        ),
-        margin: getMargin(
-          right: 16,
-        ),
-        child: Stack(
-          alignment: Alignment.centerRight,
-          children: [
-            CustomImageView(
-              fit: BoxFit.cover,
-              url: 'https://image.tmdb.org/t/p/original' +
-                  upcomingModel.posterPath,
-              height: getVerticalSize(
-                150,
-              ),
-              width: getHorizontalSize(
-                180,
-              ),
-              radius: BorderRadius.circular(
-                getHorizontalSize(
-                  2,
-                ),
-              ),
-              alignment: Alignment.center,
-              onTap: () {},
-            ),
-          ],
+    return Container(
+      width: getHorizontalSize(140),
+      margin: getMargin(right: 10),
+      child: CustomImageView(
+        fit: BoxFit.cover,
+        url: ApiHeaders.imageBase() + upcomingModel.posterPath,
+        height: getVerticalSize(170),
+        width: getHorizontalSize(180),
+        radius: BorderRadius.circular(getHorizontalSize(2)),
+        alignment: Alignment.center,
+        onTap: () => Get.toNamed(
+          AppRoutes.movieDetails,
+          arguments: upcomingModel.id,
         ),
       ),
     );

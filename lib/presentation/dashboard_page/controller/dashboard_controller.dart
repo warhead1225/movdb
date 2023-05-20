@@ -33,8 +33,8 @@ class DashboardController extends GetxController {
     var trending =
         await apiClient.getTrending(page: 0); // trending movie and tv series
     var topRatedMov = await apiClient.getTopRatedMovies(page: 0);
-    var topRatedSeries = await apiClient.getTopRatedSeries();
-    var upcoming = await apiClient.getUpcoming();
+    var topRatedSeries = await apiClient.getTopRatedSeries(page: 0);
+    var upcoming = await apiClient.getUpcoming(page: 0);
 
     //Trending Movies/Series list
     var trendingList = RxList.generate(
