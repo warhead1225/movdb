@@ -14,6 +14,8 @@ import 'package:movdb/presentation/trending/bindings/trending_binding.dart';
 import 'package:movdb/presentation/trending/trending_page.dart';
 import 'package:movdb/presentation/tv_shows/binding/tv_shows_details_binding.dart';
 import 'package:movdb/presentation/tv_shows/tv_shows_details.dart';
+import 'package:movdb/presentation/upcoming/binding/upcoming_binding.dart';
+import 'package:movdb/presentation/upcoming/upcoming_page.dart';
 
 class AppRoutes {
   static const String initialRoute = '/initialRoute';
@@ -26,6 +28,7 @@ class AppRoutes {
   static const String trending = '/trending';
   static const String topRatedMovies = '/top_rated_movies';
   static const String topRatedTvseries = '/top_rated_tv_series';
+  static const String UpComingMovies = '/upcoming_movies';
 
   static List<GetPage> pages = [
     GetPage(
@@ -67,6 +70,11 @@ class AppRoutes {
       name: topRatedTvseries,
       page: () => TopRatedTvPage(),
       bindings: [TopRatedTvBinding()],
+    ),
+    GetPage(
+      name: UpComingMovies,
+      page: () => UpcomingPage(),
+      bindings: [UpcomingBinding()],
     ),
   ];
 }

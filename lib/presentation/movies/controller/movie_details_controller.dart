@@ -3,7 +3,7 @@ import 'package:movdb/data/apiClient/api_client.dart';
 import 'package:movdb/presentation/movies/models/movie_cast_model.dart';
 import 'package:movdb/presentation/movies/models/movie_detail_model.dart';
 import 'package:intl/intl.dart';
-import 'package:movdb/presentation/movies/models/movie_videos.dart';
+import 'package:movdb/presentation/movies/models/movie_videos_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetailsController extends GetxController {
@@ -62,14 +62,16 @@ class MovieDetailsController extends GetxController {
     });
 
     //load YT player
-    ytPlayer = YoutubePlayerController(
-      initialVideoId: videoObjList.first.key,
-      flags: YoutubePlayerFlags(
-        autoPlay: false,
-        loop: false,
-        useHybridComposition: false,
-      ),
-    );
+    if (videoObjList.isNotEmpty) {
+      ytPlayer = YoutubePlayerController(
+        initialVideoId: videoObjList.first.key,
+        flags: YoutubePlayerFlags(
+          autoPlay: false,
+          loop: false,
+          useHybridComposition: false,
+        ),
+      );
+    }
 
     movieCastObjList =
         List.generate(cast.length, (i) => MovieCastModel.movieCastObj(cast[i]));

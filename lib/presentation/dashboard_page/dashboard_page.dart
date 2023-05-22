@@ -19,22 +19,6 @@ class DashboardPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: ColorConstant.gray900,
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.search, size: 30, shadows: [
-                Shadow(
-                  offset: Offset(2.0, 2.0),
-                  blurRadius: 3.0,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                ),
-              ]),
-            ),
-          ],
-        ),
         body: SizedBox(
           width: size.width,
           child: SingleChildScrollView(
@@ -305,7 +289,8 @@ class DashboardPage extends StatelessWidget {
                             ),
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                Get.toNamed(AppRoutes.UpComingMovies),
                             child: Text(
                               "View More",
                               style: AppStyle.txtRobotoRegular14.copyWith(

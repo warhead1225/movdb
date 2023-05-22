@@ -152,31 +152,34 @@ class MovieDetailsPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Container(
-                        width: size.width,
-                        padding: getPadding(all: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Trailer',
-                              style: AppStyle.txtRobotoBold15,
-                            ),
-                            Container(
-                              margin: getMargin(top: 10),
-                              height: getVerticalSize(200),
-                              child: YoutubePlayer(
-                                controller: movieDetailController.ytPlayer,
-                                showVideoProgressIndicator: true,
-                                bottomActions: [
-                                  CurrentPosition(),
-                                  ProgressBar(isExpanded: true),
+                      (movieDetailController.videoObjList.isNotEmpty)
+                          ? Container(
+                              width: size.width,
+                              padding: getPadding(all: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Trailer',
+                                    style: AppStyle.txtRobotoBold15,
+                                  ),
+                                  Container(
+                                    margin: getMargin(top: 10),
+                                    height: getVerticalSize(200),
+                                    child: YoutubePlayer(
+                                      controller:
+                                          movieDetailController.ytPlayer,
+                                      showVideoProgressIndicator: true,
+                                      bottomActions: [
+                                        CurrentPosition(),
+                                        ProgressBar(isExpanded: true),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
+                            )
+                          : SizedBox(),
                       Container(
                         padding: getPadding(all: 10),
                         child: Column(

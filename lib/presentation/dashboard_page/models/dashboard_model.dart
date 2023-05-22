@@ -35,7 +35,6 @@ class DashboardModel {
     );
   }
 
-  //
   TopRatedTvModel topRatedTvObj(Map<String, dynamic> obj) {
     return TopRatedTvModel(
       id: obj['id'],
@@ -52,8 +51,9 @@ class DashboardModel {
       title: obj['title'] ?? obj['name'],
       overview: obj['overview'],
       posterPath: obj['poster_path'],
-      genreId: obj["genre_ids"],
-      voteAverage: double.parse(obj["vote_average"].toString()),
+      voteAverage: (obj["vote_average"].runtimeType is int)
+          ? 0.0
+          : double.parse(obj["vote_average"].toString()),
     );
   }
 }

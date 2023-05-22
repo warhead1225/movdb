@@ -5,12 +5,9 @@ import 'package:movdb/presentation/dashboard_page/models/top_rated_movies_model.
 
 class TopRatedMoviesController extends GetxController {
   final int _numberOfPostsPerRequest = 10;
-
   var topRatedMovieListObj = <TopRatedMoviesModel>[];
-
   var pagingController =
       PagingController<int, TopRatedMoviesModel>(firstPageKey: 0);
-  var tredingLoading = true.obs;
 
   @override
   void onReady() {
@@ -24,6 +21,7 @@ class TopRatedMoviesController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    pagingController.dispose();
   }
 
   void fetchTopRatedMovies(int pageKey) async {
