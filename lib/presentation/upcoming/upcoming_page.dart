@@ -17,15 +17,6 @@ class UpcomingPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text('Upcoming'),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-          )
-        ],
       ),
       body: Container(
         width: size.width,

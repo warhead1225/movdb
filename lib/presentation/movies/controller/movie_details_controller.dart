@@ -42,17 +42,19 @@ class MovieDetailsController extends GetxController {
 
     movieDetail = MovieDetailModel.movieDetailObj(detail);
 
+    //Rating and Release date
     rating = double.parse((movieDetail.voteAverage).toStringAsFixed(1));
     ratingPercent =
         double.parse((movieDetail.voteAverage * 0.10).toStringAsFixed(2));
     releaseDate = formatter.format(DateTime.parse(movieDetail.releaseDate));
 
-    //list Genre
+    //List Genre
     movieDetail.genres.forEach((element) {
       genreDef.add(element['name']);
     });
     genre = genreDef.join(', ');
 
+    //Trailer
     videoObjList = List.generate(videos.length, (i) {
       var videoObj = MovieVideosModel.movieVideosObj(videos[i]);
 
@@ -73,6 +75,7 @@ class MovieDetailsController extends GetxController {
       );
     }
 
+    //Movie Cast
     movieCastObjList =
         List.generate(cast.length, (i) => MovieCastModel.movieCastObj(cast[i]));
 

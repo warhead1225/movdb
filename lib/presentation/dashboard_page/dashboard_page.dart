@@ -11,7 +11,7 @@ import 'package:movdb/core/app_export.dart';
 
 // ignore_for_file: must_be_immutable
 class DashboardPage extends StatelessWidget {
-  var dashBoardController = Get.put(DashboardController());
+  final dashBoardController = Get.find<DashboardController>();
 
   @override
   Widget build(BuildContext context) {

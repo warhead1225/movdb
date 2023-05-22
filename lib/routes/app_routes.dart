@@ -21,7 +21,6 @@ class AppRoutes {
   static const String initialRoute = '/initialRoute';
   static const String splashScreen = '/splash_screen';
   static const String mainPage = '/main_page';
-  static const String dashboardPage = '/dashboard_page';
   static const String appNavigationScreen = '/app_navigation_screen';
   static const String movieDetails = '/movie_details';
   static const String tvDetails = '/tv_details';

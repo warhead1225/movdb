@@ -8,12 +8,32 @@ class ApiClient extends GetConnect {
   Future<List<dynamic>> getTrending({required int page}) async {
     // images:https://image.tmdb.org/t/p/original/
     // https://image.tmdb.org/t/p/w500/
-
     var result = <dynamic>[];
     page = page + 1;
     try {
       var response = await get(
         'https://api.themoviedb.org/3/trending/all/day?page=$page&language=en-US',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      if (!response.status.hasError) {
+        result = response.body['results'];
+      }
+    } catch (e) {
+      //log error
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //Get Top Rated Movies
+  Future<List<dynamic>> getNowPlayingMovies({required int page}) async {
+    var result = <dynamic>[];
+    page = page + 1;
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/movie/now_playing?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -35,6 +55,27 @@ class ApiClient extends GetConnect {
     try {
       var response = await get(
         'https://api.themoviedb.org/3/movie/top_rated?page=$page&language=en-US',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      if (!response.status.hasError) {
+        result = response.body['results'];
+      }
+    } catch (e) {
+      //log error
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //
+  Future<List<dynamic>> getAiringSeries({required int page}) async {
+    var result = <dynamic>[];
+    page = page + 1;
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/tv/airing_today?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -113,16 +154,14 @@ class ApiClient extends GetConnect {
 
   //
   Future<List<dynamic>> getMovieVideos(int movieId) async {
-    var result = <dynamic>[];
+    var result = [];
     try {
       var response = await get(
         'https://api.themoviedb.org/3/movie/$movieId/videos',
         headers: ApiHeaders.authHeader(),
       );
 
-      if (!response.status.hasError) {
-        result = response.body['results'];
-      }
+      result = (!response.status.hasError) ? response.body['results'] : [];
     } catch (e) {
       //log error
       log(e.toString());
@@ -159,9 +198,8 @@ class ApiClient extends GetConnect {
         headers: ApiHeaders.authHeader(),
       );
 
-      if (!response.status.hasError) {
-        result = response.body;
-      }
+      result =
+          (!response.status.hasError) ? response.body : <String, dynamic>{};
     } catch (e) {
       log(e.toString());
     }
@@ -180,6 +218,28 @@ class ApiClient extends GetConnect {
 
       result =
           (!response.status.hasError) ? response.body['cast'] : <dynamic>[];
+    } catch (e) {
+      //log error
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //Search movies and Tv series
+  Future<List<dynamic>> search(
+      {required int page, required String search}) async {
+    var result = [];
+    search = search.trim().toLowerCase();
+    page = page + 1;
+
+    try {
+      var response = await get(
+        'https://api.themoviedb.org/3/search/multi?query=$search&include_adult=false&language=en-US&page=$page',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      result = (!response.status.hasError) ? response.body['results'] : [];
     } catch (e) {
       //log error
       log(e.toString());
