@@ -240,6 +240,7 @@ class ApiClient extends GetConnect {
       );
 
       result = (!response.status.hasError) ? response.body['results'] : [];
+      print(result);
     } catch (e) {
       //log error
       log(e.toString());

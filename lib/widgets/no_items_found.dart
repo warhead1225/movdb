@@ -3,8 +3,10 @@ import 'package:movdb/core/app_export.dart';
 
 class NoItemsFound extends StatelessWidget {
   final VoidCallback onPressed;
+  final bool? retry;
 
-  const NoItemsFound({Key? key, required this.onPressed}) : super(key: key);
+  const NoItemsFound({Key? key, required this.onPressed, this.retry = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +22,15 @@ class NoItemsFound extends StatelessWidget {
             'the list is currently empty',
             style: AppStyle.txtRobotoRegular12,
           ),
-          ElevatedButton(
-            onPressed: () => onPressed(),
-            child: Text(
-              'Retry',
-              style: AppStyle.txtRobotoRegular12,
-            ),
-          )
+          (retry != null && retry == true)
+              ? ElevatedButton(
+                  onPressed: () => onPressed(),
+                  child: Text(
+                    'Retry',
+                    style: AppStyle.txtRobotoRegular12,
+                  ),
+                )
+              : SizedBox()
         ],
       ),
     );

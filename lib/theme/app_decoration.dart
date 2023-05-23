@@ -25,6 +25,12 @@ class AppDecoration {
   static BoxDecoration get fillWhiteA700 => BoxDecoration(
         color: ColorConstant.whiteA700,
       );
+
+  static OutlineInputBorder get inputBorderWhite => OutlineInputBorder(
+        gapPadding: 5,
+        borderSide: BorderSide(color: Colors.white),
+        borderRadius: BorderRadius.circular(8.0),
+      );
 }
 
 class BorderRadiusStyle {
@@ -44,6 +50,7 @@ double get strokeAlignInside => BorderSide.strokeAlignInside;
 double get strokeAlignCenter => BorderSide.strokeAlignCenter;
 
 double get strokeAlignOutside => BorderSide.strokeAlignOutside;
+
 
 // For Flutter SDK Version 3.7.1 or less.
 
