@@ -19,6 +19,15 @@ class MainPage extends StatelessWidget {
         curve: Curves.easeInOut,
         itemBuilder: (context, index) => mainPageController.swiperPages[index],
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        onPressed: () => Get.toNamed(AppRoutes.searchPage),
+        child: Icon(
+          Icons.search_sharp,
+          color: Colors.teal,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       bottomNavigationBar: Obx(
         () => AnimatedBottomNavigationBar(
           blurEffect: true,
@@ -27,7 +36,7 @@ class MainPage extends StatelessWidget {
             Icons.dashboard_sharp,
             Icons.movie_sharp,
             Icons.tv_sharp,
-            Icons.search_sharp,
+            Icons.abc,
           ],
           activeIndex: mainPageController.bottomNavBarActive.value,
           activeColor: Colors.teal,

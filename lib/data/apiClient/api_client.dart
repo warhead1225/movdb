@@ -16,9 +16,7 @@ class ApiClient extends GetConnect {
         headers: ApiHeaders.authHeader(),
       );
 
-      if (!response.status.hasError) {
-        result = response.body['results'];
-      }
+      result = (!response.status.hasError) ? response.body['results'] : [];
     } catch (e) {
       //log error
       log(e.toString());
@@ -37,9 +35,7 @@ class ApiClient extends GetConnect {
         headers: ApiHeaders.authHeader(),
       );
 
-      if (!response.status.hasError) {
-        result = response.body['results'];
-      }
+      result = (!response.status.hasError) ? response.body['results'] : [];
     } catch (e) {
       //log error
       log(e.toString());
@@ -58,9 +54,7 @@ class ApiClient extends GetConnect {
         headers: ApiHeaders.authHeader(),
       );
 
-      if (!response.status.hasError) {
-        result = response.body['results'];
-      }
+      result = (!response.status.hasError) ? response.body['results'] : [];
     } catch (e) {
       //log error
       log(e.toString());
@@ -79,9 +73,7 @@ class ApiClient extends GetConnect {
         headers: ApiHeaders.authHeader(),
       );
 
-      if (!response.status.hasError) {
-        result = response.body['results'];
-      }
+      result = (!response.status.hasError) ? response.body['results'] : [];
     } catch (e) {
       //log error
       log(e.toString());
@@ -100,9 +92,7 @@ class ApiClient extends GetConnect {
         headers: ApiHeaders.authHeader(),
       );
 
-      if (!response.status.hasError) {
-        result = response.body['results'];
-      }
+      result = (!response.status.hasError) ? response.body['results'] : [];
     } catch (e) {
       //log error
       log(e.toString());
@@ -121,9 +111,7 @@ class ApiClient extends GetConnect {
         headers: ApiHeaders.authHeader(),
       );
 
-      if (!response.status.hasError) {
-        result = response.body['results'];
-      }
+      result = (!response.status.hasError) ? response.body['results'] : [];
     } catch (e) {
       //log error
       log(e.toString());
@@ -141,9 +129,8 @@ class ApiClient extends GetConnect {
         headers: ApiHeaders.authHeader(),
       );
 
-      if (!response.status.hasError) {
-        result = response.body;
-      }
+      result =
+          (!response.status.hasError) ? response.body : <String, dynamic>{};
     } catch (e) {
       //log error
       log(e.toString());
@@ -240,7 +227,6 @@ class ApiClient extends GetConnect {
       );
 
       result = (!response.status.hasError) ? response.body['results'] : [];
-      print(result);
     } catch (e) {
       //log error
       log(e.toString());

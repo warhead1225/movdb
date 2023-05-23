@@ -39,6 +39,7 @@ class SearchController extends GetxController {
 
   void search(int pageKey) async {
     searchResultListObj.clear();
+    print('search');
     var ctr = 0;
     var searchResultlist =
         await ApiClient().search(page: pageKey, search: searchText.value);

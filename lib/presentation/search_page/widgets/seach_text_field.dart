@@ -15,6 +15,7 @@ class SearchTextField extends StatelessWidget {
         autocorrect: false,
         controller: controller.searchTextController,
         onChanged: (str) => controller.searchText.value = str,
+        onSubmitted: (str) => controller.searchText.value = str,
         style: TextStyle(color: ColorConstant.whiteA700),
         decoration: InputDecoration(
           label: Text(
