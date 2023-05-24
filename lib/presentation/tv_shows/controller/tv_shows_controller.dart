@@ -28,7 +28,9 @@ class TvShowsController extends GetxController {
     var isLastPage = topRatedList.length < _numberOfPostsPerRequest;
 
     tvshowsListObj = List.generate(
-        topRatedList.length, (i) => TVShowsModel.tvShowsObj(topRatedList[i]));
+      topRatedList.length,
+      (i) => TVShowsModel.tvShowsObj(topRatedList[i]),
+    );
 
     if (isLastPage) {
       pagingController.appendLastPage(tvshowsListObj);

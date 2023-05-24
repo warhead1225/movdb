@@ -29,8 +29,10 @@ class TopRatedMoviesController extends GetxController {
     var topRatedList = await ApiClient().getTopRatedMovies(page: pageKey);
     var isLastPage = topRatedList.length < _numberOfPostsPerRequest;
 
-    topRatedMovieListObj = List.generate(topRatedList.length,
-        (i) => TopRatedMoviesModel.topRatedObj(topRatedList[i]));
+    topRatedMovieListObj = List.generate(
+      topRatedList.length,
+      (i) => TopRatedMoviesModel.topRatedObj(topRatedList[i]),
+    );
 
     if (isLastPage) {
       pagingController.appendLastPage(topRatedMovieListObj);

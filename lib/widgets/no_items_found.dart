@@ -30,7 +30,7 @@ class NoItemsFound extends StatelessWidget {
                     style: AppStyle.txtRobotoRegular12,
                   ),
                 )
-              : SizedBox()
+              : SizedBox(),
         ],
       ),
     );

@@ -15,8 +15,8 @@ class MovieDetailsController extends GetxController {
   var ratingPercent = 0.0;
   var releaseDate = '';
   var genre = '';
-  var videoObjList = <MovieVideosModel>[];
-  var movieCastObjList = <MovieCastModel>[];
+  var videoObjList = <MovieVideosModel>[].obs;
+  var movieCastObjList = <MovieCastModel>[].obs;
   var ytPlayer = YoutubePlayerController(initialVideoId: '');
 
   late MovieDetailModel movieDetail;
@@ -37,9 +37,6 @@ class MovieDetailsController extends GetxController {
   void _movieDetail() async {
     var genreDef = <String>[];
     var detail = await ApiClient().getMovieDetail(this.movieId);
-    var videos = await ApiClient().getMovieVideos(this.movieId);
-    var cast = await ApiClient().getMovieCast(this.movieId);
-
     movieDetail = MovieDetailModel.movieDetailObj(detail);
 
     //Rating and Release date
@@ -53,15 +50,20 @@ class MovieDetailsController extends GetxController {
       genreDef.add(element['name']);
     });
     genre = genreDef.join(', ');
+    detailsLoaded.value = true;
+
+    var videos = await ApiClient().getMovieVideos(this.movieId);
 
     //Trailer
-    videoObjList = List.generate(videos.length, (i) {
-      var videoObj = MovieVideosModel.movieVideosObj(videos[i]);
-
-      return (videoObj.site.toString().toLowerCase() == 'youtube')
-          ? MovieVideosModel.movieVideosObj(videos[i])
-          : MovieVideosModel.movieVideosObj({});
-    });
+    for (var vid in videos) {
+      var videoObj = MovieVideosModel.movieVideosObj(vid);
+      if (videoObj.site.toString().toLowerCase().trim() == 'youtube') {
+        videoObjList.add(MovieVideosModel.movieVideosObj(vid));
+        break;
+      } else {
+        videoObjList.add(MovieVideosModel.movieVideosObj({}));
+      }
+    }
 
     //load YT player
     if (videoObjList.isNotEmpty) {
@@ -76,9 +78,9 @@ class MovieDetailsController extends GetxController {
     }
 
     //Movie Cast
-    movieCastObjList =
-        List.generate(cast.length, (i) => MovieCastModel.movieCastObj(cast[i]));
-
-    detailsLoaded.value = true;
+    var cast = await ApiClient().getMovieCast(this.movieId);
+    var castList = RxList.generate(
+        cast.length, (i) => MovieCastModel.movieCastObj(cast[i]));
+    movieCastObjList.addAll(castList);
   }
 }

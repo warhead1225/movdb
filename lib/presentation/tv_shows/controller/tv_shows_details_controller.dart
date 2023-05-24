@@ -13,7 +13,7 @@ class TvShowsDetailsController extends GetxController {
   var ratingPercent = 0.0;
   var releaseDate = '';
   var genre = '';
-  var tvCastObjList = <TvCastModel>[];
+  var tvCastObjList = <TvCastModel>[].obs;
 
   late TvShowsDetailsModel tvDetail;
 
@@ -31,7 +31,7 @@ class TvShowsDetailsController extends GetxController {
   void _tvDetail() async {
     var genreDef = <String>[];
     var detail = await ApiClient().getTvDetail(this.tvId);
-    var tvCast = await ApiClient().getTvCast(this.tvId, 1);
+
     tvDetail = TvShowsDetailsModel.tvDetailObj(detail);
 
     rating = double.parse((tvDetail.voteAverage).toStringAsFixed(1));
@@ -44,11 +44,12 @@ class TvShowsDetailsController extends GetxController {
       genreDef.add(element['name']);
     });
     genre = genreDef.join(', ');
+    detailsLoaded.value = true;
 
     //Cast
-    tvCastObjList = List.generate(
+    var tvCast = await ApiClient().getTvCast(this.tvId, 1);
+    var castList = RxList.generate(
         tvCast.length, (i) => TvCastModel.movieCastObj(tvCast[i]));
-
-    detailsLoaded.value = true;
+    tvCastObjList.addAll(castList);
   }
 }

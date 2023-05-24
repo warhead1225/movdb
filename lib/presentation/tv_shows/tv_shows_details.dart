@@ -94,7 +94,9 @@ class TvShowsDetails extends StatelessWidget {
                                               Expanded(
                                                 child: Container(
                                                   margin: getMargin(
-                                                      left: 10, top: 10),
+                                                    left: 10,
+                                                    top: 10,
+                                                  ),
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
@@ -116,17 +118,17 @@ class TvShowsDetails extends StatelessWidget {
                                                     ],
                                                   ),
                                                 ),
-                                              )
+                                              ),
                                             ],
-                                          )
+                                          ),
                                         ],
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Container(
@@ -145,64 +147,57 @@ class TvShowsDetails extends StatelessWidget {
                                 tvDetailsController.tvDetail.overView,
                                 style: AppStyle.txtRobotoRegular14,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
-                      /*  Container(
-                        width: size.width,
-                        padding: getPadding(all: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Trailer',
-                              style: AppStyle.txtRobotoBold15,
-                            ),
-                            Container(
-                              margin: getMargin(top: 10),
-                              height: getVerticalSize(200),
-                              child: YoutubePlayer(
-                                controller: movieDetailController.ytPlayer,
-                                showVideoProgressIndicator: true,
-                                bottomActions: [
-                                  CurrentPosition(),
-                                  ProgressBar(isExpanded: true),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ), */
-                      Container(
-                        padding: getPadding(all: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Cast',
-                              style: AppStyle.txtRobotoBold15,
-                            ),
-                            Container(
-                              margin: getMargin(top: 10),
-                              width: size.width,
-                              height: getVerticalSize(220),
-                              child: ListView.builder(
-                                physics: BouncingScrollPhysics(),
-                                scrollDirection: Axis.horizontal,
-                                itemCount:
-                                    tvDetailsController.tvCastObjList.length,
-                                itemBuilder: (c, i) => TvCastImage(
-                                  cast: tvDetailsController.tvCastObjList[i],
+                      Obx(
+                        () => (tvDetailsController.tvCastObjList.isNotEmpty)
+                            ? Container(
+                                padding: getPadding(all: 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Cast',
+                                      style: AppStyle.txtRobotoBold15,
+                                    ),
+                                    Container(
+                                      margin: getMargin(top: 10),
+                                      width: size.width,
+                                      height: getVerticalSize(220),
+                                      child: ListView.builder(
+                                        physics: BouncingScrollPhysics(),
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: tvDetailsController
+                                            .tvCastObjList.length,
+                                        itemBuilder: (c, i) => TvCastImage(
+                                          cast: tvDetailsController
+                                              .tvCastObjList[i],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : Container(
+                                margin: getMargin(top: 10),
+                                height: getVerticalSize(150),
+                                width: size.width,
+                                child: Center(
+                                  child: CircularProgressIndicator(),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
                       ),
                     ],
                   )
-                : SizedBox(),
+                : Container(
+                    width: size.width,
+                    height: size.height,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
           ),
         ),
       ),

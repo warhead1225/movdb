@@ -38,7 +38,9 @@ class DashboardController extends GetxController {
 
     //Trending Movies/Series list
     var trendingList = RxList.generate(
-        trending.length, (i) => dashBoardModel.trendingDataObj(trending[i]));
+      trending.length,
+      (i) => dashBoardModel.trendingDataObj(trending[i]),
+    );
     dashBoardModel.trendingList.addAll(trendingList);
     dashBoardFeatured = trendingList[Random().nextInt(trendingList.length)];
     featuredRating =
@@ -47,18 +49,24 @@ class DashboardController extends GetxController {
         double.parse((dashBoardFeatured.voteAverage * 0.10).toStringAsFixed(2));
 
     //Top Rated Movie List
-    var topRatedMovList = RxList.generate(topRatedMov.length,
-        (i) => dashBoardModel.topRatedMovieObj(topRatedMov[i]));
+    var topRatedMovList = RxList.generate(
+      topRatedMov.length,
+      (i) => dashBoardModel.topRatedMovieObj(topRatedMov[i]),
+    );
     dashBoardModel.topRatedMovList.addAll(topRatedMovList);
 
     //Top Rated Tv Series
-    var topRatedTvList = RxList.generate(topRatedSeries.length,
-        (i) => dashBoardModel.topRatedTvObj(topRatedSeries[i]));
+    var topRatedTvList = RxList.generate(
+      topRatedSeries.length,
+      (i) => dashBoardModel.topRatedTvObj(topRatedSeries[i]),
+    );
     dashBoardModel.topRatedSeriesList.addAll(topRatedTvList);
 
     //Upcoming list
     var upcomingListObj = RxList.generate(
-        upcoming.length, (i) => dashBoardModel.upcomingObj(upcoming[i]));
+      upcoming.length,
+      (i) => dashBoardModel.upcomingObj(upcoming[i]),
+    );
     dashBoardModel.upcomingList.addAll(upcomingListObj);
   }
 }

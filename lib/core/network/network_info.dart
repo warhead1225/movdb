@@ -25,6 +25,7 @@ class NetworkInfo implements NetworkInfoI {
     if (result != ConnectivityResult.none) {
       return true;
     }
+
     return false;
   }
 

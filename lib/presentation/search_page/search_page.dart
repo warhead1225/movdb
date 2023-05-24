@@ -34,14 +34,12 @@ class SearchPage extends StatelessWidget {
                         pagingController: searchControler.pagingController,
                         builderDelegate: PagedChildBuilderDelegate<SearchModel>(
                           itemBuilder: (context, item, index) {
-                            if (item.posterPath != '') {
-                              return SearchResultThumbnail(searchResult: item);
-                            } else {
-                              return SizedBox();
-                            }
+                            return item.posterPath != ''
+                                ? SearchResultThumbnail(searchResult: item)
+                                : SizedBox();
                           },
                           noItemsFoundIndicatorBuilder: (_) => NoItemsFound(
-                            onPressed: () {},
+                            onPressed: () => null,
                             retry: false,
                           ),
                         ),

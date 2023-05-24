@@ -4,19 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton(
-      {this.shape,
-      this.padding,
-      this.variant,
-      this.fontStyle,
-      this.alignment,
-      this.margin,
-      this.onTap,
-      this.width,
-      this.height,
-      this.text,
-      this.prefixWidget,
-      this.suffixWidget});
+  CustomButton({
+    this.shape,
+    this.padding,
+    this.variant,
+    this.fontStyle,
+    this.alignment,
+    this.margin,
+    this.onTap,
+    this.width,
+    this.height,
+    this.text,
+    this.prefixWidget,
+    this.suffixWidget,
+  });
 
   ButtonShape? shape;
 
@@ -64,26 +65,17 @@ class CustomButton extends StatelessWidget {
   }
 
   _buildButtonWithOrWithoutIcon() {
-    if (prefixWidget != null || suffixWidget != null) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          prefixWidget ?? SizedBox(),
-          Text(
-            text ?? "",
-            textAlign: TextAlign.center,
-            style: _setFontStyle(),
-          ),
-          suffixWidget ?? SizedBox(),
-        ],
-      );
-    } else {
-      return Text(
-        text ?? "",
-        textAlign: TextAlign.center,
-        style: _setFontStyle(),
-      );
-    }
+    return prefixWidget != null || suffixWidget != null
+        ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            prefixWidget ?? SizedBox(),
+            Text(
+              text ?? "",
+              textAlign: TextAlign.center,
+              style: _setFontStyle(),
+            ),
+            suffixWidget ?? SizedBox(),
+          ])
+        : Text(text ?? "", textAlign: TextAlign.center, style: _setFontStyle());
   }
 
   _buildTextButtonStyle() {

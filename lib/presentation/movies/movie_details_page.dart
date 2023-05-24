@@ -97,7 +97,9 @@ class MovieDetailsPage extends StatelessWidget {
                                               Expanded(
                                                 child: Container(
                                                   margin: getMargin(
-                                                      left: 10, top: 10),
+                                                    left: 10,
+                                                    top: 10,
+                                                  ),
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
@@ -119,19 +121,20 @@ class MovieDetailsPage extends StatelessWidget {
                                                     ],
                                                   ),
                                                 ),
-                                              )
+                                              ),
                                             ],
-                                          )
+                                          ),
                                         ],
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
+                      //Overview
                       Container(
                         width: size.width,
                         padding: getPadding(all: 10),
@@ -148,68 +151,98 @@ class MovieDetailsPage extends StatelessWidget {
                                 movieDetailController.movieDetail.overView,
                                 style: AppStyle.txtRobotoRegular14,
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
-                      (movieDetailController.videoObjList.isNotEmpty)
-                          ? Container(
-                              width: size.width,
-                              padding: getPadding(all: 10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Trailer',
-                                    style: AppStyle.txtRobotoBold15,
-                                  ),
-                                  Container(
-                                    margin: getMargin(top: 10),
-                                    height: getVerticalSize(200),
-                                    child: YoutubePlayer(
-                                      controller:
-                                          movieDetailController.ytPlayer,
-                                      showVideoProgressIndicator: true,
-                                      bottomActions: [
-                                        CurrentPosition(),
-                                        ProgressBar(isExpanded: true),
-                                      ],
+
+                      //Video Trailer
+                      Obx(
+                        () => (movieDetailController.videoObjList.isNotEmpty)
+                            ? Container(
+                                width: size.width,
+                                padding: getPadding(all: 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Trailer',
+                                      style: AppStyle.txtRobotoBold15,
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : SizedBox(),
-                      Container(
-                        padding: getPadding(all: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Cast',
-                              style: AppStyle.txtRobotoBold15,
-                            ),
-                            Container(
-                              margin: getMargin(top: 10),
-                              width: size.width,
-                              height: getVerticalSize(220),
-                              child: ListView.builder(
-                                physics: BouncingScrollPhysics(),
-                                scrollDirection: Axis.horizontal,
-                                itemCount: movieDetailController
-                                    .movieCastObjList.length,
-                                itemBuilder: (c, i) => CastImage(
-                                  cast:
-                                      movieDetailController.movieCastObjList[i],
+                                    Container(
+                                      margin: getMargin(top: 10),
+                                      height: getVerticalSize(200),
+                                      child: YoutubePlayer(
+                                        controller:
+                                            movieDetailController.ytPlayer,
+                                        showVideoProgressIndicator: true,
+                                        bottomActions: [
+                                          CurrentPosition(),
+                                          ProgressBar(isExpanded: true),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : Container(
+                                margin: getMargin(top: 10),
+                                height: getVerticalSize(150),
+                                width: size.width,
+                                child: Center(
+                                  child: CircularProgressIndicator(),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
+                      ),
+
+                      Obx(
+                        () => (movieDetailController
+                                .movieCastObjList.isNotEmpty)
+                            ? Container(
+                                padding: getPadding(all: 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Cast',
+                                      style: AppStyle.txtRobotoBold15,
+                                    ),
+                                    Container(
+                                      margin: getMargin(top: 10),
+                                      width: size.width,
+                                      height: getVerticalSize(220),
+                                      child: ListView.builder(
+                                        physics: BouncingScrollPhysics(),
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: movieDetailController
+                                            .movieCastObjList.length,
+                                        itemBuilder: (c, i) => CastImage(
+                                          cast: movieDetailController
+                                              .movieCastObjList[i],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : Container(
+                                margin: getMargin(top: 10),
+                                height: getVerticalSize(150),
+                                width: size.width,
+                                child: Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              ),
                       ),
                     ],
                   )
-                : SizedBox(),
+                : Container(
+                    width: size.width,
+                    height: size.height,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
           ),
         ),
       ),

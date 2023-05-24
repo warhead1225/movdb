@@ -214,8 +214,10 @@ class ApiClient extends GetConnect {
   }
 
   //Search movies and Tv series
-  Future<List<dynamic>> search(
-      {required int page, required String search}) async {
+  Future<List<dynamic>> search({
+    required int page,
+    required String search,
+  }) async {
     var result = [];
     search = search.trim().toLowerCase();
     page = page + 1;

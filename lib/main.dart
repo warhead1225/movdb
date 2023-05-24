@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.standard,
       ),
-      translations: AppLocalization(),
       locale: Get.deviceLocale, //for setting localization strings
       title: 'movdb',
       initialBinding: InitialBindings(),

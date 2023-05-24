@@ -36,13 +36,14 @@ class DashboardPage extends StatelessWidget {
                             .dashBoardModel.trendingList.isNotEmpty
                         ? GestureDetector(
                             onTap: () => Get.toNamed(
-                                (dashBoardController.dashBoardFeatured.mediaType
-                                            .toLowerCase() ==
-                                        'movie')
-                                    ? AppRoutes.movieDetails
-                                    : AppRoutes.tvDetails,
-                                arguments:
-                                    dashBoardController.dashBoardFeatured.id),
+                              (dashBoardController.dashBoardFeatured.mediaType
+                                          .toLowerCase() ==
+                                      'movie')
+                                  ? AppRoutes.movieDetails
+                                  : AppRoutes.tvDetails,
+                              arguments:
+                                  dashBoardController.dashBoardFeatured.id,
+                            ),
                             child: Stack(
                               children: [
                                 CustomImageView(
@@ -85,7 +86,7 @@ class DashboardPage extends StatelessWidget {
                                                 style:
                                                     AppStyle.txtRobotoRegular14,
                                                 overflow: TextOverflow.fade,
-                                              )
+                                              ),
                                             ],
                                           ),
                                         ),
@@ -144,7 +145,7 @@ class DashboardPage extends StatelessWidget {
                                 decoration: TextDecoration.underline,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Container(
@@ -195,7 +196,7 @@ class DashboardPage extends StatelessWidget {
                                 decoration: TextDecoration.underline,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Container(
@@ -214,7 +215,7 @@ class DashboardPage extends StatelessWidget {
                                 )
                               : SizedBox(),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -246,7 +247,7 @@ class DashboardPage extends StatelessWidget {
                                 decoration: TextDecoration.underline,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Container(
@@ -266,7 +267,7 @@ class DashboardPage extends StatelessWidget {
                                 )
                               : SizedBox(),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -298,7 +299,7 @@ class DashboardPage extends StatelessWidget {
                                 decoration: TextDecoration.underline,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Container(
@@ -317,7 +318,7 @@ class DashboardPage extends StatelessWidget {
                                 )
                               : SizedBox(),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

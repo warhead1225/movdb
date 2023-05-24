@@ -71,29 +71,19 @@ class CustomImageView extends StatelessWidget {
 
   ///build the image with border radius
   _buildCircleImage() {
-    if (radius != null) {
-      return ClipRRect(
-        borderRadius: radius,
-        child: _buildImageWithBorder(),
-      );
-    } else {
-      return _buildImageWithBorder();
-    }
+    return radius != null
+        ? ClipRRect(borderRadius: radius, child: _buildImageWithBorder())
+        : _buildImageWithBorder();
   }
 
   ///build the image with border and border radius style
   _buildImageWithBorder() {
-    if (border != null) {
-      return Container(
-        decoration: BoxDecoration(
-          border: border,
-          borderRadius: radius,
-        ),
-        child: _buildImageView(),
-      );
-    } else {
-      return _buildImageView();
-    }
+    return border != null
+        ? Container(
+            decoration: BoxDecoration(border: border, borderRadius: radius),
+            child: _buildImageView(),
+          )
+        : _buildImageView();
   }
 
   Widget _buildImageView() {
@@ -148,6 +138,7 @@ class CustomImageView extends StatelessWidget {
         color: color,
       );
     }
+
     return SizedBox();
   }
 }

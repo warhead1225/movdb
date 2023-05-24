@@ -33,7 +33,9 @@ class TrendingController extends GetxController {
     var isLastPage = trendingList.length < _numberOfPostsPerRequest;
 
     trendingListObj = List.generate(
-        trendingList.length, (i) => TrendingModel.trendingObj(trendingList[i]));
+      trendingList.length,
+      (i) => TrendingModel.trendingObj(trendingList[i]),
+    );
 
     if (isLastPage) {
       pagingController.appendLastPage(trendingListObj);
