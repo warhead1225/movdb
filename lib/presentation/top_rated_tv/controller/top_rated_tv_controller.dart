@@ -30,8 +30,10 @@ class TopRatedTvController extends GetxController {
     var topRatedList = await ApiClient().getTopRatedSeries(page: pageKey);
     var isLastPage = topRatedList.length < _numberOfPostsPerRequest;
 
-    topRatedTvListObj = List.generate(topRatedList.length,
-        (i) => TopRatedTvModel.topRatedObj(topRatedList[i]));
+    topRatedTvListObj = List.generate(
+      topRatedList.length,
+      (i) => TopRatedTvModel.topRatedObj(topRatedList[i]),
+    );
 
     if (isLastPage) {
       pagingController.appendLastPage(topRatedTvListObj);

@@ -49,7 +49,9 @@ class TvShowsDetailsController extends GetxController {
     //Cast
     var tvCast = await ApiClient().getTvCast(this.tvId, 1);
     var castList = RxList.generate(
-        tvCast.length, (i) => TvCastModel.movieCastObj(tvCast[i]));
+      tvCast.length,
+      (i) => TvCastModel.movieCastObj(tvCast[i]),
+    );
     tvCastObjList.addAll(castList);
   }
 }

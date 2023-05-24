@@ -3,21 +3,22 @@ import 'package:movdb/core/app_export.dart';
 
 // ignore: must_be_immutable
 class CustomSearchView extends StatelessWidget {
-  CustomSearchView(
-      {this.padding,
-      this.shape,
-      this.variant,
-      this.fontStyle,
-      this.alignment,
-      this.width,
-      this.margin,
-      this.controller,
-      this.focusNode,
-      this.hintText,
-      this.prefix,
-      this.prefixConstraints,
-      this.suffix,
-      this.suffixConstraints});
+  CustomSearchView({
+    this.padding,
+    this.shape,
+    this.variant,
+    this.fontStyle,
+    this.alignment,
+    this.width,
+    this.margin,
+    this.controller,
+    this.focusNode,
+    this.hintText,
+    this.prefix,
+    this.prefixConstraints,
+    this.suffix,
+    this.suffixConstraints,
+  });
 
   SearchViewPadding? padding;
 

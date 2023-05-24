@@ -9,13 +9,14 @@ class AppbarImage extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final Function? onTap;
 
-  AppbarImage(
-      {required this.height,
-      required this.width,
-      this.imagePath,
-      this.svgPath,
-      this.margin,
-      this.onTap});
+  AppbarImage({
+    required this.height,
+    required this.width,
+    this.imagePath,
+    this.svgPath,
+    this.margin,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

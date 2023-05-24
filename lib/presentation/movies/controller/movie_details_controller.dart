@@ -80,7 +80,9 @@ class MovieDetailsController extends GetxController {
     //Movie Cast
     var cast = await ApiClient().getMovieCast(this.movieId);
     var castList = RxList.generate(
-        cast.length, (i) => MovieCastModel.movieCastObj(cast[i]));
+      cast.length,
+      (i) => MovieCastModel.movieCastObj(cast[i]),
+    );
     movieCastObjList.addAll(castList);
   }
 }

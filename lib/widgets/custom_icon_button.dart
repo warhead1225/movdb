@@ -3,15 +3,16 @@ import 'package:movdb/core/app_export.dart';
 
 // ignore: must_be_immutable
 class CustomIconButton extends StatelessWidget {
-  CustomIconButton(
-      {this.padding,
-      this.variant,
-      this.alignment,
-      this.margin,
-      this.width,
-      this.height,
-      this.child,
-      this.onTap});
+  CustomIconButton({
+    this.padding,
+    this.variant,
+    this.alignment,
+    this.margin,
+    this.width,
+    this.height,
+    this.child,
+    this.onTap,
+  });
 
   IconButtonPadding? padding;
 

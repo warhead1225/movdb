@@ -29,7 +29,9 @@ class MoviesController extends GetxController {
     var isLastPage = topRatedList.length < _numberOfPostsPerRequest;
 
     movieListObj = List.generate(
-        topRatedList.length, (i) => MovieModel.movieObj(topRatedList[i]));
+      topRatedList.length,
+      (i) => MovieModel.movieObj(topRatedList[i]),
+    );
 
     if (isLastPage) {
       pagingController.appendLastPage(movieListObj);
