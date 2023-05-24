@@ -115,4 +115,11 @@ class AppStyle {
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
   );
+
+  static TextStyle txtRobotoSplashScreen = TextStyle(
+    color: Colors.teal,
+    fontSize: getFontSize(20),
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.bold,
+  );
 }

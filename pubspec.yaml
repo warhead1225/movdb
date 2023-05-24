@@ -1,5 +1,5 @@
 name: movdb
-description: Simple movie and Tv Series guide.
+description: A Simple movie and Tv Series guide.
 version: 1.0.0+1
 environment:
   sdk: ">=2.12.0 <3.0.0"
