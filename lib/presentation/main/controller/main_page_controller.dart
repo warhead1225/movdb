@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:card_swiper/card_swiper.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/presentation/dashboard_page/dashboard_page.dart';
 import 'package:movdb/presentation/movies/movies_page.dart';
 import 'package:movdb/presentation/tv_shows/tv_shows_page.dart';
+import 'package:movdb/widgets/alert_dialog_container.dart';
 
 class MainPageController extends GetxController {
   final swiperController = SwiperController();
@@ -57,5 +59,27 @@ class MainPageController extends GetxController {
   void navPageChange(int index) {
     bottomNavBarActive.value = index;
     swiperController.move(index);
+  }
+
+  Future<bool> onWillPop() async {
+    if (bottomNavBarActive.value == 0) {
+      showCupertinoDialog(
+        context: Get.context!,
+        builder: (context) => AlertDialogContainer(
+          'Exit Application?',
+          'Are you sure you want to exit the application?',
+          'NO',
+          () {
+            Get.back();
+          },
+          'YES',
+          () => SystemNavigator.pop(),
+        ),
+      );
+    } else {
+      navPageChange(0);
+    }
+
+    return false;
   }
 }

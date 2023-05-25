@@ -9,44 +9,48 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorConstant.gray900,
-      body: Swiper(
-        controller: mainPageController.swiperController,
-        itemCount: mainPageController.swiperPages.length,
-        loop: false,
-        physics: NeverScrollableScrollPhysics(),
-        curve: Curves.easeInOut,
-        itemBuilder: (context, index) => mainPageController.swiperPages[index],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white,
-        onPressed: () => Get.toNamed(AppRoutes.searchPage),
-        child: Icon(
-          Icons.search_sharp,
-          color: Colors.teal,
+    return WillPopScope(
+      onWillPop: () => mainPageController.onWillPop(),
+      child: Scaffold(
+        backgroundColor: ColorConstant.gray900,
+        body: Swiper(
+          controller: mainPageController.swiperController,
+          itemCount: mainPageController.swiperPages.length,
+          loop: false,
+          physics: NeverScrollableScrollPhysics(),
+          curve: Curves.easeInOut,
+          itemBuilder: (context, index) =>
+              mainPageController.swiperPages[index],
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      bottomNavigationBar: Obx(
-        () => AnimatedBottomNavigationBar(
-          blurEffect: true,
-          iconSize: 25,
-          icons: <IconData>[
-            Icons.dashboard_sharp,
-            Icons.movie_sharp,
-            Icons.tv_sharp,
-            Icons.abc,
-          ],
-          activeIndex: mainPageController.bottomNavBarActive.value,
-          activeColor: Colors.teal,
-          gapLocation: GapLocation.none,
-          backgroundColor: Colors.white70,
-          elevation: 8,
-          notchSmoothness: NotchSmoothness.sharpEdge,
-          leftCornerRadius: 32,
-          rightCornerRadius: 10,
-          onTap: (index) => mainPageController.navPageChange(index),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.white,
+          onPressed: () => Get.toNamed(AppRoutes.searchPage),
+          child: Icon(
+            Icons.search_sharp,
+            color: Colors.teal,
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        bottomNavigationBar: Obx(
+          () => AnimatedBottomNavigationBar(
+            blurEffect: true,
+            iconSize: 25,
+            icons: <IconData>[
+              Icons.dashboard_sharp,
+              Icons.movie_sharp,
+              Icons.tv_sharp,
+              Icons.abc,
+            ],
+            activeIndex: mainPageController.bottomNavBarActive.value,
+            activeColor: Colors.teal,
+            gapLocation: GapLocation.none,
+            backgroundColor: Colors.white70,
+            elevation: 8,
+            notchSmoothness: NotchSmoothness.sharpEdge,
+            leftCornerRadius: 32,
+            rightCornerRadius: 10,
+            onTap: (index) => mainPageController.navPageChange(index),
+          ),
         ),
       ),
     );
