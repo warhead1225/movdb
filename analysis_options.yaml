@@ -28,7 +28,6 @@ linter:
     avoid_print: true # Uncomment to disable the `avoid_print` rule
     prefer_single_quotes: true # Uncomment to enable the `prefer_single_quotes` rule
     file_names: false
-    use_build_context_synchronously: false
 
 analyzer:
   plugins:

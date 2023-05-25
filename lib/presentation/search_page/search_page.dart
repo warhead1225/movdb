@@ -25,7 +25,10 @@ class SearchPage extends StatelessWidget {
         padding: getPadding(all: 5),
         child: Column(
           children: [
-            SearchTextField(controller: searchControler),
+            SearchTextField(
+              controller: searchControler,
+              clearSearch: () => searchControler.clearSearch(),
+            ),
             Obx(
               () => (searchControler.searchText.value.isNotEmpty)
                   ? Expanded(

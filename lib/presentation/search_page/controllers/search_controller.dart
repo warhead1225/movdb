@@ -9,7 +9,7 @@ class SearchController extends GetxController {
   final searchFocusNode = FocusNode();
   final int _numberOfPostsPerRequest = 10;
 
-  var searchResultListObj = <SearchModel>[];
+  var searchResultListObj = <SearchModel>[].obs;
   var pagingController = PagingController<int, SearchModel>(firstPageKey: 0);
   var searchText = ''.obs;
 
@@ -40,6 +40,7 @@ class SearchController extends GetxController {
   void search(int pageKey) async {
     searchResultListObj.clear();
     var ctr = 0;
+
     try {
       var searchResultlist =
           await ApiClient().search(page: pageKey, search: searchText.value);
@@ -62,5 +63,12 @@ class SearchController extends GetxController {
     } catch (e, s) {
       Logger.log(e, stackTrace: s);
     }
+  }
+
+  void clearSearch() {
+    searchText.value = '';
+    searchTextController.clear();
+
+    searchFocusNode.unfocus();
   }
 }

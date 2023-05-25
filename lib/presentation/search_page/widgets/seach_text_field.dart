@@ -4,8 +4,13 @@ import 'package:movdb/presentation/search_page/controllers/search_controller.dar
 
 class SearchTextField extends StatelessWidget {
   final SearchController controller;
+  final VoidCallback clearSearch;
 
-  const SearchTextField({Key? key, required this.controller}) : super(key: key);
+  const SearchTextField({
+    Key? key,
+    required this.controller,
+    required this.clearSearch,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class SearchTextField extends StatelessWidget {
             color: ColorConstant.whiteA700,
           ),
           suffixIcon: IconButton(
-            onPressed: () => controller.searchTextController.clear(),
+            onPressed: () => clearSearch(),
             icon: Icon(
               Icons.clear_sharp,
               color: ColorConstant.whiteA700,
