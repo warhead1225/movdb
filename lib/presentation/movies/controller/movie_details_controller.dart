@@ -36,53 +36,58 @@ class MovieDetailsController extends GetxController {
 
   void _movieDetail() async {
     var genreDef = <String>[];
-    var detail = await ApiClient().getMovieDetail(this.movieId);
-    movieDetail = MovieDetailModel.movieDetailObj(detail);
 
-    //Rating and Release date
-    rating = double.parse((movieDetail.voteAverage).toStringAsFixed(1));
-    ratingPercent =
-        double.parse((movieDetail.voteAverage * 0.10).toStringAsFixed(2));
-    releaseDate = formatter.format(DateTime.parse(movieDetail.releaseDate));
+    try {
+      var detail = await ApiClient().getMovieDetail(this.movieId);
+      movieDetail = MovieDetailModel.movieDetailObj(detail);
 
-    //List Genre
-    movieDetail.genres.forEach((element) {
-      genreDef.add(element['name']);
-    });
-    genre = genreDef.join(', ');
-    detailsLoaded.value = true;
+      //Rating and Release date
+      rating = double.parse((movieDetail.voteAverage).toStringAsFixed(1));
+      ratingPercent =
+          double.parse((movieDetail.voteAverage * 0.10).toStringAsFixed(2));
+      releaseDate = formatter.format(DateTime.parse(movieDetail.releaseDate));
 
-    var videos = await ApiClient().getMovieVideos(this.movieId);
+      //List Genre
+      movieDetail.genres.forEach((element) {
+        genreDef.add(element['name']);
+      });
+      genre = genreDef.join(', ');
+      detailsLoaded.value = true;
 
-    //Trailer
-    for (var vid in videos) {
-      var videoObj = MovieVideosModel.movieVideosObj(vid);
-      if (videoObj.site.toString().toLowerCase().trim() == 'youtube') {
-        videoObjList.add(MovieVideosModel.movieVideosObj(vid));
-        break;
-      } else {
-        videoObjList.add(MovieVideosModel.movieVideosObj({}));
+      //Trailer Video
+      var videos = await ApiClient().getMovieVideos(this.movieId);
+      for (var vid in videos) {
+        var videoObj = MovieVideosModel.movieVideosObj(vid);
+        //Add one video only in the list result
+        if (videoObj.site.toString().toLowerCase().trim() == 'youtube') {
+          videoObjList.add(MovieVideosModel.movieVideosObj(vid));
+          break;
+        } else {
+          videoObjList.add(MovieVideosModel.movieVideosObj({}));
+        }
       }
-    }
 
-    //load YT player
-    if (videoObjList.isNotEmpty) {
-      ytPlayer = YoutubePlayerController(
-        initialVideoId: videoObjList.first.key,
-        flags: YoutubePlayerFlags(
-          autoPlay: false,
-          loop: false,
-          useHybridComposition: false,
-        ),
+      //load YT player
+      if (videoObjList.isNotEmpty) {
+        ytPlayer = YoutubePlayerController(
+          initialVideoId: videoObjList.first.key,
+          flags: YoutubePlayerFlags(
+            autoPlay: false,
+            loop: false,
+            useHybridComposition: false,
+          ),
+        );
+      }
+
+      //Movie Cast
+      var cast = await ApiClient().getMovieCast(this.movieId);
+      var castList = RxList.generate(
+        cast.length,
+        (i) => MovieCastModel.movieCastObj(cast[i]),
       );
+      movieCastObjList.addAll(castList);
+    } catch (e, s) {
+      Logger.log(e, stackTrace: s);
     }
-
-    //Movie Cast
-    var cast = await ApiClient().getMovieCast(this.movieId);
-    var castList = RxList.generate(
-      cast.length,
-      (i) => MovieCastModel.movieCastObj(cast[i]),
-    );
-    movieCastObjList.addAll(castList);
   }
 }

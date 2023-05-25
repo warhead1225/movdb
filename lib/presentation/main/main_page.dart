@@ -45,7 +45,7 @@ class MainPage extends StatelessWidget {
           elevation: 8,
           notchSmoothness: NotchSmoothness.sharpEdge,
           leftCornerRadius: 32,
-          rightCornerRadius: 32,
+          rightCornerRadius: 10,
           onTap: (index) => mainPageController.navPageChange(index),
         ),
       ),

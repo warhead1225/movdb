@@ -39,25 +39,28 @@ class SearchController extends GetxController {
 
   void search(int pageKey) async {
     searchResultListObj.clear();
-    print('search');
     var ctr = 0;
-    var searchResultlist =
-        await ApiClient().search(page: pageKey, search: searchText.value);
-    var isLastPage = searchResultlist.length < _numberOfPostsPerRequest;
+    try {
+      var searchResultlist =
+          await ApiClient().search(page: pageKey, search: searchText.value);
+      var isLastPage = searchResultlist.length < _numberOfPostsPerRequest;
 
-    for (var searchResult in searchResultlist) {
-      // do not put movie/series with incomplete details
-      if (searchResult['poster_path'] != null) {
-        searchResultListObj.add(SearchModel.searcObj(searchResultlist[ctr]));
+      for (var searchResult in searchResultlist) {
+        // do not put movie/series with incomplete details
+        if (searchResult['poster_path'] != null) {
+          searchResultListObj.add(SearchModel.searcObj(searchResultlist[ctr]));
+        }
+        ctr++;
       }
-      ctr++;
-    }
 
-    if (isLastPage) {
-      pagingController.appendLastPage(searchResultListObj);
-    } else {
-      var nextPageKey = pageKey + 1;
-      pagingController.appendPage(searchResultListObj, nextPageKey);
+      if (isLastPage) {
+        pagingController.appendLastPage(searchResultListObj);
+      } else {
+        var nextPageKey = pageKey + 1;
+        pagingController.appendPage(searchResultListObj, nextPageKey);
+      }
+    } catch (e, s) {
+      Logger.log(e, stackTrace: s);
     }
   }
 }

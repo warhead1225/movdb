@@ -26,19 +26,23 @@ class TopRatedMoviesController extends GetxController {
 
   void fetchTopRatedMovies(int pageKey) async {
     topRatedMovieListObj.clear();
-    var topRatedList = await ApiClient().getTopRatedMovies(page: pageKey);
-    var isLastPage = topRatedList.length < _numberOfPostsPerRequest;
+    try {
+      var topRatedList = await ApiClient().getTopRatedMovies(page: pageKey);
+      var isLastPage = topRatedList.length < _numberOfPostsPerRequest;
 
-    topRatedMovieListObj = List.generate(
-      topRatedList.length,
-      (i) => TopRatedMoviesModel.topRatedObj(topRatedList[i]),
-    );
+      topRatedMovieListObj = List.generate(
+        topRatedList.length,
+        (i) => TopRatedMoviesModel.topRatedObj(topRatedList[i]),
+      );
 
-    if (isLastPage) {
-      pagingController.appendLastPage(topRatedMovieListObj);
-    } else {
-      var nextPageKey = pageKey + 1;
-      pagingController.appendPage(topRatedMovieListObj, nextPageKey);
+      if (isLastPage) {
+        pagingController.appendLastPage(topRatedMovieListObj);
+      } else {
+        var nextPageKey = pageKey + 1;
+        pagingController.appendPage(topRatedMovieListObj, nextPageKey);
+      }
+    } catch (e, s) {
+      Logger.log(e, stackTrace: s);
     }
   }
 }

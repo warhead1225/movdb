@@ -22,7 +22,7 @@ class SearchPage extends StatelessWidget {
       body: Container(
         width: size.width,
         height: size.height,
-        padding: getPadding(all: 10),
+        padding: getPadding(all: 5),
         child: Column(
           children: [
             SearchTextField(controller: searchControler),

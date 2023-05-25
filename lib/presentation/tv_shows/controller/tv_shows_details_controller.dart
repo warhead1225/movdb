@@ -30,28 +30,31 @@ class TvShowsDetailsController extends GetxController {
 
   void _tvDetail() async {
     var genreDef = <String>[];
-    var detail = await ApiClient().getTvDetail(this.tvId);
+    try {
+      var detail = await ApiClient().getTvDetail(this.tvId);
+      tvDetail = TvShowsDetailsModel.tvDetailObj(detail);
 
-    tvDetail = TvShowsDetailsModel.tvDetailObj(detail);
+      rating = double.parse((tvDetail.voteAverage).toStringAsFixed(1));
+      ratingPercent =
+          double.parse((tvDetail.voteAverage * 0.10).toStringAsFixed(2));
+      releaseDate = formatter.format(DateTime.parse(tvDetail.firstAirDate));
 
-    rating = double.parse((tvDetail.voteAverage).toStringAsFixed(1));
-    ratingPercent =
-        double.parse((tvDetail.voteAverage * 0.10).toStringAsFixed(2));
-    releaseDate = formatter.format(DateTime.parse(tvDetail.firstAirDate));
+      //list Genre
+      tvDetail.genres.forEach((element) {
+        genreDef.add(element['name']);
+      });
+      genre = genreDef.join(', ');
+      detailsLoaded.value = true;
 
-    //list Genre
-    tvDetail.genres.forEach((element) {
-      genreDef.add(element['name']);
-    });
-    genre = genreDef.join(', ');
-    detailsLoaded.value = true;
-
-    //Cast
-    var tvCast = await ApiClient().getTvCast(this.tvId, 1);
-    var castList = RxList.generate(
-      tvCast.length,
-      (i) => TvCastModel.movieCastObj(tvCast[i]),
-    );
-    tvCastObjList.addAll(castList);
+      //Cast
+      var tvCast = await ApiClient().getTvCast(this.tvId, 1);
+      var castList = RxList.generate(
+        tvCast.length,
+        (i) => TvCastModel.movieCastObj(tvCast[i]),
+      );
+      tvCastObjList.addAll(castList);
+    } catch (e, s) {
+      Logger.log(e, stackTrace: s);
+    }
   }
 }

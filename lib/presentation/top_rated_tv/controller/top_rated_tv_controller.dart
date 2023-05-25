@@ -27,19 +27,23 @@ class TopRatedTvController extends GetxController {
 
   void fetchTopRatedTv(int pageKey) async {
     topRatedTvListObj.clear();
-    var topRatedList = await ApiClient().getTopRatedSeries(page: pageKey);
-    var isLastPage = topRatedList.length < _numberOfPostsPerRequest;
+    try {
+      var topRatedList = await ApiClient().getTopRatedSeries(page: pageKey);
+      var isLastPage = topRatedList.length < _numberOfPostsPerRequest;
 
-    topRatedTvListObj = List.generate(
-      topRatedList.length,
-      (i) => TopRatedTvModel.topRatedObj(topRatedList[i]),
-    );
+      topRatedTvListObj = List.generate(
+        topRatedList.length,
+        (i) => TopRatedTvModel.topRatedObj(topRatedList[i]),
+      );
 
-    if (isLastPage) {
-      pagingController.appendLastPage(topRatedTvListObj);
-    } else {
-      var nextPageKey = pageKey + 1;
-      pagingController.appendPage(topRatedTvListObj, nextPageKey);
+      if (isLastPage) {
+        pagingController.appendLastPage(topRatedTvListObj);
+      } else {
+        var nextPageKey = pageKey + 1;
+        pagingController.appendPage(topRatedTvListObj, nextPageKey);
+      }
+    } catch (e, s) {
+      Logger.log(e, stackTrace: s);
     }
   }
 }

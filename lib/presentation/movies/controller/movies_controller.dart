@@ -24,20 +24,23 @@ class MoviesController extends GetxController {
   //Get now playing movies
   void _fetchMovies(int pageKey) async {
     movieListObj.clear();
+    try {
+      var topRatedList = await ApiClient().getNowPlayingMovies(page: pageKey);
+      var isLastPage = topRatedList.length < _numberOfPostsPerRequest;
 
-    var topRatedList = await ApiClient().getNowPlayingMovies(page: pageKey);
-    var isLastPage = topRatedList.length < _numberOfPostsPerRequest;
+      movieListObj = List.generate(
+        topRatedList.length,
+        (i) => MovieModel.movieObj(topRatedList[i]),
+      );
 
-    movieListObj = List.generate(
-      topRatedList.length,
-      (i) => MovieModel.movieObj(topRatedList[i]),
-    );
-
-    if (isLastPage) {
-      pagingController.appendLastPage(movieListObj);
-    } else {
-      var nextPageKey = pageKey + 1;
-      pagingController.appendPage(movieListObj, nextPageKey);
+      if (isLastPage) {
+        pagingController.appendLastPage(movieListObj);
+      } else {
+        var nextPageKey = pageKey + 1;
+        pagingController.appendPage(movieListObj, nextPageKey);
+      }
+    } catch (e, s) {
+      Logger.log(e, stackTrace: s);
     }
   }
 }

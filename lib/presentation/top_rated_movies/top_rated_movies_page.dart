@@ -20,7 +20,7 @@ class TopRatedMoviesPage extends StatelessWidget {
       ),
       body: Container(
         width: size.width,
-        padding: getPadding(all: 10),
+        padding: getPadding(all: 5),
         child: RefreshIndicator(
           onRefresh: () =>
               Future.sync(() => topRatedMovies.pagingController.refresh()),

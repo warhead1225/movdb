@@ -29,19 +29,22 @@ class TrendingController extends GetxController {
   //Fetch trending per page
   void fetchTrending(int pageKey) async {
     trendingListObj.clear();
-    var trendingList = await ApiClient().getTrending(page: pageKey);
-    var isLastPage = trendingList.length < _numberOfPostsPerRequest;
+    try {
+      var trendingList = await ApiClient().getTrending(page: pageKey);
+      var isLastPage = trendingList.length < _numberOfPostsPerRequest;
+      trendingListObj = List.generate(
+        trendingList.length,
+        (i) => TrendingModel.trendingObj(trendingList[i]),
+      );
 
-    trendingListObj = List.generate(
-      trendingList.length,
-      (i) => TrendingModel.trendingObj(trendingList[i]),
-    );
-
-    if (isLastPage) {
-      pagingController.appendLastPage(trendingListObj);
-    } else {
-      var nextPageKey = pageKey + 1;
-      pagingController.appendPage(trendingListObj, nextPageKey);
+      if (isLastPage) {
+        pagingController.appendLastPage(trendingListObj);
+      } else {
+        var nextPageKey = pageKey + 1;
+        pagingController.appendPage(trendingListObj, nextPageKey);
+      }
+    } catch (e, s) {
+      Logger.log(e, stackTrace: s);
     }
   }
 }

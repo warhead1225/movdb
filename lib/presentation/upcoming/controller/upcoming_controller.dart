@@ -27,19 +27,23 @@ class UpcomingController extends GetxController {
 
   void fetchUpcoming(int pageKey) async {
     upcomingListObj.clear();
-    var upcomingList = await ApiClient().getUpcoming(page: pageKey);
-    var isLastPage = upcomingList.length < _numberOfPostsPerRequest;
+    try {
+      var upcomingList = await ApiClient().getUpcoming(page: pageKey);
+      var isLastPage = upcomingList.length < _numberOfPostsPerRequest;
 
-    upcomingListObj = List.generate(
-      upcomingList.length,
-      (i) => UpcomingModel.upcomingModelObj(upcomingList[i]),
-    );
+      upcomingListObj = List.generate(
+        upcomingList.length,
+        (i) => UpcomingModel.upcomingModelObj(upcomingList[i]),
+      );
 
-    if (isLastPage) {
-      pagingController.appendLastPage(upcomingListObj);
-    } else {
-      var nextPageKey = pageKey + 1;
-      pagingController.appendPage(upcomingListObj, nextPageKey);
+      if (isLastPage) {
+        pagingController.appendLastPage(upcomingListObj);
+      } else {
+        var nextPageKey = pageKey + 1;
+        pagingController.appendPage(upcomingListObj, nextPageKey);
+      }
+    } catch (e, s) {
+      Logger.log(e, stackTrace: s);
     }
   }
 }
