@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:movdb/core/utils/size_utils.dart';
 
 class CustomImageView extends StatelessWidget {
   ///[url] is required parameter for fetching network image
@@ -109,6 +110,7 @@ class CustomImageView extends StatelessWidget {
       );
     } else if (url != null && url!.isNotEmpty) {
       return CachedNetworkImage(
+        memCacheWidth: getHorizontalSize(width!).toInt(),
         height: height,
         width: width,
         fit: fit,

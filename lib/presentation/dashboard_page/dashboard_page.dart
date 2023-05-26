@@ -36,8 +36,8 @@ class DashboardPage extends StatelessWidget {
                         children: [
                           /* Featured */
                           Container(
-                            width: double.maxFinite,
-                            height: getVerticalSize(280),
+                            width: size.width,
+                            height: size.height * .45,
                             child: Obx(
                               () => dashBoardController
                                       .dashBoardModel.trendingList.isNotEmpty
@@ -59,9 +59,9 @@ class DashboardPage extends StatelessWidget {
                                                 dashBoardController
                                                     .dashBoardFeatured
                                                     .backdropPath,
-                                            height: getVerticalSize(300),
-                                            width: size.width,
-                                            alignment: Alignment.center,
+                                            height: size.height * .45,
+                                            width:
+                                                getHorizontalSize(size.width),
                                             fit: BoxFit.cover,
                                           ),
                                           Align(

@@ -32,15 +32,14 @@ class MovieDetailsPage extends StatelessWidget {
                         alignment: AlignmentDirectional.topStart,
                         children: [
                           Opacity(
-                            opacity: 0.5,
+                            opacity: 0.7,
                             child: CustomImageView(
-                              fit: BoxFit.cover,
                               url: ApiHeaders.imageBase() +
                                   movieDetailController
                                       .movieDetail.backDropPath,
-                              height: getVerticalSize(250),
-                              width: size.width,
-                              alignment: Alignment.center,
+                              height: size.height * .4,
+                              width: getHorizontalSize(size.width),
+                              fit: BoxFit.cover,
                             ),
                           ),
                           // Poster and Title
