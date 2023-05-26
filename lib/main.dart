@@ -1,6 +1,8 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'core/app_export.dart';
 
@@ -8,9 +10,42 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-  ]).then((value) {
+  ]).then((value) async {
+    var deviceInfoPlugin = DeviceInfoPlugin();
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
-    runApp(MyApp());
+
+    Future<SentryEvent> beforeSend(SentryEvent event, {dynamic hint}) async {
+      var extraData = <String, String>{};
+      if (GetPlatform.isAndroid) {
+        var d = await deviceInfoPlugin.androidInfo;
+        extraData.addAll({
+          'OS version': d.version.release,
+          'Model': d.model,
+          'Manufacturer': d.manufacturer,
+        });
+      } //ios
+      else {
+        var d = await deviceInfoPlugin.iosInfo;
+        extraData.addAll({
+          'OS version': d.systemVersion,
+          'Model': d.model,
+          'Manufacturer': d.name,
+        });
+      }
+      event = event.copyWith(tags: extraData);
+
+      return event;
+    }
+
+    await SentryFlutter.init(
+      (options) {
+        options.beforeSend = beforeSend;
+        options.dsn =
+            'https://065e37acb4934d1bb6fa670438066963@o171964.ingest.sentry.io/4505241906970624';
+        options.tracesSampleRate = 1.0;
+      },
+      appRunner: () => runApp(MyApp()),
+    );
   });
 }
 
@@ -23,9 +58,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.standard,
       ),
-      translations: AppLocalization(),
       locale: Get.deviceLocale, //for setting localization strings
-      fallbackLocale: Locale('en', 'US'),
       title: 'movdb',
       initialBinding: InitialBindings(),
       initialRoute: AppRoutes.initialRoute,

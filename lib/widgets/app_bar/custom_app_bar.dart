@@ -3,13 +3,14 @@ import 'package:movdb/core/app_export.dart';
 
 // ignore: must_be_immutable
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
-  CustomAppBar(
-      {required this.height,
-      this.leadingWidth,
-      this.leading,
-      this.title,
-      this.centerTitle,
-      this.actions});
+  CustomAppBar({
+    required this.height,
+    this.leadingWidth,
+    this.leading,
+    this.title,
+    this.centerTitle,
+    this.actions,
+  });
 
   double height;
 

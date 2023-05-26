@@ -3,9 +3,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 // For checking internet connectivity
 abstract class NetworkInfoI {
   Future<bool> isConnected();
-
   Future<ConnectivityResult> get connectivityResult;
-
   Stream<ConnectivityResult> get onConnectivityChanged;
 }
 
@@ -22,10 +20,11 @@ class NetworkInfo implements NetworkInfoI {
   @override
   Future<bool> isConnected() async {
     final result = await connectivity.checkConnectivity();
-    if (result != ConnectivityResult.none) {
-      return true;
-    }
-    return false;
+
+    return (result == ConnectivityResult.wifi ||
+            result == ConnectivityResult.mobile)
+        ? true
+        : false;
   }
 
   // to check type of internet connectivity

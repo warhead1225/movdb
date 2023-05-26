@@ -1,59 +1,30 @@
-import '../controller/dashboard_controller.dart';
-import '../models/upcoming_item_model.dart';
 import 'package:flutter/material.dart';
-import 'package:movdb/core/app_export.dart';
+import 'package:movdb/data/apiClient/api_headers.dart';
+import 'package:movdb/presentation/dashboard_page/models/upcoming_model.dart';
 
-// ignore: must_be_immutable
+import '../../../core/app_export.dart';
+
 class UpcomingItemWidget extends StatelessWidget {
-  UpcomingItemWidget(this.upcomingItemModelObj);
+  final UpcomingModel upcomingModel;
 
-  UpcomingItemModel upcomingItemModelObj;
-
-  var controller = Get.find<DashboardController>();
+  const UpcomingItemWidget({Key? key, required this.upcomingModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(
-      child: Padding(
-        padding: getPadding(
-          right: 16,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CustomImageView(
-              imagePath: ImageConstant.imgCardbox143x90,
-              height: getVerticalSize(
-                143,
-              ),
-              width: getHorizontalSize(
-                90,
-              ),
-              radius: BorderRadius.circular(
-                getHorizontalSize(
-                  2,
-                ),
-              ),
-            ),
-            Container(
-              width: getHorizontalSize(
-                65,
-              ),
-              margin: getMargin(
-                left: 2,
-                top: 10,
-              ),
-              child: Obx(
-                () => Text(
-                  upcomingItemModelObj.titleTxt.value,
-                  maxLines: null,
-                  textAlign: TextAlign.left,
-                  style: AppStyle.txtRobotoRegular12WhiteA700a9,
-                ),
-              ),
-            ),
-          ],
+    return Container(
+      width: getHorizontalSize(140),
+      margin: getMargin(right: 10),
+      child: CustomImageView(
+        fit: BoxFit.cover,
+        url: ApiHeaders.imageBase() + upcomingModel.posterPath,
+        height: getVerticalSize(170),
+        width: getHorizontalSize(180),
+        radius: BorderRadius.circular(getHorizontalSize(2)),
+        alignment: Alignment.center,
+        onTap: () => Get.toNamed(
+          AppRoutes.movieDetails,
+          arguments: upcomingModel.id,
         ),
       ),
     );

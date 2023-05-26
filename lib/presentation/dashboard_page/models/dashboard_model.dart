@@ -1,27 +1,59 @@
 import 'package:get/get.dart';
-import 'specials_item_model.dart';
-import 'upcoming_item_model.dart';
-import 'featured_item_model.dart';
-import 'upcoming1_item_model.dart';
-import 'categories_item_model.dart';
-import 'special_item_model.dart';
+import 'package:movdb/presentation/dashboard_page/models/top_rated_movies_model.dart';
+import 'package:movdb/presentation/dashboard_page/models/top_rated_tv_model.dart';
+import 'package:movdb/presentation/trending/models/trending_model.dart';
+import 'package:movdb/presentation/dashboard_page/models/upcoming_model.dart';
 
 class DashboardModel {
-  Rx<List<SpecialsItemModel>> specialsItemList =
-      Rx(List.generate(4, (index) => SpecialsItemModel()));
+  var trendingList = <TrendingModel>[].obs;
+  var topRatedMovList = <TopRatedMoviesModel>[].obs;
+  var topRatedSeriesList = <TopRatedTvModel>[].obs;
+  var upcomingList = <UpcomingModel>[].obs;
 
-  Rx<List<UpcomingItemModel>> upcomingItemList =
-      Rx(List.generate(4, (index) => UpcomingItemModel()));
+  //
+  TrendingModel trendingDataObj(Map<String, dynamic> obj) {
+    return TrendingModel(
+      id: obj['id'],
+      title: obj['title'] ?? obj['name'],
+      overview: obj['overview'],
+      posterPath: obj['poster_path'],
+      backdropPath: obj['backdrop_path'],
+      voteAverage: obj["vote_average"],
+      mediaType: obj['media_type'],
+    );
+  }
 
-  Rx<List<FeaturedItemModel>> featuredItemList =
-      Rx(List.generate(4, (index) => FeaturedItemModel()));
+  //
+  TopRatedMoviesModel topRatedMovieObj(Map<String, dynamic> obj) {
+    return TopRatedMoviesModel(
+      id: obj['id'],
+      title: obj['title'] ?? obj['name'],
+      overview: obj['overview'],
+      posterPath: obj['poster_path'],
+      backdropPath: obj['backdrop_path'],
+      voteAverage: obj["vote_average"],
+    );
+  }
 
-  Rx<List<Upcoming1ItemModel>> upcoming1ItemList =
-      Rx(List.generate(4, (index) => Upcoming1ItemModel()));
+  TopRatedTvModel topRatedTvObj(Map<String, dynamic> obj) {
+    return TopRatedTvModel(
+      id: obj['id'],
+      title: obj['title'] ?? obj['name'],
+      posterPath: obj['poster_path'],
+      voteAverage: obj["vote_average"],
+    );
+  }
 
-  Rx<List<CategoriesItemModel>> categoriesItemList =
-      Rx(List.generate(4, (index) => CategoriesItemModel()));
-
-  Rx<List<SpecialItemModel>> specialItemList =
-      Rx(List.generate(4, (index) => SpecialItemModel()));
+  UpcomingModel upcomingObj(Map<String, dynamic> obj) {
+    return UpcomingModel(
+      id: obj['id'],
+      backdropPath: obj['backdrop_path'],
+      title: obj['title'] ?? obj['name'],
+      overview: obj['overview'],
+      posterPath: obj['poster_path'],
+      voteAverage: (obj["vote_average"].runtimeType is int)
+          ? 0.0
+          : double.parse(obj["vote_average"].toString()),
+    );
+  }
 }

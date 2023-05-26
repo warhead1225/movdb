@@ -26,6 +26,7 @@ get height {
       .viewPadding
       .bottom;
   num screenHeight = size.height - statusBar - bottomBar;
+
   return screenHeight;
 }
 
@@ -43,11 +44,8 @@ double getVerticalSize(double px) {
 double getSize(double px) {
   var height = getVerticalSize(px);
   var width = getHorizontalSize(px);
-  if (height < width) {
-    return height.toInt().toDouble();
-  } else {
-    return width.toInt().toDouble();
-  }
+
+  return height < width ? height.toInt().toDouble() : width.toInt().toDouble();
 }
 
 ///This method is used to set text font size according to Viewport
@@ -103,6 +101,7 @@ EdgeInsetsGeometry getMarginOrPadding({
     right = all;
     bottom = all;
   }
+  
   return EdgeInsets.only(
     left: getHorizontalSize(
       left ?? 0,
