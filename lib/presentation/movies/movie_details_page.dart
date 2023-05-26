@@ -184,14 +184,16 @@ class MovieDetailsPage extends StatelessWidget {
                                   ],
                                 ),
                               )
-                            : Container(
-                                margin: getMargin(top: 10),
-                                height: getVerticalSize(150),
-                                width: size.width,
-                                child: Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              ),
+                            : (movieDetailController.hasVideo.value)
+                                ? Container(
+                                    margin: getMargin(top: 10),
+                                    height: getVerticalSize(150),
+                                    width: size.width,
+                                    child: Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                  )
+                                : SizedBox(),
                       ),
 
                       Obx(
@@ -224,14 +226,16 @@ class MovieDetailsPage extends StatelessWidget {
                                   ],
                                 ),
                               )
-                            : Container(
-                                margin: getMargin(top: 10),
-                                height: getVerticalSize(150),
-                                width: size.width,
-                                child: Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              ),
+                            : (movieDetailController.hasCast.value)
+                                ? Container(
+                                    margin: getMargin(top: 10),
+                                    height: getVerticalSize(150),
+                                    width: size.width,
+                                    child: Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                  )
+                                : SizedBox(),
                       ),
                     ],
                   )

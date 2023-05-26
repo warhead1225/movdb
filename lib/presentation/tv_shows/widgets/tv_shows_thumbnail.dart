@@ -12,7 +12,7 @@ class TvShowsThumbnail extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Get.toNamed(
-        AppRoutes.movieDetails,
+        AppRoutes.tvDetails,
         arguments: tvshow.id,
       ),
       child: Container(

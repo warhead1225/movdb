@@ -180,14 +180,16 @@ class TvShowsDetails extends StatelessWidget {
                                   ],
                                 ),
                               )
-                            : Container(
-                                margin: getMargin(top: 10),
-                                height: getVerticalSize(150),
-                                width: size.width,
-                                child: Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              ),
+                            : (tvDetailsController.hasCast.value)
+                                ? Container(
+                                    margin: getMargin(top: 10),
+                                    height: getVerticalSize(150),
+                                    width: size.width,
+                                    child: Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                  )
+                                : SizedBox(),
                       ),
                     ],
                   )

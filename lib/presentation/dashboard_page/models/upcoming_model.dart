@@ -21,7 +21,7 @@ class UpcomingModel {
       title: obj['title'] ?? obj['original_tite'],
       overview: obj['overview'],
       posterPath: obj['poster_path'],
-      backdropPath: obj['backdrop_path'],
+      backdropPath: obj['backdrop_path'] ?? 'xxx',
       voteAverage: (obj["vote_average"].runtimeType is int)
           ? 0.0
           : double.parse(obj["vote_average"].toString()),

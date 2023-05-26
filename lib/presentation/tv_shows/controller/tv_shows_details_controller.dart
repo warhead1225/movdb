@@ -14,6 +14,7 @@ class TvShowsDetailsController extends GetxController {
   var releaseDate = '';
   var genre = '';
   var tvCastObjList = <TvCastModel>[].obs;
+  var hasCast = true.obs;
 
   late TvShowsDetailsModel tvDetail;
 
@@ -48,11 +49,15 @@ class TvShowsDetailsController extends GetxController {
 
       //Cast
       var tvCast = await ApiClient().getTvCast(this.tvId, 1);
-      var castList = RxList.generate(
-        tvCast.length,
-        (i) => TvCastModel.movieCastObj(tvCast[i]),
-      );
-      tvCastObjList.addAll(castList);
+      if (tvCast.isNotEmpty) {
+        var castList = RxList.generate(
+          tvCast.length,
+          (i) => TvCastModel.movieCastObj(tvCast[i]),
+        );
+        tvCastObjList.addAll(castList);
+      } else {
+        hasCast.value = false;
+      }
     } catch (e, s) {
       Logger.log(e, stackTrace: s);
     }

@@ -18,6 +18,8 @@ class MovieDetailsController extends GetxController {
   var videoObjList = <MovieVideosModel>[].obs;
   var movieCastObjList = <MovieCastModel>[].obs;
   var ytPlayer = YoutubePlayerController(initialVideoId: '');
+  var hasVideo = true.obs;
+  var hasCast = true.obs;
 
   late MovieDetailModel movieDetail;
   late MovieVideosModel movieVideos;
@@ -77,15 +79,21 @@ class MovieDetailsController extends GetxController {
             useHybridComposition: false,
           ),
         );
+      } else {
+        hasVideo.value = false;
       }
 
       //Movie Cast
       var cast = await ApiClient().getMovieCast(this.movieId);
-      var castList = RxList.generate(
-        cast.length,
-        (i) => MovieCastModel.movieCastObj(cast[i]),
-      );
-      movieCastObjList.addAll(castList);
+      if (cast.isNotEmpty) {
+        var castList = RxList.generate(
+          cast.length,
+          (i) => MovieCastModel.movieCastObj(cast[i]),
+        );
+        movieCastObjList.addAll(castList);
+      } else {
+        hasCast.value = false;
+      }
     } catch (e, s) {
       Logger.log(e, stackTrace: s);
     }
