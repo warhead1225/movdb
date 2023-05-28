@@ -11,6 +11,7 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((value) async {
+    await dotenv.load(fileName: "assets/.env");
     var deviceInfoPlugin = DeviceInfoPlugin();
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
 
