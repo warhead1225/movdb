@@ -40,8 +40,7 @@ void main() {
     await SentryFlutter.init(
       (options) {
         options.beforeSend = beforeSend;
-        options.dsn =
-            'https://065e37acb4934d1bb6fa670438066963@o171964.ingest.sentry.io/4505241906970624';
+        options.dsn = dotenv.env['SENTRY_DSN'];
         options.tracesSampleRate = 1.0;
       },
       appRunner: () => runApp(MyApp()),

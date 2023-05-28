@@ -1,11 +1,14 @@
+import 'package:movdb/core/app_export.dart';
+
 class ApiHeaders {
-  //static String imageBase() => 'https://image.tmdb.org/t/p/original/';
-  static String imageBase() => 'https://image.tmdb.org/t/p/w500/';
+  static String imageBase() => dotenv.env['IMAGE_BASE'] ?? '';
+  static String apiBase() => dotenv.env['API_BASE'] ?? '';
 
   static Map<String, String> authHeader() {
+    var apiAuth = dotenv.env['API_AUTH'];
+
     return {
-      'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YTBkYjEyYTY3OWEwMTgwYmM5NGE3MTNhN2YwZjI5YiIsInN1YiI6IjY0NWIxNDMxMTU2Y2M3MDE1ZTc4MzAyNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-b9TdDeJ94tMBg8MGF31HSEn_vc_RWcth4rY-040ItU',
+      'Authorization': 'Bearer $apiAuth',
       'Accept': 'application/json',
     };
   }

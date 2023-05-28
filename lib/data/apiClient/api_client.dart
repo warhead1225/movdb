@@ -6,13 +6,11 @@ import 'package:movdb/data/apiClient/api_headers.dart';
 class ApiClient extends GetConnect {
   // Get trendng movies and tv series
   Future<List<dynamic>> getTrending({required int page}) async {
-    // images:https://image.tmdb.org/t/p/original/
-    // https://image.tmdb.org/t/p/w500/
     var result = <dynamic>[];
     page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/trending/all/day?page=$page&language=en-US',
+        '${dotenv.env['API_BASE']}trending/all/day?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -31,7 +29,7 @@ class ApiClient extends GetConnect {
     page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/movie/now_playing?page=$page&language=en-US',
+        '${dotenv.env['API_BASE']}movie/now_playing?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -50,7 +48,7 @@ class ApiClient extends GetConnect {
     page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/movie/top_rated?page=$page&language=en-US',
+        '${dotenv.env['API_BASE']}movie/top_rated?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -69,7 +67,7 @@ class ApiClient extends GetConnect {
     page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/tv/airing_today?page=$page&language=en-US',
+        '${dotenv.env['API_BASE']}tv/airing_today?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -88,7 +86,7 @@ class ApiClient extends GetConnect {
     page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/tv/top_rated?page=$page&language=en-US',
+        '${dotenv.env['API_BASE']}tv/top_rated?page=$page&language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -107,7 +105,7 @@ class ApiClient extends GetConnect {
     page = page + 1;
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=$page',
+        '${dotenv.env['API_BASE']}movie/upcoming?language=en-US&page=$page',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -125,7 +123,7 @@ class ApiClient extends GetConnect {
     var result = <String, dynamic>{};
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/movie/$movieId',
+        '${dotenv.env['API_BASE']}movie/$movieId',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -144,7 +142,7 @@ class ApiClient extends GetConnect {
     var result = [];
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/movie/$movieId/videos',
+        '${dotenv.env['API_BASE']}movie/$movieId/videos',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -162,7 +160,7 @@ class ApiClient extends GetConnect {
     var result = <dynamic>[];
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/movie/$movieId/credits',
+        '${dotenv.env['API_BASE']}movie/$movieId/credits',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -181,7 +179,7 @@ class ApiClient extends GetConnect {
     var result = <String, dynamic>{};
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/tv/$tvId?language=en-US',
+        '${dotenv.env['API_BASE']}tv/$tvId?language=en-US',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -199,7 +197,7 @@ class ApiClient extends GetConnect {
     var result = <dynamic>[];
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/tv/$seriesId/season/$seasonNumber/credits',
+        '${dotenv.env['API_BASE']}tv/$seriesId/season/$seasonNumber/credits',
         headers: ApiHeaders.authHeader(),
       );
 
@@ -224,7 +222,7 @@ class ApiClient extends GetConnect {
 
     try {
       var response = await get(
-        'https://api.themoviedb.org/3/search/multi?query=$search&include_adult=false&language=en-US&page=$page',
+        '${dotenv.env['API_BASE']}search/multi?query=$search&include_adult=false&language=en-US&page=$page',
         headers: ApiHeaders.authHeader(),
       );
 
