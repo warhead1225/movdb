@@ -15,3 +15,4 @@ export 'package:movdb/core/utils/logger.dart';
 export 'package:movdb/core/utils/date_time_utils.dart';
 export 'package:movdb/core/utils/snackbar_util.dart';
 export 'package:movdb/widgets/no_connection_page.dart';
+export 'package:flutter_dotenv/flutter_dotenv.dart';
