@@ -46,6 +46,7 @@ class SearchPage extends StatelessWidget {
                             retry: false,
                           ),
                         ),
+                        scrollController: searchControler.scrollController,
                         addAutomaticKeepAlives: true,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,

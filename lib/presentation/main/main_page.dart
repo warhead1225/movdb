@@ -28,6 +28,7 @@ class MainPage extends StatelessWidget {
           child: Icon(
             Icons.search_sharp,
             color: Colors.teal,
+            size: 27,
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,

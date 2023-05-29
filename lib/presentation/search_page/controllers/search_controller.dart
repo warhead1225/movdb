@@ -8,6 +8,7 @@ class SearchController extends GetxController {
   final searchTextController = TextEditingController();
   final searchFocusNode = FocusNode();
   final int _numberOfPostsPerRequest = 10;
+  final scrollController = ScrollController();
 
   var searchResultListObj = <SearchModel>[].obs;
   var pagingController = PagingController<int, SearchModel>(firstPageKey: 0);
@@ -27,6 +28,13 @@ class SearchController extends GetxController {
   void onReady() {
     super.onReady();
     pagingController.addPageRequestListener((pageKey) => search(pageKey));
+    scrollController.addListener(() {
+      if (scrollController.offset >= 100) {
+        searchFocusNode.unfocus();
+        //Dismiss keyboard
+        FocusScope.of(Get.context!).requestFocus(new FocusNode());
+      }
+    });
   }
 
   @override
