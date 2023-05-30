@@ -18,19 +18,23 @@ class CastImage extends StatelessWidget {
         children: [
           Tooltip(
             message: cast.name,
-            child: Container(
-              margin: getMargin(right: 16, bottom: 10),
-              child: CustomImageView(
-                fit: BoxFit.cover,
-                url: cast.profilePath != ''
-                    ? ApiHeaders.imageBase() + cast.profilePath
-                    : 'xxxx',
-                height: getVerticalSize(170),
-                width: getHorizontalSize(150),
-                radius: BorderRadius.circular(
-                  getHorizontalSize(2),
+            child: GestureDetector(
+              onTap: () =>
+                  Get.toNamed(AppRoutes.personPage, arguments: cast.id),
+              child: Container(
+                margin: getMargin(right: 16, bottom: 10),
+                child: CustomImageView(
+                  fit: BoxFit.cover,
+                  url: cast.profilePath != ''
+                      ? ApiHeaders.imageBase() + cast.profilePath
+                      : 'xxxx',
+                  height: getVerticalSize(170),
+                  width: getHorizontalSize(150),
+                  radius: BorderRadius.circular(
+                    getHorizontalSize(2),
+                  ),
+                  alignment: Alignment.center,
                 ),
-                alignment: Alignment.center,
               ),
             ),
           ),

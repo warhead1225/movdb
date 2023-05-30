@@ -234,4 +234,58 @@ class ApiClient extends GetConnect {
 
     return result;
   }
+
+  //Artist Detail
+  Future<Map<String, dynamic>> getPersonBio(int personId) async {
+    var result = <String, dynamic>{};
+    try {
+      var response = await get(
+        '${dotenv.env['API_BASE']}person/$personId',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      result =
+          (!response.status.hasError) ? response.body : <String, dynamic>{};
+    } catch (e) {
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //Artist Movies
+  Future<List<dynamic>> getPersonMovies(int personId) async {
+    var result = <dynamic>[];
+    try {
+      var response = await get(
+        '${dotenv.env['API_BASE']}person/$personId/movie_credits',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      result =
+          (!response.status.hasError) ? response.body['cast'] : <dynamic>[];
+    } catch (e) {
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //Artis Tv-Shows
+  Future<List<dynamic>> getPersonTvShows(int personId) async {
+    var result = <dynamic>[];
+    try {
+      var response = await get(
+        '${dotenv.env['API_BASE']}person/$personId/tv_credits',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      result =
+          (!response.status.hasError) ? response.body['cast'] : <dynamic>[];
+    } catch (e) {
+      log(e.toString());
+    }
+
+    return result;
+  }
 }

@@ -3,7 +3,7 @@ class UpcomingModel {
   final String backdropPath;
   final String title;
   final String overview;
-  final String posterPath;
+  final String? posterPath;
   final double voteAverage;
 
   UpcomingModel({

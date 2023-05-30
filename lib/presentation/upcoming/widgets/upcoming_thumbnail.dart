@@ -21,7 +21,7 @@ class UpcomingThumbnail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomImageView(
-              url: ApiHeaders.imageBase() + upcoming.posterPath,
+              url: ApiHeaders.imageBase() + upcoming.posterPath!,
               margin: getMargin(bottom: 5),
               height: getVerticalSize(175),
               width: getHorizontalSize(180),

@@ -95,6 +95,20 @@ class AppStyle {
     ],
   );
 
+  static TextStyle txtRobotoBold16 = TextStyle(
+    color: ColorConstant.whiteA700A9,
+    fontSize: getFontSize(15),
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w700,
+    shadows: <Shadow>[
+      Shadow(
+        offset: Offset(2.0, 2.0),
+        blurRadius: 3.0,
+        color: Color.fromARGB(255, 0, 0, 0),
+      ),
+    ],
+  );
+
   static TextStyle txtRobotoBold34 = TextStyle(
     color: ColorConstant.whiteA700A9,
     fontSize: getFontSize(34),

@@ -96,6 +96,7 @@ class MovieDetailsController extends GetxController {
       }
     } catch (e, s) {
       Logger.log(e, stackTrace: s);
+      detailsLoaded.value = true;
     }
   }
 }

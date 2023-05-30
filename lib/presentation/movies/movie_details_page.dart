@@ -3,6 +3,7 @@ import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
 import 'package:movdb/presentation/movies/controller/movie_details_controller.dart';
 import 'package:movdb/presentation/movies/widgets/cast_image.dart';
+import 'package:movdb/widgets/content_loading.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -142,13 +143,13 @@ class MovieDetailsPage extends StatelessWidget {
                           children: [
                             Text(
                               'Overview',
-                              style: AppStyle.txtRobotoBold15,
+                              style: AppStyle.txtRobotoBold16,
                             ),
                             Container(
                               margin: getMargin(top: 10),
                               child: Text(
                                 movieDetailController.movieDetail.overView,
-                                style: AppStyle.txtRobotoRegular14,
+                                style: AppStyle.txtRobotoRegular16,
                               ),
                             ),
                           ],
@@ -166,7 +167,7 @@ class MovieDetailsPage extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Trailer',
-                                      style: AppStyle.txtRobotoBold15,
+                                      style: AppStyle.txtRobotoBold16,
                                     ),
                                     Container(
                                       margin: getMargin(top: 10),
@@ -206,7 +207,7 @@ class MovieDetailsPage extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Cast',
-                                      style: AppStyle.txtRobotoBold15,
+                                      style: AppStyle.txtRobotoBold16,
                                     ),
                                     Container(
                                       margin: getMargin(top: 10),
@@ -239,13 +240,7 @@ class MovieDetailsPage extends StatelessWidget {
                       ),
                     ],
                   )
-                : Container(
-                    width: size.width,
-                    height: size.height,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
+                : ContentLoading(),
           ),
         ),
       ),

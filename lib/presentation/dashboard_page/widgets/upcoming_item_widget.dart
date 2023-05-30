@@ -17,7 +17,7 @@ class UpcomingItemWidget extends StatelessWidget {
       margin: getMargin(right: 10),
       child: CustomImageView(
         fit: BoxFit.cover,
-        url: ApiHeaders.imageBase() + upcomingModel.posterPath,
+        url: ApiHeaders.imageBase() + upcomingModel.posterPath!,
         height: getVerticalSize(170),
         width: getHorizontalSize(180),
         radius: BorderRadius.circular(getHorizontalSize(2)),

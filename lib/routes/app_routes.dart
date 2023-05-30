@@ -2,6 +2,8 @@ import 'package:movdb/presentation/main/binding/main_page_binding.dart';
 import 'package:movdb/presentation/main/main_page.dart';
 import 'package:movdb/presentation/movies/binding/movie_details_binding.dart';
 import 'package:movdb/presentation/movies/movie_details_page.dart';
+import 'package:movdb/presentation/person/binding/person_binding.dart';
+import 'package:movdb/presentation/person/person_page.dart';
 import 'package:movdb/presentation/search_page/bindings/search_page_binding.dart';
 import 'package:movdb/presentation/search_page/search_page.dart';
 import 'package:movdb/presentation/splash_screen/splash_screen.dart';
@@ -31,6 +33,7 @@ class AppRoutes {
   static const String topRatedTvseries = '/top_rated_tv_series';
   static const String UpComingMovies = '/upcoming_movies';
   static const String searchPage = '/search_page';
+  static const String personPage = '/person_page';
 
   static List<GetPage> pages = [
     GetPage(
@@ -82,6 +85,11 @@ class AppRoutes {
       name: searchPage,
       page: () => SearchPage(),
       bindings: [SearchPageBinding()],
+    ),
+    GetPage(
+      name: personPage,
+      page: () => PersonPage(),
+      bindings: [PersonBinding()],
     ),
   ];
 }

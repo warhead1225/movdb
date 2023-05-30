@@ -3,6 +3,7 @@ import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
 import 'package:movdb/presentation/tv_shows/controller/tv_shows_details_controller.dart';
 import 'package:movdb/presentation/tv_shows/widgets/tv_cast_image.dart';
+import 'package:movdb/widgets/content_loading.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TvShowsDetails extends StatelessWidget {
@@ -193,13 +194,7 @@ class TvShowsDetails extends StatelessWidget {
                       ),
                     ],
                   )
-                : Container(
-                    width: size.width,
-                    height: size.height,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
+                : ContentLoading(),
           ),
         ),
       ),
