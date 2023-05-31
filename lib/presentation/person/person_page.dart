@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
 import 'package:movdb/presentation/person/controller/person_controller.dart';
+import 'package:movdb/presentation/person/widgets/person_movie_item_widget.dart';
+import 'package:movdb/presentation/person/widgets/person_show_item_widget.dart';
 import 'package:movdb/widgets/content_loading.dart';
 
 class PersonPage extends StatelessWidget {
@@ -155,33 +157,86 @@ class PersonPage extends StatelessWidget {
                         ),
                       ),
 
-                      Container(
-                        width: size.width,
-                        padding: getPadding(all: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Movies',
-                              style: AppStyle.txtRobotoBold16,
-                            ),
-                          ],
-                        ),
+                      //Person Movie List
+                      Obx(
+                        () => (personController.moviesLoaded.value)
+                            ? Column(
+                                children: [
+                                  Container(
+                                    width: size.width,
+                                    margin: getMargin(top: 10),
+                                    padding: getPadding(left: 10, right: 10),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Movies',
+                                          style: AppStyle.txtRobotoBold16,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: getPadding(left: 10, right: 10),
+                                    width: size.width,
+                                    height: size.height * .30,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount:
+                                          personController.movieObjList.length,
+                                      itemBuilder: (_, i) =>
+                                          PersonMovieItemWidget(
+                                        movieModel:
+                                            personController.movieObjList[i],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : SizedBox(),
                       ),
 
-                      Container(
-                        width: size.width,
-                        padding: getPadding(all: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'TV Shows',
-                              style: AppStyle.txtRobotoBold16,
-                            ),
-                          ],
-                        ),
+                      //Person Tv shows
+                      Obx(
+                        () => (personController.tvShowsLoaded.value)
+                            ? Column(
+                                children: [
+                                  Container(
+                                    width: size.width,
+                                    margin: getMargin(top: 10),
+                                    padding: getPadding(left: 10, right: 10),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Tv Shows',
+                                          style: AppStyle.txtRobotoBold16,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: getPadding(left: 10, right: 10),
+                                    width: size.width,
+                                    height: size.height * .30,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount:
+                                          personController.tvShowObjList.length,
+                                      itemBuilder: (_, i) =>
+                                          PersonShowItemWidget(
+                                        showModel:
+                                            personController.tvShowObjList[i],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : SizedBox(),
                       ),
+                      SizedBox(height: 10),
                     ],
                   )
                 : ContentLoading(),
