@@ -50,9 +50,7 @@ class MovieDetailsController extends GetxController {
       releaseDate = formatter.format(DateTime.parse(movieDetail.releaseDate));
 
       //List Genre
-      movieDetail.genres.forEach((element) {
-        genreDef.add(element['name']);
-      });
+      movieDetail.genres.forEach((element) => genreDef.add(element['name']));
       genre = genreDef.join(', ');
       detailsLoaded.value = true;
 

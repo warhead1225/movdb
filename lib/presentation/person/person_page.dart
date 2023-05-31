@@ -9,7 +9,9 @@ import 'package:movdb/presentation/person/widgets/person_show_item_widget.dart';
 import 'package:movdb/widgets/content_loading.dart';
 
 class PersonPage extends StatelessWidget {
-  final personController = Get.find<PersonController>();
+  //more than 1 dynamic instance of controller is used
+  final personController =
+      Get.put(PersonController(), tag: Get.arguments.toString());
 
   @override
   Widget build(BuildContext context) {

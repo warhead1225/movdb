@@ -6,7 +6,6 @@ class MovieDetailsBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<MovieDetailsController>(
       () => MovieDetailsController(),
-      fenix: true,
     );
   }
 }

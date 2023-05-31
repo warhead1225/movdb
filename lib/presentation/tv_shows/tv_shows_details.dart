@@ -7,7 +7,9 @@ import 'package:movdb/widgets/content_loading.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TvShowsDetails extends StatelessWidget {
-  final tvDetailsController = Get.find<TvShowsDetailsController>();
+  //more than 1 dynamic instance of controller is used
+  final tvDetailsController =
+      Get.put(TvShowsDetailsController(), tag: Get.arguments.toString());
 
   @override
   Widget build(BuildContext context) {

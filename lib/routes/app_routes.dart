@@ -1,8 +1,6 @@
 import 'package:movdb/presentation/main/binding/main_page_binding.dart';
 import 'package:movdb/presentation/main/main_page.dart';
-import 'package:movdb/presentation/movies/binding/movie_details_binding.dart';
 import 'package:movdb/presentation/movies/movie_details_page.dart';
-import 'package:movdb/presentation/person/binding/person_binding.dart';
 import 'package:movdb/presentation/person/person_page.dart';
 import 'package:movdb/presentation/search_page/bindings/search_page_binding.dart';
 import 'package:movdb/presentation/search_page/search_page.dart';
@@ -16,7 +14,6 @@ import 'package:movdb/presentation/top_rated_tv/binding/top_rated_tv_binding.dar
 import 'package:movdb/presentation/top_rated_tv/top_rated_tv_page.dart';
 import 'package:movdb/presentation/trending/bindings/trending_binding.dart';
 import 'package:movdb/presentation/trending/trending_page.dart';
-import 'package:movdb/presentation/tv_shows/binding/tv_shows_details_binding.dart';
 import 'package:movdb/presentation/tv_shows/tv_shows_details.dart';
 import 'package:movdb/presentation/upcoming/binding/upcoming_binding.dart';
 import 'package:movdb/presentation/upcoming/upcoming_page.dart';
@@ -54,12 +51,10 @@ class AppRoutes {
     GetPage(
       name: movieDetails,
       page: () => MovieDetailsPage(),
-      bindings: [MovieDetailsBinding()],
     ),
     GetPage(
       name: tvDetails,
       page: () => TvShowsDetails(),
-      bindings: [TvShowsDetailsBinding()],
     ),
     GetPage(
       name: trending,
@@ -89,7 +84,6 @@ class AppRoutes {
     GetPage(
       name: personPage,
       page: () => PersonPage(),
-      bindings: [PersonBinding()],
     ),
   ];
 }

@@ -8,7 +8,9 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetailsPage extends StatelessWidget {
-  final movieDetailController = Get.find<MovieDetailsController>();
+  //more than 1 dynamic instance of controller is used
+  final movieDetailController =
+      Get.put(MovieDetailsController(), tag: Get.arguments.toString());
 
   @override
   Widget build(BuildContext context) {
