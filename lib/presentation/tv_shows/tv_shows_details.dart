@@ -133,26 +133,28 @@ class TvShowsDetails extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Container(
-                        width: size.width,
-                        padding: getPadding(all: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Overview',
-                              style: AppStyle.txtRobotoBold15,
-                            ),
-                            Container(
-                              margin: getMargin(top: 10),
-                              child: Text(
-                                tvDetailsController.tvDetail.overView,
-                                style: AppStyle.txtRobotoRegular14,
+                      (tvDetailsController.tvDetail.overView.isNotEmpty)
+                          ? Container(
+                              width: size.width,
+                              padding: getPadding(all: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Overview',
+                                    style: AppStyle.txtRobotoBold15,
+                                  ),
+                                  Container(
+                                    margin: getMargin(top: 10),
+                                    child: Text(
+                                      tvDetailsController.tvDetail.overView,
+                                      style: AppStyle.txtRobotoRegular14,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
+                            )
+                          : SizedBox(),
                       Obx(
                         () => (tvDetailsController.tvCastObjList.isNotEmpty)
                             ? Container(

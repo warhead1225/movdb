@@ -25,6 +25,7 @@ class TvShowsPage extends StatelessWidget {
           onRefresh: () =>
               Future.sync(() => tvShowsController.pagingController.refresh()),
           child: PagedGridView<int, TVShowsModel>(
+            physics: BouncingScrollPhysics(),
             pagingController: tvShowsController.pagingController,
             builderDelegate: PagedChildBuilderDelegate<TVShowsModel>(
               itemBuilder: (context, item, index) => TvShowsThumbnail(

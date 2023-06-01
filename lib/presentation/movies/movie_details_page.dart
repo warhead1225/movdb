@@ -136,26 +136,29 @@ class MovieDetailsPage extends StatelessWidget {
                         ],
                       ),
                       //Overview
-                      Container(
-                        width: size.width,
-                        padding: getPadding(all: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Overview',
-                              style: AppStyle.txtRobotoBold16,
-                            ),
-                            Container(
-                              margin: getMargin(top: 10),
-                              child: Text(
-                                movieDetailController.movieDetail.overView,
-                                style: AppStyle.txtRobotoRegular16,
+                      (movieDetailController.movieDetail.overView.isNotEmpty)
+                          ? Container(
+                              width: size.width,
+                              padding: getPadding(all: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Overview',
+                                    style: AppStyle.txtRobotoBold16,
+                                  ),
+                                  Container(
+                                    margin: getMargin(top: 10),
+                                    child: Text(
+                                      movieDetailController
+                                          .movieDetail.overView,
+                                      style: AppStyle.txtRobotoRegular16,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
+                            )
+                          : SizedBox(),
 
                       //Video Trailer
                       Obx(

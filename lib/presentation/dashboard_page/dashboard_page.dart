@@ -29,6 +29,7 @@ class DashboardPage extends StatelessWidget {
                       () => dashBoardController.getData(),
                     ),
                     child: SingleChildScrollView(
+                      physics: BouncingScrollPhysics(),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
