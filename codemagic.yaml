@@ -3,11 +3,11 @@ workflows:
     name: Hello world workflow
     scripts:
       - |
-      cat > assets/t.txt << EOF
-      This is text
-      I want in my file.
-      And nothing else will
-      be
-      here
-      EOF
-    - cat assets/t.txt
+        cat > assets/t.txt << EOF
+        This is text
+        I want in my file.
+        And nothing else will
+        be
+        here
+        EOF
+      - cat assets/t.txt
