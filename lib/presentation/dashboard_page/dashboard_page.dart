@@ -159,7 +159,7 @@ class DashboardPage extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Trending",
+                                      "Trending Today",
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style:

@@ -61,8 +61,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         visualDensity: VisualDensity.standard,
+        useMaterial3: true,
+        appBarTheme: AppBarTheme(foregroundColor: Colors.white),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: TextButton.styleFrom(foregroundColor: Colors.white),
+        ),
       ),
-      locale: Get.deviceLocale, //for setting localization strings
+      defaultTransition: Transition.cupertino,
       title: 'movdb',
       initialBinding: InitialBindings(),
       initialRoute: AppRoutes.initialRoute,

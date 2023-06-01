@@ -18,7 +18,7 @@ class TrendingPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Trending'),
+        title: Text('Trending Today'),
       ),
       body: Container(
         width: size.width,

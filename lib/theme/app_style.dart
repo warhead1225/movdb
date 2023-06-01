@@ -136,4 +136,14 @@ class AppStyle {
     fontFamily: 'Roboto',
     fontWeight: FontWeight.bold,
   );
+
+  //
+  static ButtonStyle searchActiveFilter = OutlinedButton.styleFrom(
+    backgroundColor: Colors.teal,
+    side: BorderSide(color: Colors.teal),
+  );
+
+  static ButtonStyle searchInActiveFilter = OutlinedButton.styleFrom(
+    side: BorderSide(color: Colors.white),
+  );
 }

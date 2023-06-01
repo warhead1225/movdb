@@ -25,6 +25,7 @@ class MainPage extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           onPressed: () => Get.toNamed(AppRoutes.searchPage),
+          shape: CircleBorder(),
           child: Icon(
             Icons.search_sharp,
             color: Colors.teal,
