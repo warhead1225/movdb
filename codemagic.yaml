@@ -1,5 +1,5 @@
 workflows:
-  hello-world:
+  android-workflow:
     name: Hello world workflow
     environment:
       groups:
@@ -7,10 +7,9 @@ workflows:
     scripts:
       - |
         cat > assets/t.txt << EOF
-        This is "$API_BASE"
-        I want in my file.
-        And nothing else will
-        be
-        here
+        SENTRY_DSN='$API_BASE'
+        API_AUTH='$API_AUTH'
+        API_BASE='$API_BASE'
+        IMAGE_BASE'$IMAGE_BASE'
         EOF
       - cat assets/t.txt
