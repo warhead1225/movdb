@@ -1,10 +1,13 @@
 workflows:
   hello-world:
     name: Hello world workflow
+    environment:
+      groups:
+        - env-group
     scripts:
       - |
         cat > assets/t.txt << EOF
-        This is ${{API_BASE}}
+        This is "$API_BASE"
         I want in my file.
         And nothing else will
         be
