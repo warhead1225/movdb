@@ -24,7 +24,6 @@ class TvShowsDetails extends StatelessWidget {
         width: size.width,
         height: size.height,
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
           child: Obx(
             () => tvDetailsController.detailsLoaded.value
                 ? Column(
@@ -170,7 +169,6 @@ class TvShowsDetails extends StatelessWidget {
                                       width: size.width,
                                       height: getVerticalSize(220),
                                       child: ListView.builder(
-                                        physics: BouncingScrollPhysics(),
                                         scrollDirection: Axis.horizontal,
                                         itemCount: tvDetailsController
                                             .tvCastObjList.length,

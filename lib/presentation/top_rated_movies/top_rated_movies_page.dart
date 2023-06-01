@@ -25,7 +25,6 @@ class TopRatedMoviesPage extends StatelessWidget {
           onRefresh: () =>
               Future.sync(() => topRatedMovies.pagingController.refresh()),
           child: PagedGridView<int, TopRatedMoviesModel>(
-            physics: BouncingScrollPhysics(),
             pagingController: topRatedMovies.pagingController,
             builderDelegate: PagedChildBuilderDelegate<TopRatedMoviesModel>(
               itemBuilder: (context, item, index) =>

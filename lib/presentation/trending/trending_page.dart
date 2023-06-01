@@ -27,7 +27,6 @@ class TrendingPage extends StatelessWidget {
           onRefresh: () =>
               Future.sync(() => trendingController.pagingController.refresh()),
           child: PagedGridView<int, TrendingModel>(
-            physics: BouncingScrollPhysics(),
             pagingController: trendingController.pagingController,
             builderDelegate: PagedChildBuilderDelegate<TrendingModel>(
               itemBuilder: (context, item, index) =>

@@ -88,7 +88,6 @@ class SearchPage extends StatelessWidget {
               () => (searchControler.searchText.value.isNotEmpty)
                   ? Expanded(
                       child: PagedGridView<int, SearchModel>(
-                        physics: BouncingScrollPhysics(),
                         pagingController: searchControler.pagingController,
                         builderDelegate: PagedChildBuilderDelegate<SearchModel>(
                           itemBuilder: (context, item, index) {

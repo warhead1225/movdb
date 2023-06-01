@@ -25,7 +25,6 @@ class MovieDetailsPage extends StatelessWidget {
         width: size.width,
         height: size.height,
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
           child: Obx(
             () => movieDetailController.detailsLoaded.value
                 ? Column(
@@ -216,7 +215,6 @@ class MovieDetailsPage extends StatelessWidget {
                                       width: size.width,
                                       height: getVerticalSize(220),
                                       child: ListView.builder(
-                                        physics: BouncingScrollPhysics(),
                                         scrollDirection: Axis.horizontal,
                                         itemCount: movieDetailController
                                             .movieCastObjList.length,

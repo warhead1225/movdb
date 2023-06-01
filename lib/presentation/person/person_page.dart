@@ -26,7 +26,6 @@ class PersonPage extends StatelessWidget {
         width: size.width,
         height: size.height,
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
           child: Obx(
             () => (personController.detailsLoaded.value)
                 ? Column(

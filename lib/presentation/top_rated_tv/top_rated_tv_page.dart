@@ -25,7 +25,6 @@ class TopRatedTvPage extends StatelessWidget {
           onRefresh: () =>
               Future.sync(() => topRatedTv.pagingController.refresh()),
           child: PagedGridView<int, TopRatedTvModel>(
-            physics: BouncingScrollPhysics(),
             pagingController: topRatedTv.pagingController,
             builderDelegate: PagedChildBuilderDelegate<TopRatedTvModel>(
               itemBuilder: (context, item, index) =>
