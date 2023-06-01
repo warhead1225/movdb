@@ -2,7 +2,7 @@ workflows:
   hello-world:
     name: Hello world workflow
     scripts:
-      - cat << EOF > assets/.env
+      - cat > assets/.env << EOF
         API_BASE=${{ $API_BASE }}
         IMAGE_BASE=${{ $IMAGE_BASE }}
         API_AUTH=${{ $API_AUTH }}
