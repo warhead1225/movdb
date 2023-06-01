@@ -69,13 +69,13 @@ class CustomButton extends StatelessWidget {
         ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             prefixWidget ?? SizedBox(),
             Text(
-              text ?? "",
+              text ?? '',
               textAlign: TextAlign.center,
               style: _setFontStyle(),
             ),
             suffixWidget ?? SizedBox(),
           ])
-        : Text(text ?? "", textAlign: TextAlign.center, style: _setFontStyle());
+        : Text(text ?? '', textAlign: TextAlign.center, style: _setFontStyle());
   }
 
   _buildTextButtonStyle() {

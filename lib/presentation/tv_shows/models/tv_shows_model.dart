@@ -12,17 +12,13 @@ class TVShowsModel {
   });
 
   static TVShowsModel tvShowsObj(Map<String, dynamic> obj) {
-    if (obj['name'] == null) {
-      print(obj['id']);
-    }
-
     return TVShowsModel(
       id: obj['id'],
       title: obj['name'] ?? obj['original_name'],
       posterPath: obj['poster_path'],
-      voteAverage: (obj["vote_average"].runtimeType is int)
+      voteAverage: (obj['vote_average'].runtimeType is int)
           ? 0.0
-          : double.parse(obj["vote_average"].toString()),
+          : double.parse(obj['vote_average'].toString()),
     );
   }
 }

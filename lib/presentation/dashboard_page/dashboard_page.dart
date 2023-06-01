@@ -159,7 +159,7 @@ class DashboardPage extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Trending Today",
+                                      'Trending Today',
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style:
@@ -171,7 +171,7 @@ class DashboardPage extends StatelessWidget {
                                       onPressed: () =>
                                           Get.toNamed(AppRoutes.trending),
                                       child: Text(
-                                        "View More",
+                                        'View More',
                                         style: AppStyle.txtRobotoRegular14
                                             .copyWith(
                                           letterSpacing:
@@ -215,7 +215,7 @@ class DashboardPage extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Top Rated Movies",
+                                      'Top Rated Movies',
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style:
@@ -227,7 +227,7 @@ class DashboardPage extends StatelessWidget {
                                       onPressed: () =>
                                           Get.toNamed(AppRoutes.topRatedMovies),
                                       child: Text(
-                                        "View More",
+                                        'View More',
                                         style: AppStyle.txtRobotoRegular14
                                             .copyWith(
                                           letterSpacing:
@@ -272,7 +272,7 @@ class DashboardPage extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Top Rated Tv Series",
+                                      'Top Rated Tv Series',
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style:
@@ -285,7 +285,7 @@ class DashboardPage extends StatelessWidget {
                                         AppRoutes.topRatedTvseries,
                                       ),
                                       child: Text(
-                                        "View More",
+                                        'View More',
                                         style: AppStyle.txtRobotoRegular14
                                             .copyWith(
                                           letterSpacing:
@@ -331,7 +331,7 @@ class DashboardPage extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Upcoming Movies",
+                                      'Upcoming Movies',
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style:
@@ -343,7 +343,7 @@ class DashboardPage extends StatelessWidget {
                                       onPressed: () =>
                                           Get.toNamed(AppRoutes.UpComingMovies),
                                       child: Text(
-                                        "View More",
+                                        'View More',
                                         style: AppStyle.txtRobotoRegular14
                                             .copyWith(
                                           letterSpacing:

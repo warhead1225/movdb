@@ -11,7 +11,7 @@ class Logger {
 
   static void log(dynamic data, {StackTrace? stackTrace}) async {
     if (_logMode == LogMode.debug) {
-      dev.log("Error: $data$stackTrace");
+      dev.log('Error: $data$stackTrace');
     } else {
       await Sentry.captureException(
         data,

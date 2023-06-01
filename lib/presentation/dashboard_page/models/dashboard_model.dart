@@ -18,7 +18,7 @@ class DashboardModel {
       overview: obj['overview'],
       posterPath: obj['poster_path'],
       backdropPath: obj['backdrop_path'],
-      voteAverage: obj["vote_average"],
+      voteAverage: obj['vote_average'],
       mediaType: obj['media_type'],
     );
   }
@@ -31,7 +31,7 @@ class DashboardModel {
       overview: obj['overview'],
       posterPath: obj['poster_path'],
       backdropPath: obj['backdrop_path'],
-      voteAverage: obj["vote_average"],
+      voteAverage: obj['vote_average'],
     );
   }
 
@@ -40,7 +40,7 @@ class DashboardModel {
       id: obj['id'],
       title: obj['title'] ?? obj['name'],
       posterPath: obj['poster_path'],
-      voteAverage: obj["vote_average"],
+      voteAverage: obj['vote_average'],
     );
   }
 
@@ -51,9 +51,9 @@ class DashboardModel {
       title: obj['title'] ?? obj['name'],
       overview: obj['overview'],
       posterPath: obj['poster_path'],
-      voteAverage: (obj["vote_average"].runtimeType is int)
+      voteAverage: (obj['vote_average'].runtimeType is int)
           ? 0.0
-          : double.parse(obj["vote_average"].toString()),
+          : double.parse(obj['vote_average'].toString()),
     );
   }
 }

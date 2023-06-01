@@ -244,7 +244,6 @@ class ApiClient extends GetConnect {
       );
 
       result = (!response.status.hasError) ? response.body['results'] : [];
-      print(result);
     } catch (e) {
       //log error
       log(e.toString());
@@ -279,7 +278,6 @@ class ApiClient extends GetConnect {
         '${dotenv.env['API_BASE']}person/$personId/movie_credits',
         headers: ApiHeaders.authHeader(),
       );
-
       result =
           (!response.status.hasError) ? response.body['cast'] : <dynamic>[];
     } catch (e) {
