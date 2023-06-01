@@ -3,8 +3,8 @@ workflows:
     name: Hello world workflow
     scripts:
       - cat > assets/.env << EOF
-        API_BASE=${{ API_BASE }}
-        IMAGE_BASE=${{ IMAGE_BASE }}
-        API_AUTH=${{ API_AUTH }}
-        SENTRY_DSN=${{ SENTRY_DSN }}
+        API_BASE="$API_BASE"
+        IMAGE_BASE=$"IMAGE_BASE"
+        API_AUTH="$API_AUTH"
+        SENTRY_DSN="$SENTRY_DSN"
         EOF
