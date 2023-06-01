@@ -3,5 +3,5 @@ workflows:
     name: Hello world workflow
     scripts:
       - cat > assets/.env2 << EOF 
-      This is an input stream literal 
+        This is an input stream literal
       EOF
