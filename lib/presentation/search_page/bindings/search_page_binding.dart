@@ -4,6 +4,6 @@ import 'package:movdb/presentation/search_page/controllers/search_controller.dar
 class SearchPageBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<SearchController>(() => SearchController());
+    Get.lazyPut<SearchShowController>(() => SearchShowController());
   }
 }

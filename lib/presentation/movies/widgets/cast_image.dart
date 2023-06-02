@@ -13,40 +13,50 @@ class CastImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(
+    return Container(
+      width: getHorizontalSize(150),
+      margin: getMargin(right: 16),
       child: Column(
         children: [
           Tooltip(
             message: cast.name,
-            child: Container(
-              margin: getMargin(right: 16, bottom: 10),
+            child: GestureDetector(
+              onTap: () =>
+                  Get.toNamed(AppRoutes.personPage, arguments: cast.id),
               child: CustomImageView(
                 fit: BoxFit.cover,
+                height: getVerticalSize(180),
+                width: getHorizontalSize(150),
+                radius: BorderRadius.circular(10),
+                alignment: Alignment.center,
                 url: cast.profilePath != ''
                     ? ApiHeaders.imageBase() + cast.profilePath
                     : 'xxxx',
-                height: getVerticalSize(170),
-                width: getHorizontalSize(150),
-                radius: BorderRadius.circular(
-                  getHorizontalSize(2),
-                ),
-                alignment: Alignment.center,
               ),
             ),
           ),
-          Text(
-            cast.name,
-            style: AppStyle.txtRobotoBold12,
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.fade,
+          Container(
+            margin: getMargin(top: 5, bottom: 5),
+            child: Tooltip(
+              message: cast.name,
+              child: Text(
+                cast.name,
+                style: AppStyle.txtRobotoBold12,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.fade,
+              ),
+            ),
           ),
-          Text(
-            cast.character,
-            style: AppStyle.txtRobotoBold12,
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.fade,
+          Tooltip(
+            message: cast.character,
+            child: Text(
+              cast.character,
+              style: AppStyle.txtRobotoRegular12,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.fade,
+            ),
           ),
         ],
       ),

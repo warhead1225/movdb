@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
-import 'package:movdb/presentation/trending/models/trending_model.dart';
+import 'package:movdb/presentation/tv_shows/models/tv_shows_model.dart';
 
-class TrendingItemWidget extends StatelessWidget {
-  final TrendingModel trendingModel;
+class PersonShowItemWidget extends StatelessWidget {
+  final TVShowsModel showModel;
 
-  const TrendingItemWidget({Key? key, required this.trendingModel})
+  const PersonShowItemWidget({Key? key, required this.showModel})
       : super(key: key);
 
   @override
@@ -16,16 +16,14 @@ class TrendingItemWidget extends StatelessWidget {
       margin: getMargin(right: 10),
       child: CustomImageView(
         fit: BoxFit.cover,
-        url: ApiHeaders.imageBase() + trendingModel.posterPath,
+        url: ApiHeaders.imageBase() + showModel.posterPath,
         height: getVerticalSize(170),
         width: getHorizontalSize(180),
         radius: BorderRadius.circular(10),
         alignment: Alignment.center,
         onTap: () => Get.toNamed(
-          (trendingModel.mediaType.toLowerCase() == 'movie')
-              ? AppRoutes.movieDetails
-              : AppRoutes.tvDetails,
-          arguments: trendingModel.id,
+          AppRoutes.tvDetails,
+          arguments: showModel.id,
         ),
       ),
     );

@@ -20,7 +20,7 @@ class NoConnectionPage extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Text(
-            "Please check your connection and try again",
+            'Please check your connection and try again',
             style: AppStyle.txtRobotoRegular14,
             textAlign: TextAlign.center,
           ),

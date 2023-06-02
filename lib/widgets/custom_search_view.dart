@@ -73,7 +73,7 @@ class CustomSearchView extends StatelessWidget {
 
   _buildDecoration() {
     return InputDecoration(
-      hintText: hintText ?? "",
+      hintText: hintText ?? '',
       hintStyle: _setFontStyle(),
       border: _setBorderStyle(),
       enabledBorder: _setBorderStyle(),

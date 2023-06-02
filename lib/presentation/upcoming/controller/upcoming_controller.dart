@@ -31,10 +31,12 @@ class UpcomingController extends GetxController {
       var upcomingList = await ApiClient().getUpcoming(page: pageKey);
       var isLastPage = upcomingList.length < _numberOfPostsPerRequest;
 
-      upcomingListObj = List.generate(
-        upcomingList.length,
-        (i) => UpcomingModel.upcomingModelObj(upcomingList[i]),
-      );
+      for (var upcoming in upcomingList) {
+        var upcomingObj = UpcomingModel.upcomingModelObj(upcoming);
+        if (upcomingObj.posterPath != null) {
+          upcomingListObj.add(upcomingObj);
+        }
+      }
 
       if (isLastPage) {
         pagingController.appendLastPage(upcomingListObj);

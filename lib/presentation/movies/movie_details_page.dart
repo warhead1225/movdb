@@ -3,11 +3,14 @@ import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
 import 'package:movdb/presentation/movies/controller/movie_details_controller.dart';
 import 'package:movdb/presentation/movies/widgets/cast_image.dart';
+import 'package:movdb/widgets/content_loading.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetailsPage extends StatelessWidget {
-  final movieDetailController = Get.find<MovieDetailsController>();
+  //more than 1 dynamic instance of controller is used
+  final movieDetailController =
+      Get.put(MovieDetailsController(), tag: Get.arguments.toString());
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,6 @@ class MovieDetailsPage extends StatelessWidget {
         width: size.width,
         height: size.height,
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
           child: Obx(
             () => movieDetailController.detailsLoaded.value
                 ? Column(
@@ -51,6 +53,7 @@ class MovieDetailsPage extends StatelessWidget {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    //Poster image
                                     Container(
                                       margin: getMargin(right: 10),
                                       child: CustomImageView(
@@ -59,6 +62,7 @@ class MovieDetailsPage extends StatelessWidget {
                                                 .movieDetail.posterPath,
                                         height: getVerticalSize(180),
                                         width: getHorizontalSize(130),
+                                        radius: BorderRadius.circular(10),
                                       ),
                                     ),
                                     Expanded(
@@ -134,26 +138,29 @@ class MovieDetailsPage extends StatelessWidget {
                         ],
                       ),
                       //Overview
-                      Container(
-                        width: size.width,
-                        padding: getPadding(all: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Overview',
-                              style: AppStyle.txtRobotoBold15,
-                            ),
-                            Container(
-                              margin: getMargin(top: 10),
-                              child: Text(
-                                movieDetailController.movieDetail.overView,
-                                style: AppStyle.txtRobotoRegular14,
+                      (movieDetailController.movieDetail.overView.isNotEmpty)
+                          ? Container(
+                              width: size.width,
+                              padding: getPadding(all: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Overview',
+                                    style: AppStyle.txtRobotoBold16,
+                                  ),
+                                  Container(
+                                    margin: getMargin(top: 10),
+                                    child: Text(
+                                      movieDetailController
+                                          .movieDetail.overView,
+                                      style: AppStyle.txtRobotoRegular16,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
+                            )
+                          : SizedBox(),
 
                       //Video Trailer
                       Obx(
@@ -166,7 +173,7 @@ class MovieDetailsPage extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Trailer',
-                                      style: AppStyle.txtRobotoBold15,
+                                      style: AppStyle.txtRobotoBold16,
                                     ),
                                     Container(
                                       margin: getMargin(top: 10),
@@ -178,6 +185,7 @@ class MovieDetailsPage extends StatelessWidget {
                                         bottomActions: [
                                           CurrentPosition(),
                                           ProgressBar(isExpanded: true),
+                                          RemainingDuration(),
                                         ],
                                       ),
                                     ),
@@ -206,14 +214,13 @@ class MovieDetailsPage extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Cast',
-                                      style: AppStyle.txtRobotoBold15,
+                                      style: AppStyle.txtRobotoBold16,
                                     ),
                                     Container(
                                       margin: getMargin(top: 10),
                                       width: size.width,
-                                      height: getVerticalSize(220),
+                                      height: getVerticalSize(240),
                                       child: ListView.builder(
-                                        physics: BouncingScrollPhysics(),
                                         scrollDirection: Axis.horizontal,
                                         itemCount: movieDetailController
                                             .movieCastObjList.length,
@@ -239,13 +246,7 @@ class MovieDetailsPage extends StatelessWidget {
                       ),
                     ],
                   )
-                : Container(
-                    width: size.width,
-                    height: size.height,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
+                : ContentLoading(),
           ),
         ),
       ),

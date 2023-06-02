@@ -3,7 +3,7 @@ class UpcomingModel {
   final String backdropPath;
   final String title;
   final String overview;
-  final String posterPath;
+  final String? posterPath;
   final double voteAverage;
 
   UpcomingModel({
@@ -22,9 +22,9 @@ class UpcomingModel {
       overview: obj['overview'],
       posterPath: obj['poster_path'],
       backdropPath: obj['backdrop_path'] ?? 'xxx',
-      voteAverage: (obj["vote_average"].runtimeType is int)
+      voteAverage: (obj['vote_average'].runtimeType is int)
           ? 0.0
-          : double.parse(obj["vote_average"].toString()),
+          : double.parse(obj['vote_average'].toString()),
     );
   }
 }

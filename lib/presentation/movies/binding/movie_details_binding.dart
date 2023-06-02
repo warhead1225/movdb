@@ -4,6 +4,8 @@ import 'package:movdb/presentation/movies/controller/movie_details_controller.da
 class MovieDetailsBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<MovieDetailsController>(() => MovieDetailsController());
+    Get.lazyPut<MovieDetailsController>(
+      () => MovieDetailsController(),
+    );
   }
 }

@@ -3,7 +3,7 @@ import 'package:movdb/core/app_export.dart';
 import 'package:movdb/presentation/search_page/controllers/search_controller.dart';
 
 class SearchTextField extends StatelessWidget {
-  final SearchController controller;
+  final SearchShowController controller;
   final VoidCallback clearSearch;
 
   const SearchTextField({
@@ -23,10 +23,6 @@ class SearchTextField extends StatelessWidget {
         onSubmitted: (str) => controller.searchText.value = str,
         style: TextStyle(color: ColorConstant.whiteA700),
         decoration: InputDecoration(
-          label: Text(
-            'Movie/Series Title',
-            style: AppStyle.txtRobotoRegular14,
-          ),
           prefixIcon: Icon(
             Icons.search_sharp,
             color: ColorConstant.whiteA700,
@@ -42,7 +38,14 @@ class SearchTextField extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             gapPadding: 5,
             borderSide: BorderSide(color: Colors.white),
-            borderRadius: BorderRadius.circular(8.0),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          contentPadding: getPadding(all: 3),
+          label: Obx(
+            () => Text(
+              'Search for ${controller.searchLabel.value}',
+              style: AppStyle.txtRobotoRegular14,
+            ),
           ),
         ),
       ),

@@ -215,20 +215,90 @@ class ApiClient extends GetConnect {
   Future<List<dynamic>> search({
     required int page,
     required String search,
+    required int filter,
   }) async {
     var result = [];
     search = search.trim().toLowerCase();
     page = page + 1;
 
+    var searchFilter = '';
+
     try {
+      switch (filter) {
+        case 0:
+          searchFilter = 'movie';
+          break;
+        case 1:
+          searchFilter = 'tv';
+          break;
+        case 2:
+          searchFilter = 'person';
+          break;
+        default:
+          searchFilter = 'movie';
+      }
+
       var response = await get(
-        '${dotenv.env['API_BASE']}search/multi?query=$search&include_adult=false&language=en-US&page=$page',
+        '${dotenv.env['API_BASE']}search/$searchFilter?query=$search&include_adult=false&language=en-US&page=$page',
         headers: ApiHeaders.authHeader(),
       );
 
       result = (!response.status.hasError) ? response.body['results'] : [];
     } catch (e) {
       //log error
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //Artist Detail
+  Future<Map<String, dynamic>> getPersonBio(int personId) async {
+    var result = <String, dynamic>{};
+    try {
+      var response = await get(
+        '${dotenv.env['API_BASE']}person/$personId',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      result =
+          (!response.status.hasError) ? response.body : <String, dynamic>{};
+    } catch (e) {
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //Artist Movies
+  Future<List<dynamic>> getPersonMovies(int personId) async {
+    var result = <dynamic>[];
+    try {
+      var response = await get(
+        '${dotenv.env['API_BASE']}person/$personId/movie_credits',
+        headers: ApiHeaders.authHeader(),
+      );
+      result =
+          (!response.status.hasError) ? response.body['cast'] : <dynamic>[];
+    } catch (e) {
+      log(e.toString());
+    }
+
+    return result;
+  }
+
+  //Artis Tv-Shows
+  Future<List<dynamic>> getPersonTvShows(int personId) async {
+    var result = <dynamic>[];
+    try {
+      var response = await get(
+        '${dotenv.env['API_BASE']}person/$personId/tv_credits',
+        headers: ApiHeaders.authHeader(),
+      );
+
+      result =
+          (!response.status.hasError) ? response.body['cast'] : <dynamic>[];
+    } catch (e) {
       log(e.toString());
     }
 

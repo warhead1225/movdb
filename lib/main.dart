@@ -11,41 +11,45 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((value) async {
-    await dotenv.load(fileName: "assets/.env");
-    var deviceInfoPlugin = DeviceInfoPlugin();
+    await dotenv.load(fileName: 'assets/.env');
+    final deviceInfoPlugin = DeviceInfoPlugin();
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
 
-    Future<SentryEvent> beforeSend(SentryEvent event, {dynamic hint}) async {
-      var extraData = <String, String>{};
-      if (GetPlatform.isAndroid) {
-        var d = await deviceInfoPlugin.androidInfo;
-        extraData.addAll({
-          'OS version': d.version.release,
-          'Model': d.model,
-          'Manufacturer': d.manufacturer,
-        });
-      } //ios
-      else {
-        var d = await deviceInfoPlugin.iosInfo;
-        extraData.addAll({
-          'OS version': d.systemVersion,
-          'Model': d.model,
-          'Manufacturer': d.name,
-        });
+    if (kReleaseMode) {
+      Future<SentryEvent> beforeSend(SentryEvent event, {dynamic hint}) async {
+        var extraData = <String, String>{};
+        if (GetPlatform.isAndroid) {
+          var d = await deviceInfoPlugin.androidInfo;
+          extraData.addAll({
+            'OS version': d.version.release,
+            'Model': d.model,
+            'Manufacturer': d.manufacturer,
+          });
+        } //ios
+        else {
+          var d = await deviceInfoPlugin.iosInfo;
+          extraData.addAll({
+            'OS version': d.systemVersion,
+            'Model': d.model,
+            'Manufacturer': d.name,
+          });
+        }
+        event = event.copyWith(tags: extraData);
+
+        return event;
       }
-      event = event.copyWith(tags: extraData);
 
-      return event;
+      await SentryFlutter.init(
+        (options) {
+          options.beforeSend = beforeSend;
+          options.dsn = dotenv.env['SENTRY_DSN'];
+          options.tracesSampleRate = 1.0;
+        },
+        appRunner: () => runApp(MyApp()),
+      );
+    } else {
+      runApp(MyApp());
     }
-
-    await SentryFlutter.init(
-      (options) {
-        options.beforeSend = beforeSend;
-        options.dsn = dotenv.env['SENTRY_DSN'];
-        options.tracesSampleRate = 1.0;
-      },
-      appRunner: () => runApp(MyApp()),
-    );
   });
 }
 
@@ -57,9 +61,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         visualDensity: VisualDensity.standard,
+        useMaterial3: true,
+        appBarTheme: AppBarTheme(foregroundColor: Colors.white),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: TextButton.styleFrom(foregroundColor: Colors.white),
+        ),
       ),
-      locale: Get.deviceLocale, //for setting localization strings
-      title: 'movdb',
+      title: 'MovDB',
       initialBinding: InitialBindings(),
       initialRoute: AppRoutes.initialRoute,
       getPages: AppRoutes.pages,

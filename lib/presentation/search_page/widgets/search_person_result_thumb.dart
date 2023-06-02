@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
+import 'package:movdb/presentation/search_page/controllers/search_controller.dart';
 import 'package:movdb/presentation/search_page/models/search_model.dart';
 
-class SearchResultThumbnail extends StatelessWidget {
+class SearchPersonResultThumb extends StatelessWidget {
   final SearchModel searchResult;
+  final controller = Get.find<SearchShowController>();
 
-  const SearchResultThumbnail({Key? key, required this.searchResult})
+  SearchPersonResultThumb({Key? key, required this.searchResult})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Get.toNamed(
-        (searchResult.mediaType.toLowerCase() == 'movie')
-            ? AppRoutes.movieDetails
-            : AppRoutes.tvDetails,
-        arguments: searchResult.id,
+        AppRoutes.personPage,
+        arguments: searchResult.personId,
       ),
       child: Container(
         width: getHorizontalSize(150),
@@ -25,7 +25,7 @@ class SearchResultThumbnail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomImageView(
-              url: ApiHeaders.imageBase() + searchResult.posterPath,
+              url: ApiHeaders.imageBase() + searchResult.profilePath!,
               margin: getMargin(bottom: 5),
               height: getVerticalSize(175),
               width: getHorizontalSize(180),
@@ -34,9 +34,9 @@ class SearchResultThumbnail extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             Tooltip(
-              message: searchResult.title,
+              message: searchResult.name,
               child: Text(
-                searchResult.title,
+                searchResult.name!,
                 style: AppStyle.txtRobotoRegular14,
                 maxLines: 2,
                 overflow: TextOverflow.fade,

@@ -18,7 +18,7 @@ class TrendingPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Trending'),
+        title: Text('Trending Today'),
       ),
       body: Container(
         width: size.width,
@@ -27,7 +27,6 @@ class TrendingPage extends StatelessWidget {
           onRefresh: () =>
               Future.sync(() => trendingController.pagingController.refresh()),
           child: PagedGridView<int, TrendingModel>(
-            physics: BouncingScrollPhysics(),
             pagingController: trendingController.pagingController,
             builderDelegate: PagedChildBuilderDelegate<TrendingModel>(
               itemBuilder: (context, item, index) =>

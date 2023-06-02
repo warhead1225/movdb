@@ -5,7 +5,7 @@ class AppStyle {
   static TextStyle txtRobotoRegular12 = TextStyle(
     color: ColorConstant.whiteA70090,
     fontSize: getFontSize(
-      14,
+      12,
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
@@ -95,6 +95,20 @@ class AppStyle {
     ],
   );
 
+  static TextStyle txtRobotoBold16 = TextStyle(
+    color: ColorConstant.whiteA700A9,
+    fontSize: getFontSize(15),
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w700,
+    shadows: <Shadow>[
+      Shadow(
+        offset: Offset(2.0, 2.0),
+        blurRadius: 3.0,
+        color: Color.fromARGB(255, 0, 0, 0),
+      ),
+    ],
+  );
+
   static TextStyle txtRobotoBold34 = TextStyle(
     color: ColorConstant.whiteA700A9,
     fontSize: getFontSize(34),
@@ -121,5 +135,15 @@ class AppStyle {
     fontSize: getFontSize(20),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.bold,
+  );
+
+  //
+  static ButtonStyle searchActiveFilter = OutlinedButton.styleFrom(
+    backgroundColor: Colors.teal,
+    side: BorderSide(color: Colors.teal),
+  );
+
+  static ButtonStyle searchInActiveFilter = OutlinedButton.styleFrom(
+    side: BorderSide(color: Colors.white),
   );
 }

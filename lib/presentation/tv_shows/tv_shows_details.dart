@@ -3,10 +3,13 @@ import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
 import 'package:movdb/presentation/tv_shows/controller/tv_shows_details_controller.dart';
 import 'package:movdb/presentation/tv_shows/widgets/tv_cast_image.dart';
+import 'package:movdb/widgets/content_loading.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TvShowsDetails extends StatelessWidget {
-  final tvDetailsController = Get.find<TvShowsDetailsController>();
+  //more than 1 dynamic instance of controller is used
+  final tvDetailsController =
+      Get.put(TvShowsDetailsController(), tag: Get.arguments.toString());
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,6 @@ class TvShowsDetails extends StatelessWidget {
         width: size.width,
         height: size.height,
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
           child: Obx(
             () => tvDetailsController.detailsLoaded.value
                 ? Column(
@@ -50,6 +52,7 @@ class TvShowsDetails extends StatelessWidget {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    //Poster
                                     Container(
                                       margin: getMargin(right: 10),
                                       child: CustomImageView(
@@ -58,6 +61,7 @@ class TvShowsDetails extends StatelessWidget {
                                                 .tvDetail.posterPath,
                                         height: getVerticalSize(180),
                                         width: getHorizontalSize(130),
+                                        radius: BorderRadius.circular(10),
                                       ),
                                     ),
                                     Expanded(
@@ -131,26 +135,28 @@ class TvShowsDetails extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Container(
-                        width: size.width,
-                        padding: getPadding(all: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Overview',
-                              style: AppStyle.txtRobotoBold15,
-                            ),
-                            Container(
-                              margin: getMargin(top: 10),
-                              child: Text(
-                                tvDetailsController.tvDetail.overView,
-                                style: AppStyle.txtRobotoRegular14,
+                      (tvDetailsController.tvDetail.overView.isNotEmpty)
+                          ? Container(
+                              width: size.width,
+                              padding: getPadding(all: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Overview',
+                                    style: AppStyle.txtRobotoBold15,
+                                  ),
+                                  Container(
+                                    margin: getMargin(top: 10),
+                                    child: Text(
+                                      tvDetailsController.tvDetail.overView,
+                                      style: AppStyle.txtRobotoRegular14,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
+                            )
+                          : SizedBox(),
                       Obx(
                         () => (tvDetailsController.tvCastObjList.isNotEmpty)
                             ? Container(
@@ -167,7 +173,6 @@ class TvShowsDetails extends StatelessWidget {
                                       width: size.width,
                                       height: getVerticalSize(220),
                                       child: ListView.builder(
-                                        physics: BouncingScrollPhysics(),
                                         scrollDirection: Axis.horizontal,
                                         itemCount: tvDetailsController
                                             .tvCastObjList.length,
@@ -193,13 +198,7 @@ class TvShowsDetails extends StatelessWidget {
                       ),
                     ],
                   )
-                : Container(
-                    width: size.width,
-                    height: size.height,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
+                : ContentLoading(),
           ),
         ),
       ),

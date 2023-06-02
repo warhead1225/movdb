@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_headers.dart';
-import 'package:movdb/presentation/movies/models/movie_model.dart';
+import 'package:movdb/presentation/search_page/controllers/search_controller.dart';
+import 'package:movdb/presentation/search_page/models/search_model.dart';
 
-class MovieThumbnail extends StatelessWidget {
-  final MovieModel movie;
-  const MovieThumbnail({
-    Key? key,
-    required this.movie,
-  }) : super(key: key);
+class SearchMovTvResultThumb extends StatelessWidget {
+  final SearchModel searchResult;
+  final controller = Get.find<SearchShowController>();
+  SearchMovTvResultThumb({Key? key, required this.searchResult})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Get.toNamed(
-        AppRoutes.movieDetails,
-        arguments: movie.id,
+        (controller.searchFilterActive.value == 0)
+            ? AppRoutes.movieDetails
+            : AppRoutes.tvDetails,
+        arguments: searchResult.id,
       ),
       child: Container(
         width: getHorizontalSize(150),
@@ -24,18 +26,18 @@ class MovieThumbnail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomImageView(
-              url: ApiHeaders.imageBase() + movie.posterPath,
-              margin: getMargin(bottom: 3),
-              height: getVerticalSize(162),
+              url: ApiHeaders.imageBase() + searchResult.posterPath!,
+              margin: getMargin(bottom: 5),
+              height: getVerticalSize(175),
               width: getHorizontalSize(180),
               radius: BorderRadius.circular(10),
               alignment: Alignment.center,
               fit: BoxFit.cover,
             ),
             Tooltip(
-              message: movie.title,
+              message: searchResult.title,
               child: Text(
-                movie.title,
+                searchResult.title!,
                 style: AppStyle.txtRobotoRegular14,
                 maxLines: 2,
                 overflow: TextOverflow.fade,
