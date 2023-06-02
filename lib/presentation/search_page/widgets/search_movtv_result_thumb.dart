@@ -6,7 +6,7 @@ import 'package:movdb/presentation/search_page/models/search_model.dart';
 
 class SearchMovTvResultThumb extends StatelessWidget {
   final SearchModel searchResult;
-  final controller = Get.find<SearchController>();
+  final controller = Get.find<SearchShowController>();
   SearchMovTvResultThumb({Key? key, required this.searchResult})
       : super(key: key);
 

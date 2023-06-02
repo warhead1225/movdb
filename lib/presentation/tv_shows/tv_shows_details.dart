@@ -52,6 +52,7 @@ class TvShowsDetails extends StatelessWidget {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    //Poster
                                     Container(
                                       margin: getMargin(right: 10),
                                       child: CustomImageView(
@@ -60,6 +61,7 @@ class TvShowsDetails extends StatelessWidget {
                                                 .tvDetail.posterPath,
                                         height: getVerticalSize(180),
                                         width: getHorizontalSize(130),
+                                        radius: BorderRadius.circular(10),
                                       ),
                                     ),
                                     Expanded(

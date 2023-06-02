@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 // This is where the magic happens.
@@ -101,7 +103,7 @@ EdgeInsetsGeometry getMarginOrPadding({
     right = all;
     bottom = all;
   }
-  
+
   return EdgeInsets.only(
     left: getHorizontalSize(
       left ?? 0,

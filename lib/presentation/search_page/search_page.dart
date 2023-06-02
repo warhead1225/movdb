@@ -9,7 +9,7 @@ import 'package:movdb/presentation/search_page/widgets/search_person_result_thum
 import 'package:movdb/widgets/no_items_found.dart';
 
 class SearchPage extends StatelessWidget {
-  final searchControler = Get.find<SearchController>();
+  final searchControler = Get.find<SearchShowController>();
 
   @override
   Widget build(BuildContext context) {

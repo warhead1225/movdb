@@ -4,7 +4,7 @@ import 'package:movdb/core/app_export.dart';
 import 'package:movdb/data/apiClient/api_client.dart';
 import 'package:movdb/presentation/search_page/models/search_model.dart';
 
-class SearchController extends GetxController {
+class SearchShowController extends GetxController {
   final searchTextController = TextEditingController();
   final searchFocusNode = FocusNode();
   final int _numberOfPostsPerRequest = 10;

@@ -11,18 +11,13 @@ class SplashScreen extends GetWidget<SplashController> {
         extendBodyBehindAppBar: true,
         backgroundColor: ColorConstant.whiteA700,
         body: Container(
+          color: Colors.black87,
           width: size.width,
           height: size.height,
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  ImageConstant.imgAppIcon,
-                  width: size.width * .5,
-                ),
-                Text('MovDB', style: AppStyle.txtRobotoSplashScreen),
-              ],
+            child: Image.asset(
+              ImageConstant.imgAppIcon,
+              width: size.width * .5,
             ),
           ),
         ),

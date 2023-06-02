@@ -53,6 +53,7 @@ class MovieDetailsPage extends StatelessWidget {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    //Poster image
                                     Container(
                                       margin: getMargin(right: 10),
                                       child: CustomImageView(
@@ -61,6 +62,7 @@ class MovieDetailsPage extends StatelessWidget {
                                                 .movieDetail.posterPath,
                                         height: getVerticalSize(180),
                                         width: getHorizontalSize(130),
+                                        radius: BorderRadius.circular(10),
                                       ),
                                     ),
                                     Expanded(
@@ -183,6 +185,7 @@ class MovieDetailsPage extends StatelessWidget {
                                         bottomActions: [
                                           CurrentPosition(),
                                           ProgressBar(isExpanded: true),
+                                          RemainingDuration(),
                                         ],
                                       ),
                                     ),
@@ -216,7 +219,7 @@ class MovieDetailsPage extends StatelessWidget {
                                     Container(
                                       margin: getMargin(top: 10),
                                       width: size.width,
-                                      height: getVerticalSize(220),
+                                      height: getVerticalSize(240),
                                       child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
                                         itemCount: movieDetailController

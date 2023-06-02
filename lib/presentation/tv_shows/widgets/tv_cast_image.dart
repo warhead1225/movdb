@@ -27,9 +27,7 @@ class TvCastImage extends StatelessWidget {
                     : 'xxxx',
                 height: getVerticalSize(170),
                 width: getHorizontalSize(150),
-                radius: BorderRadius.circular(
-                  getHorizontalSize(2),
-                ),
+                radius: BorderRadius.circular(10),
                 alignment: Alignment.center,
               ),
             ),

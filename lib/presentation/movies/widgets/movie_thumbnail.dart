@@ -25,8 +25,8 @@ class MovieThumbnail extends StatelessWidget {
           children: [
             CustomImageView(
               url: ApiHeaders.imageBase() + movie.posterPath,
-              margin: getMargin(bottom: 5),
-              height: getVerticalSize(175),
+              margin: getMargin(bottom: 3),
+              height: getVerticalSize(162),
               width: getHorizontalSize(180),
               radius: BorderRadius.circular(10),
               alignment: Alignment.center,

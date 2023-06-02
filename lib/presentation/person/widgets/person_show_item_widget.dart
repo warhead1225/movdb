@@ -19,7 +19,7 @@ class PersonShowItemWidget extends StatelessWidget {
         url: ApiHeaders.imageBase() + showModel.posterPath,
         height: getVerticalSize(170),
         width: getHorizontalSize(180),
-        radius: BorderRadius.circular(getHorizontalSize(2)),
+        radius: BorderRadius.circular(10),
         alignment: Alignment.center,
         onTap: () => Get.toNamed(
           AppRoutes.tvDetails,

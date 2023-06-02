@@ -3,7 +3,7 @@ import 'package:movdb/core/app_export.dart';
 import 'package:movdb/presentation/search_page/controllers/search_controller.dart';
 
 class SearchTextField extends StatelessWidget {
-  final SearchController controller;
+  final SearchShowController controller;
   final VoidCallback clearSearch;
 
   const SearchTextField({

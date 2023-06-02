@@ -22,9 +22,13 @@ class PersonModel {
   static PersonModel personObj(Map<String, dynamic> obj) {
     var formatter = DateFormat('MMM d, y');
     var yrFormatter = DateFormat('y');
-    var birthday = formatter.format(DateTime.parse(obj['birthday']));
-    var age = DateTime.now().year -
-        int.parse(yrFormatter.format(DateTime.parse(obj['birthday'])));
+    var birthday = (obj['birthday'] != null)
+        ? formatter.format(DateTime.parse(obj['birthday']))
+        : '';
+    var age = (obj['birthday'] != null)
+        ? DateTime.now().year -
+            int.parse(yrFormatter.format(DateTime.parse(obj['birthday'])))
+        : 0;
 
     return PersonModel(
       id: obj['id'],

@@ -72,6 +72,7 @@ class PersonPage extends StatelessWidget {
                                       personController.personObj.profilePath!,
                                   height: getVerticalSize(180),
                                   width: getHorizontalSize(130),
+                                  radius: BorderRadius.circular(10),
                                 ),
                                 Expanded(
                                   child: Container(
