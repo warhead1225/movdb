@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomImageView extends StatelessWidget {
   ///[url] is required parameter for fetching network image
@@ -87,19 +86,7 @@ class CustomImageView extends StatelessWidget {
   }
 
   Widget _buildImageView() {
-    if (svgPath != null && svgPath!.isNotEmpty) {
-      return Container(
-        height: height,
-        width: width,
-        child: SvgPicture.asset(
-          svgPath!,
-          height: height,
-          width: width,
-          fit: fit ?? BoxFit.contain,
-          color: color,
-        ),
-      );
-    } else if (file != null && file!.path.isNotEmpty) {
+    if (file != null && file!.path.isNotEmpty) {
       return Image.file(
         file!,
         height: height,

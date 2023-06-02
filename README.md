@@ -1,6 +1,7 @@
-
 # movdb
+
 ### Table of contents
+
 - [System requirements](#system-requirements)
 - [Figma design guidelines for better UI accuracy](#figma-design-guideline-for-better-accuracy)
 - [Check the UI of the entire app](#app-navigations)
@@ -38,12 +39,12 @@ After successful build, your application structure should look like this:
     ├── core
     │   ├── app_export.dart         - It contains commonly used file imports
     │   ├── constants               - It contains all constants classes
-    │   ├── errors                  - It contains error handling classes                  
+    │   ├── errors                  - It contains error handling classes
     │   ├── network                 - It contains network-related classes
     │   └── utils                   - It contains common files and utilities of the application
     ├── data
-    │   ├── apiClient               - It contains API calling methods 
-    │   ├── models                  - It contains request/response models 
+    │   ├── apiClient               - It contains API calling methods
+    │   ├── models                  - It contains request/response models
     │   └── repository              - Network repository
     ├── localization                - It contains localization classes
     ├── presentation                - It contains widgets of the screens with their controllers and the models of the whole application.
@@ -73,6 +74,24 @@ Resolve the errors and warnings that are shown in the application.
   https://pub.dev/packages/shared_preferences
 - cached_network_image - For storing internet image into cache
   https://pub.dev/packages/cached_network_image
+- sentry_flutter - for error logging
+  https://pub.dev/packages/sentry_flutter
+- flutter_dotenv - for storing environment-specific variables
+  https://pub.dev/packages/flutter_dotenv
+- intl - for internalization and localization facilities
+  https://pub.dev/packages/intl
+- percent_indicator - Library that allows you to display progress widgets based on percentage
+  https://pub.dev/packages/percent_indicator
+- animated_bottom_navigation_bar - Bottom navigation bar
+  https://pub.dev/packages/animated_bottom_navigation_bar
+- card_swiper - swiper/carousel for flutter, with multiple layouts, infinite loop
+  https://pub.dev/packages?q=card_swiper
+- youtube_player_flutter - for playing or streaming youtube videos
+  https://pub.dev/packages/youtube_player_flutter
+- infinite_scroll_pagination - Lazily load and display pages of items as the user scrolls down your screen.
+  https://pub.dev/packages/infinite_scroll_pagination
+- device_info_plus - Get current device information
+  https://pub.dev/packages/device_info_plus
 
 ### Support
 
