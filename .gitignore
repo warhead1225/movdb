@@ -8,3 +8,4 @@
 /ios/Podfile
 /pubspec.lock
 *.env
+**/.DS_Store
