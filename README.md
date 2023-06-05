@@ -8,7 +8,7 @@
 - [Check the UI of the entire app](#app-navigations)
 - [Application structure](#project-structure)
 - [Libraries and tools used](#libraries-and-tools-used)
-- [CI/CD](#ci/cd)
+- [Continous Integration or Contindous Delivery](#continous-integration-or-contindous-deliver)
 - [Support](#support)
 
 ### Output
@@ -85,7 +85,7 @@ Check the UI of all the app screens from a single place by setting up the 'initi
 - device_info_plus - Get current device information
   https://pub.dev/packages/device_info_plus
 
-### CI/CD
+### Continous Integration or Contindous Delivery
 
 - Code Magic - This project also implements CI/CD through Code Magic service.
   https://codemagic.io/
