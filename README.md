@@ -1,4 +1,4 @@
-# movdb
+# MovDB
 
 ### Table of contents
 
