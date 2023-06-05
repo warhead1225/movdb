@@ -13,38 +13,62 @@ class TvCastImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(
+    return Container(
+      width: getHorizontalSize(150),
+      margin: getMargin(right: 16),
       child: Column(
         children: [
-          Tooltip(
-            message: cast.name,
-            child: Container(
-              margin: getMargin(right: 16, bottom: 10),
-              child: CustomImageView(
-                fit: BoxFit.cover,
-                url: cast.profilePath != ''
-                    ? ApiHeaders.imageBase() + cast.profilePath
-                    : 'xxxx',
-                height: getVerticalSize(170),
-                width: getHorizontalSize(150),
-                radius: BorderRadius.circular(10),
-                alignment: Alignment.center,
+          Expanded(
+            flex: 3,
+            child: Tooltip(
+              message: cast.name,
+              child: GestureDetector(
+                onTap: () =>
+                    Get.toNamed(AppRoutes.personPage, arguments: cast.id),
+                child: CustomImageView(
+                  fit: BoxFit.cover,
+                  width: getHorizontalSize(150),
+                  radius: BorderRadius.circular(10),
+                  alignment: Alignment.center,
+                  url: cast.profilePath != ''
+                      ? ApiHeaders.imageBase() + cast.profilePath
+                      : 'xxxx',
+                ),
               ),
             ),
           ),
-          Text(
-            cast.name,
-            style: AppStyle.txtRobotoBold12,
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.fade,
-          ),
-          Text(
-            cast.character,
-            style: AppStyle.txtRobotoBold12,
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.fade,
+          Expanded(
+            flex: 1,
+            child: Container(
+              margin: getMargin(top: 5),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Tooltip(
+                    message: cast.name,
+                    child: Text(
+                      cast.name,
+                      style: AppStyle.txtRobotoBold12,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.fade,
+                    ),
+                  ),
+                  Expanded(
+                    child: Tooltip(
+                      message: cast.character,
+                      child: Text(
+                        cast.character,
+                        style: AppStyle.txtRobotoRegular12,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.fade,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

@@ -35,27 +35,37 @@ class CastImage extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            margin: getMargin(top: 5, bottom: 5),
-            child: Tooltip(
-              message: cast.name,
-              child: Text(
-                cast.name,
-                style: AppStyle.txtRobotoBold12,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.fade,
+          Expanded(
+            flex: 1,
+            child: Container(
+              margin: getMargin(top: 5),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Tooltip(
+                    message: cast.name,
+                    child: Text(
+                      cast.name,
+                      style: AppStyle.txtRobotoBold12,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.fade,
+                    ),
+                  ),
+                  Expanded(
+                    child: Tooltip(
+                      message: cast.character,
+                      child: Text(
+                        cast.character,
+                        style: AppStyle.txtRobotoRegular12,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.fade,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ),
-          Tooltip(
-            message: cast.character,
-            child: Text(
-              cast.character,
-              style: AppStyle.txtRobotoRegular12,
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.fade,
             ),
           ),
         ],

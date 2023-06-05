@@ -6,8 +6,6 @@
 - [Figma design guidelines for better UI accuracy](#figma-design-guideline-for-better-accuracy)
 - [Check the UI of the entire app](#app-navigations)
 - [Application structure](#project-structure)
-- [How to format your code?](#how-you-can-do-code-formatting)
-- [How you can improve code readability?](#how-you-can-improve-the-readability-of-code)
 - [Libraries and tools used](#libraries-and-tools-used)
 - [Support](#support)
 
@@ -26,8 +24,6 @@ https://docs.dhiwise.com/docs/Designguidelines/intro
 Check the UI of all the app screens from a single place by setting up the 'initialRoute'  to AppNavigation in the AppRoutes.dart file.
 
 ### Application structure
-
-After successful build, your application structure should look like this:
 
 ```
 .
@@ -52,17 +48,6 @@ After successful build, your application structure should look like this:
     └── theme                       - It contains app theme and decoration classes
     └── widgets                     - It contains all custom widget classes
 ```
-
-### How to format your code?
-
-- if your code is not formatted then run following command in your terminal to format code
-  ```
-  dart format .
-  ```
-
-### How you can improve code readability?
-
-Resolve the errors and warnings that are shown in the application.
 
 ### Libraries and tools used
 
