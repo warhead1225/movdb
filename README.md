@@ -8,7 +8,7 @@
 - [Check the UI of the entire app](#app-navigations)
 - [Application structure](#project-structure)
 - [Libraries and tools used](#libraries-and-tools-used)
-- [Continous Integration or Contindous Delivery](#continous-integration-or-contindous-deliver)
+- [Continous Integration or Contindous Delivery](#continous-integration-or-contindous-delivery)
 - [Support](#support)
 
 ### Output
