@@ -13,7 +13,7 @@
 
 ### Output
 
-MovDB on google play store
+MovDB on Google Play
 https://play.google.com/store/apps/details?id=com.movdb.app
 
 ### System requirements
