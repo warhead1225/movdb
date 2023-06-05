@@ -92,21 +92,25 @@ class PersonPage extends StatelessWidget {
                                           ),
                                         ),
                                         SizedBox(height: 5),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              child: Text(
-                                                'Birthday: ${personController.personObj.birthday} - ${personController.personObj.age.toString()} yrs old',
-                                                style:
-                                                    AppStyle.txtRobotoRegular14,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.fade,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                        (personController.personObj.birthday !=
+                                                '')
+                                            ? Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Expanded(
+                                                    child: Text(
+                                                      'Birthday: ${personController.personObj.birthday} - ${personController.personObj.age.toString()} yrs old',
+                                                      style: AppStyle
+                                                          .txtRobotoRegular14,
+                                                      maxLines: 2,
+                                                      overflow:
+                                                          TextOverflow.fade,
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            : SizedBox(),
                                         SizedBox(height: 5),
                                         (personController
                                                     .personObj.placeOfBirth !=

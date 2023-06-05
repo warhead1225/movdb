@@ -4,7 +4,7 @@ import 'package:movdb/data/apiClient/api_headers.dart';
 import 'package:movdb/presentation/movies/controller/movie_details_controller.dart';
 import 'package:movdb/presentation/movies/widgets/cast_image.dart';
 import 'package:movdb/widgets/content_loading.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:movdb/widgets/poster_details.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetailsPage extends StatelessWidget {
@@ -45,95 +45,14 @@ class MovieDetailsPage extends StatelessWidget {
                             ),
                           ),
                           // Poster and Title
-                          Container(
-                            margin: getMargin(top: size.height * .13, left: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    //Poster image
-                                    Container(
-                                      margin: getMargin(right: 10),
-                                      child: CustomImageView(
-                                        url: ApiHeaders.imageBase() +
-                                            movieDetailController
-                                                .movieDetail.posterPath,
-                                        height: getVerticalSize(180),
-                                        width: getHorizontalSize(130),
-                                        radius: BorderRadius.circular(10),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            movieDetailController
-                                                .movieDetail.title,
-                                            style: AppStyle.txtRobotoBold24,
-                                            maxLines: 3,
-                                            overflow: TextOverflow.fade,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Container(
-                                                margin: getMargin(top: 10),
-                                                child: CircularPercentIndicator(
-                                                  radius: 30.0,
-                                                  lineWidth: 6.0,
-                                                  percent: movieDetailController
-                                                      .ratingPercent,
-                                                  center: Text(
-                                                    movieDetailController.rating
-                                                        .toString(),
-                                                    style: AppStyle
-                                                        .txtRobotoBold15,
-                                                  ),
-                                                  backgroundColor: Colors.grey,
-                                                  progressColor:
-                                                      Colors.greenAccent,
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Container(
-                                                  margin: getMargin(
-                                                    left: 10,
-                                                    top: 10,
-                                                  ),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        movieDetailController
-                                                            .releaseDate,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular14,
-                                                      ),
-                                                      Text(
-                                                        movieDetailController
-                                                            .genre,
-                                                        style: AppStyle
-                                                            .txtRobotoRegular14,
-                                                        maxLines: 3,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          PosterDetails(
+                            poster:
+                                movieDetailController.movieDetail.posterPath,
+                            title: movieDetailController.movieDetail.title,
+                            ratingPercent: movieDetailController.ratingPercent,
+                            rating: movieDetailController.rating.toString(),
+                            genre: movieDetailController.genre,
+                            releaseDate: movieDetailController.releaseDate,
                           ),
                         ],
                       ),

@@ -38,7 +38,9 @@ class TvShowsDetailsController extends GetxController {
       rating = double.parse((tvDetail.voteAverage).toStringAsFixed(1));
       ratingPercent =
           double.parse((tvDetail.voteAverage * 0.10).toStringAsFixed(2));
-      releaseDate = formatter.format(DateTime.parse(tvDetail.firstAirDate));
+      releaseDate = (tvDetail.firstAirDate != '')
+          ? formatter.format(DateTime.parse(tvDetail.firstAirDate))
+          : '';
 
       //list Genre
       tvDetail.genres.forEach((element) {
