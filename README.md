@@ -8,7 +8,7 @@
 - [Check the UI of the entire app](#app-navigations)
 - [Application structure](#project-structure)
 - [Libraries and tools used](#libraries-and-tools-used)
-- [CI/CD](CI/CD)
+- [CI/CD](#CI/CD)
 - [Support](#support)
 
 ### Output
