@@ -1,13 +1,20 @@
-# movdb
+# MovDB
 
 ### Table of contents
 
+- [Output](#output)
 - [System requirements](#system-requirements)
 - [Figma design guidelines for better UI accuracy](#figma-design-guideline-for-better-accuracy)
 - [Check the UI of the entire app](#app-navigations)
 - [Application structure](#project-structure)
 - [Libraries and tools used](#libraries-and-tools-used)
+- [Continous Integration or Contindous Delivery](#continous-integration-or-contindous-delivery)
 - [Support](#support)
+
+### Output
+
+MovDB on Google Play
+https://play.google.com/store/apps/details?id=com.movdb.app
 
 ### System requirements
 
@@ -77,6 +84,11 @@ Check the UI of all the app screens from a single place by setting up the 'initi
   https://pub.dev/packages/infinite_scroll_pagination
 - device_info_plus - Get current device information
   https://pub.dev/packages/device_info_plus
+
+### Continous Integration or Contindous Delivery
+
+- Code Magic - This project also implements CI/CD through Code Magic service.
+  https://codemagic.io/
 
 ### Support
 
