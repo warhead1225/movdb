@@ -1,6 +1,6 @@
 name: movdb
 description: A simple movie and Tv Series guide
-version: 1.1.1+12
+version: 1.1.2+13
 environment:
   sdk: ">=2.12.0 <3.0.0"
 dependencies:
