@@ -41,7 +41,7 @@ class MainPage extends StatelessWidget {
               Icons.dashboard_sharp,
               Icons.movie_sharp,
               Icons.tv_sharp,
-              Icons.abc,
+              Icons.search,
             ],
             activeIndex: mainPageController.bottomNavBarActive.value,
             activeColor: Colors.teal,

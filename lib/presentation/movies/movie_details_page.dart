@@ -138,7 +138,7 @@ class MovieDetailsPage extends StatelessWidget {
                                     Container(
                                       margin: getMargin(top: 10),
                                       width: size.width,
-                                      height: getVerticalSize(240),
+                                      height: getVerticalSize(250),
                                       child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
                                         itemCount: movieDetailController
