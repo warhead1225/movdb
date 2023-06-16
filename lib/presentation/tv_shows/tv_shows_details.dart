@@ -50,7 +50,7 @@ class TvShowsDetails extends StatelessWidget {
                             ratingPercent: tvDetailsController.ratingPercent,
                             rating: tvDetailsController.rating.toString(),
                             genre: tvDetailsController.genre,
-                            releaseDate: tvDetailsController.genre,
+                            releaseDate: tvDetailsController.releaseDate,
                           ),
                         ],
                       ),
@@ -90,7 +90,7 @@ class TvShowsDetails extends StatelessWidget {
                                     Container(
                                       margin: getMargin(top: 10),
                                       width: size.width,
-                                      height: getVerticalSize(225),
+                                      height: getVerticalSize(250),
                                       child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
                                         itemCount: tvDetailsController
