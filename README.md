@@ -74,8 +74,8 @@ Check the UI of all the app screens from a single place by setting up the 'initi
   https://pub.dev/packages/intl
 - percent_indicator - Library that allows you to display progress widgets based on percentage
   https://pub.dev/packages/percent_indicator
-- animated_bottom_navigation_bar - Bottom navigation bar
-  https://pub.dev/packages/animated_bottom_navigation_bar
+- persistent_bottom_nav_baron_bar - Bottom navigation bar
+  https://pub.dev/packages/persistent_bottom_nav_baron_bar
 - card_swiper - swiper/carousel for flutter, with multiple layouts, infinite loop
   https://pub.dev/packages?q=card_swiper
 - youtube_player_flutter - for playing or streaming youtube videos

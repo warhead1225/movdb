@@ -12,7 +12,6 @@ dependencies:
   cached_network_image: ^3.2.1
   intl: ^0.17.0
   percent_indicator: ^4.2.3
-  animated_bottom_navigation_bar: ^1.2.0
   card_swiper: ^2.0.4
   youtube_player_flutter: ^8.1.2
   infinite_scroll_pagination: ^3.2.0
