@@ -8,6 +8,7 @@ import 'package:movdb/presentation/dashboard_page/dashboard_page.dart';
 import 'package:movdb/presentation/movies/movies_page.dart';
 import 'package:movdb/presentation/tv_shows/tv_shows_page.dart';
 import 'package:movdb/widgets/alert_dialog_container.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class MainPageController extends GetxController {
   final swiperController = SwiperController();
@@ -21,6 +22,8 @@ class MainPageController extends GetxController {
 
   var bottomNavBarActive = 0.obs;
   var _hasInternetConnection = true.obs;
+
+  final persistentTabController = PersistentTabController(initialIndex: 0);
 
   @override
   void onReady() {

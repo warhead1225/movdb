@@ -1,5 +1,5 @@
 import 'package:movdb/presentation/main/binding/main_page_binding.dart';
-import 'package:movdb/presentation/main/main_page.dart';
+import 'package:movdb/presentation/main/main_page_n.dart';
 import 'package:movdb/presentation/movies/movie_details_page.dart';
 import 'package:movdb/presentation/person/person_page.dart';
 import 'package:movdb/presentation/search_page/bindings/search_page_binding.dart';
@@ -21,7 +21,7 @@ import 'package:movdb/presentation/upcoming/upcoming_page.dart';
 class AppRoutes {
   static const String initialRoute = '/initialRoute';
   static const String splashScreen = '/splash_screen';
-  static const String mainPage = '/main_page';
+  static const String mainPageN = '/main_page_n';
   static const String appNavigationScreen = '/app_navigation_screen';
   static const String movieDetails = '/movie_details';
   static const String tvDetails = '/tv_details';
@@ -44,8 +44,8 @@ class AppRoutes {
       bindings: [SplashBinding()],
     ),
     GetPage(
-      name: mainPage,
-      page: () => MainPage(),
+      name: mainPageN,
+      page: () => ManPageN(),
       bindings: [MainPageBinding()],
     ),
     GetPage(
