@@ -8,6 +8,7 @@ import 'core/app_export.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((value) async {
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        colorScheme: ColorScheme.dark(),
         visualDensity: VisualDensity.standard,
         useMaterial3: true,
         appBarTheme: AppBarTheme(foregroundColor: Colors.white),

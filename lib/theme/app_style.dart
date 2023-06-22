@@ -18,6 +18,15 @@ class AppStyle {
     ],
   );
 
+  static TextStyle txtRobotoRegular14NoShadow = TextStyle(
+    color: ColorConstant.whiteA70090,
+    fontSize: getFontSize(
+      14,
+    ),
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w400,
+  );
+
   static TextStyle txtRobotoRegular12WhiteA700a9 = TextStyle(
     color: ColorConstant.whiteA700A9,
     fontSize: getFontSize(12),
