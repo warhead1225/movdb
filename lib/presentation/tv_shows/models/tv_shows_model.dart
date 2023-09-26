@@ -15,7 +15,7 @@ class TVShowsModel {
     return TVShowsModel(
       id: obj['id'],
       title: obj['name'] ?? obj['original_name'],
-      posterPath: obj['poster_path'],
+      posterPath: obj['poster_path'] ?? '',
       voteAverage: (obj['vote_average'].runtimeType is int)
           ? 0.0
           : double.parse(obj['vote_average'].toString()),
