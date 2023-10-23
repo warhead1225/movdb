@@ -21,7 +21,8 @@ class DashboardPage extends StatelessWidget {
         extendBodyBehindAppBar: true,
         body: Obx(
           () => dashBoardController.hasConnection.value
-              ? SizedBox(
+              ? Container(
+                  padding: const EdgeInsets.only(bottom: 20),
                   width: size.width,
                   height: size.height,
                   child: RefreshIndicator(
