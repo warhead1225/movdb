@@ -47,7 +47,7 @@ class DashboardModel {
   UpcomingModel upcomingObj(Map<String, dynamic> obj) {
     return UpcomingModel(
       id: obj['id'],
-      backdropPath: obj['backdrop_path'],
+      backdropPath: obj['backdrop_path'] ?? '',
       title: obj['title'] ?? obj['name'],
       overview: obj['overview'],
       posterPath: obj['poster_path'],
