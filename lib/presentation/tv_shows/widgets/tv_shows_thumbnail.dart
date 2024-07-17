@@ -17,7 +17,7 @@ class TvShowsThumbnail extends StatelessWidget {
       ),
       child: Container(
         width: getHorizontalSize(150),
-        margin: getMargin(right: 5, bottom: 10, left: 5),
+        margin: getMargin(right: 5, bottom: 7, left: 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
